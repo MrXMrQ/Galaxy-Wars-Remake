@@ -14,12 +14,14 @@ public class PlayerController : MonoBehaviour
     public float dashDistance;
     public float dashDuration;
     public float dashCooldown;
+    public ParticleSystem dashParticles;
     private bool isDashing;
     private bool canDash = true;
 
     [Header("Shooting")]
     public GameObject projectilePrefab;
     public float shootingCooldown;
+    public ParticleSystem shootParticles;
     private bool isShooting;
 
     [Header("Health")]
@@ -79,6 +81,9 @@ public class PlayerController : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+
+        SpawnDashParticles();
+
         player.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed) * dashDistance;
 
         yield return new WaitForSeconds(dashDuration);
@@ -88,10 +93,16 @@ public class PlayerController : MonoBehaviour
         canDash = true;
     }
 
+    private void SpawnDashParticles()
+    {
+        Instantiate(dashParticles, transform.position, transform.rotation);
+    }
+
     private IEnumerator Shooting()
     {
         isShooting = true;
         Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        Instantiate(shootParticles, transform.position, transform.rotation);
         yield return new WaitForSeconds(shootingCooldown);
         isShooting = false;
     }
