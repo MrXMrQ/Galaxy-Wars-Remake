@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,8 +22,28 @@ public class PlayerController : MonoBehaviour
     public float shootingCooldown;
     private bool isShooting;
 
+    [Header("Health")]
+    public int maxHealth;
+    public Healthbar healthbar;
+    public static int currentHealth;
+
+    [Header("Score")]
+    public static int currentScore;
+    public Score score;
+
+    void Start()
+    {
+        currentScore = 0;
+        currentHealth = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
+    }
+
+
     void Update()
     {
+        updateHealthbar();
+        updateScore();
+
         if (isDashing)
         {
             return;
@@ -73,5 +94,20 @@ public class PlayerController : MonoBehaviour
         Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(shootingCooldown);
         isShooting = false;
+    }
+
+    public void updateHealthbar()
+    {
+        healthbar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            SceneManager.LoadScene(5);
+        }
+    }
+
+    public void updateScore()
+    {
+        score.SetScore(currentScore);
     }
 }

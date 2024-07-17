@@ -5,6 +5,8 @@ using UnityEngine;
 public class AsteroidsMovement : MonoBehaviour
 {
     public float movementSpeed;
+    public int damage;
+    public int score;
     private float deadZone = -15;
     // Update is called once per frame
     void Update()
@@ -14,16 +16,22 @@ public class AsteroidsMovement : MonoBehaviour
         if (transform.position.y < deadZone)
         {
             Destroy(gameObject);
-
+            PlayerController.currentScore++;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Projectile")
+        {
+            PlayerController.currentScore += score;
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Game Over");
-            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            PlayerController.currentHealth -= damage;
         }
     }
 }

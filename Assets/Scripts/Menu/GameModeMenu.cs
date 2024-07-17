@@ -1,0 +1,26 @@
+using UnityEngine.SceneManagement;
+using UnityEngine;
+
+public class GameModeMenu : MonoBehaviour
+{
+    // Start is called before the first frame update
+    public void LoadEndless()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    public void LoadUpgrades()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void LoadBack()
+    {
+        SceneManager.LoadScene(0);
+    }
+}
