@@ -55,7 +55,6 @@ public class ItemHandler : MonoBehaviour
         // Check if any active item needs to be reset
         if (Time.time - lastItemUse >= items[index].itemDuration && isActive)
         {
-            Debug.Log("Item");
             isActive = false;
             immortality = false;
             playerController.ResetDashingCooldown();
@@ -82,7 +81,7 @@ public class ItemHandler : MonoBehaviour
 
         HandleItemActivation(KeyCode.Alpha2, 1, () =>
         {
-            playerController.Healing(healing);
+            playerController.SetHealth(healing);
         });
 
         HandleItemActivation(KeyCode.Alpha3, 2, () =>
@@ -102,7 +101,6 @@ public class ItemHandler : MonoBehaviour
         {
             collectedItem[imageIndex] = false;
             index = imageIndex;
-            Debug.Log("ItemUse");
             isActive = true;
             images[imageIndex].sprite = null;
             images[imageIndex].color = slotColor;

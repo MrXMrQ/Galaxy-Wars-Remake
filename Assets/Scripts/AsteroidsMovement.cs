@@ -10,6 +10,7 @@ public class AsteroidsMovement : MonoBehaviour
     private int increaseValue = 100;
     private float deadZone = -15;
     private System.Random rnd = new System.Random();
+
     // Update is called once per frame
     void Update()
     {

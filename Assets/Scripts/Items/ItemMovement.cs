@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ItemMovement : MonoBehaviour
 {
@@ -8,7 +7,6 @@ public class ItemMovement : MonoBehaviour
     public float itemDuration;
     public ParticleSystem particles;
     private float deadZone = -15f;
-
 
     // Update is called once per frame
     void Update()
@@ -25,13 +23,10 @@ public class ItemMovement : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
-
             Instantiate(particles, transform.position, Quaternion.identity);
             ItemHandler.Instance.updateColor(GetComponent<SpriteRenderer>().sprite, index);
             ItemHandler.Instance.collectedItem[index - 1] = true;
             Destroy(gameObject);
-
         }
     }
 }

@@ -8,7 +8,6 @@ public class Spawner : MonoBehaviour
     private float timer = 0;
     private System.Random rnd = new System.Random();
 
-
     // Start is called before the first frame update
     void Start()
     {

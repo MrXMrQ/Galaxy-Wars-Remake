@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -101,7 +102,12 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Shooting()
     {
         isShooting = true;
-        Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+
+        float x = transform.position.x;
+        float y = transform.position.y + 0.5f;
+        Vector2 pos = new Vector2(x, y);
+
+        Instantiate(projectilePrefab, pos, Quaternion.identity);
         Instantiate(shootParticles, transform.position, transform.rotation);
         yield return new WaitForSeconds(shootingCooldown);
         isShooting = false;
@@ -142,7 +148,7 @@ public class PlayerController : MonoBehaviour
         shootingCooldown = newShootingCooldown;
     }
 
-    public void Healing(int health)
+    public void SetHealth(int health)
     {
         currentHealth += health;
 
