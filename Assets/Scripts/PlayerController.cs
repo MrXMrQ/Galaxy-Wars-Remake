@@ -121,4 +121,41 @@ public class PlayerController : MonoBehaviour
     {
         score.SetScore(currentScore);
     }
+
+    public void ResetDashingCooldown()
+    {
+        dashCooldown = 1;
+    }
+
+    public void SetDashingCooldown(float newDashCooldown)
+    {
+        dashCooldown = newDashCooldown;
+    }
+
+    public void ResetShootingCooldown()
+    {
+        shootingCooldown = 0.5f;
+    }
+
+    public void SetShootingCooldown(float newShootingCooldown)
+    {
+        shootingCooldown = newShootingCooldown;
+    }
+
+    public void Healing(int health)
+    {
+        currentHealth += health;
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        updateHealthbar();
+    }
+
+    public void immortality()
+    {
+        currentHealth = maxHealth;
+        updateHealthbar();
+    }
 }

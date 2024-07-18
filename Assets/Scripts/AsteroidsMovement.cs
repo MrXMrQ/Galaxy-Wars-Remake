@@ -9,6 +9,7 @@ public class AsteroidsMovement : MonoBehaviour
     private float multiplier = 0;
     private int increaseValue = 100;
     private float deadZone = -15;
+    private System.Random rnd = new System.Random();
     // Update is called once per frame
     void Update()
     {
@@ -23,24 +24,27 @@ public class AsteroidsMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "Projectile")
+        if (other.CompareTag("Projectile"))
         {
             Destroy(gameObject);
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
+
+            if (rnd.Next(0, 100) >= 50)
+            {
+                ItemHandler.Instance.SpawnItem(transform.position);
+            }
+
             PlayerController.currentScore += score;
             SpawnParticles();
-
         }
-        if (collision.gameObject.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
             PlayerController.currentHealth -= damage;
             SpawnParticles();
         }
-        SpawnParticles();
-
     }
 
     private void MultiplierIncrease()
@@ -49,7 +53,6 @@ public class AsteroidsMovement : MonoBehaviour
         {
             multiplier += 1;
             increaseValue += increaseValue;
-            Debug.Log(multiplier);
         }
     }
 

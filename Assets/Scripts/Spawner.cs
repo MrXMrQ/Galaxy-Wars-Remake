@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -36,6 +34,9 @@ public class Spawner : MonoBehaviour
         float leftPoint = transform.position.x - xOffSet;
         float rightPoint = transform.position.x + xOffSet;
 
-        Instantiate(asteroids[rnd.Next(0, asteroids.Length)], new Vector3(rnd.Next((int)leftPoint, (int)rightPoint), transform.position.y, 0), transform.rotation);
+        int index = rnd.Next(0, asteroids.Length);
+        Vector3 position = new Vector3(rnd.Next((int)leftPoint, (int)rightPoint), transform.position.y, 0);
+
+        Instantiate(asteroids[index], position, transform.rotation);
     }
 }

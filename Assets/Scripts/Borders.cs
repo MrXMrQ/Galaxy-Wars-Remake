@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Borders : MonoBehaviour
@@ -21,13 +22,13 @@ public class Borders : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (canTeleport && collision.gameObject.tag == "Player")
+        if (canTeleport && other.gameObject.tag == "Player")
         {
             Vector2 newPosition = player.position;
 
-            if (collision.contacts[0].normal == Vector2.left || collision.contacts[0].normal == Vector2.right)
+            if (other.contacts[0].normal == Vector2.left || other.contacts[0].normal == Vector2.right)
             {
                 newPosition.x = -player.position.x;
                 Instantiate(teleportParticle, player.position, Quaternion.identity);
