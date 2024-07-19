@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using UnityEngine.UI;
 using TMPro;
 
 public class ItemHandler : MonoBehaviour
@@ -9,20 +8,18 @@ public class ItemHandler : MonoBehaviour
 
     [Header("Arrays")]
     public GameObject[] prefabs;
-    public Image[] images;
+    public Slot[] slots;
     public ItemMovement[] items;
-    public TextMeshProUGUI[] cooldownTextItem;
     public bool[] collectedItem = { false, false, false, false, false };
 
+
     [Header("Item settings")]
-    public Color slotColor;
     public TextMeshProUGUI cooldownText;
     public float itemCooldown;
     public PlayerController playerController;
 
     [Header("Stats")]
     public float dashingCooldown;
-    public float explosionRadius;
     public int healing;
     public bool immortality = false;
     public float shootingCooldown;
@@ -52,7 +49,7 @@ public class ItemHandler : MonoBehaviour
             playerController.immortality();
         }
 
-        // Check if any active item needs to be reset
+        // Check if the current active item needs to be reset
         if (Time.time - lastItemUse >= items[index].itemDuration && isActive)
         {
             isActive = false;
@@ -61,9 +58,10 @@ public class ItemHandler : MonoBehaviour
             playerController.ResetShootingCooldown();
         }
 
+        // Slot cooldown rendering
         if (isActive)
         {
-            cooldownTextItem[index].text = (items[index].itemDuration - (Time.time - lastItemUse)).ToString("0");
+            slots[index].SetSliderValue(items[index].itemDuration - (Time.time - lastItemUse));
         }
 
         // Check item cooldown
@@ -97,13 +95,14 @@ public class ItemHandler : MonoBehaviour
 
     private void HandleItemActivation(KeyCode keyCode, int imageIndex, Action onActivation)
     {
-        if (Input.GetKeyDown(keyCode) && collectedItem[imageIndex])
+        //Activate item function (only one item can active)
+        if (Input.GetKeyDown(keyCode) && collectedItem[imageIndex] && !isActive)
         {
+            slots[imageIndex].SetSliderMax(items[imageIndex].itemDuration);
             collectedItem[imageIndex] = false;
             index = imageIndex;
             isActive = true;
-            images[imageIndex].sprite = null;
-            images[imageIndex].color = slotColor;
+            slots[imageIndex].ResetSprite();
             lastItemUse = Time.time;
             onActivation?.Invoke();
         }
@@ -114,9 +113,8 @@ public class ItemHandler : MonoBehaviour
         Instantiate(prefabs[rnd.Next(0, prefabs.Length)], position, Quaternion.identity);
     }
 
-    public void updateColor(Sprite sprite, int index)
+    public void UpdateSprite(Sprite sprite, int index)
     {
-        images[index - 1].color = Color.white;
-        images[index - 1].sprite = sprite;
+        slots[index - 1].SetSprite(sprite);
     }
 }

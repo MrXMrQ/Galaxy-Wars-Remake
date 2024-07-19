@@ -32,7 +32,7 @@ public class AsteroidsMovement : MonoBehaviour
             Destroy(gameObject);
             Destroy(other.gameObject);
 
-            if (rnd.Next(0, 100) >= 50)
+            if (rnd.Next(0, 100) >= 75)
             {
                 ItemHandler.Instance.SpawnItem(transform.position);
             }
