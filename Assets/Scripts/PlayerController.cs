@@ -14,31 +14,35 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed;
     public float dashDistance;
     public float dashDuration;
-    public float dashCooldown;
+    public static float dashCooldown;
     public ParticleSystem dashParticles;
     private bool isDashing;
     private bool canDash = true;
 
     [Header("Shooting")]
     public GameObject projectilePrefab;
-    public float shootingCooldown;
+    public static float shootingCooldown;
     public ParticleSystem shootParticles;
     private bool isShooting;
 
     [Header("Health")]
-    public int maxHealth;
+    public static int maxHealthpoints;
     public Healthbar healthbar;
-    public static int currentHealth;
+    public static int currentHealthpoints;
+    public static int healing;
 
     [Header("Score")]
+    public static int totalScore;
     public static int currentScore;
     public Score score;
 
     void Start()
     {
+        Load();
+
         currentScore = 0;
-        currentHealth = maxHealth;
-        healthbar.SetMaxHealth(maxHealth);
+        currentHealthpoints = maxHealthpoints;
+        healthbar.SetMaxHealth(maxHealthpoints);
     }
 
 
@@ -78,6 +82,12 @@ public class PlayerController : MonoBehaviour
         player.velocity = new Vector2(movementDirection.x * movementSpeed, movementDirection.y * movementSpeed);
     }
 
+    private void OnDestroy()
+    {
+        totalScore += currentScore;
+        SaveSystem.Save(new GameData(maxHealthpoints, totalScore, dashCooldown, healing, shootingCooldown, Upgrades.maxHealthpointsCost, Upgrades.dashCost, Upgrades.healingCost, Upgrades.shootingCost));
+    }
+
     private IEnumerator Dash()
     {
         canDash = false;
@@ -113,11 +123,21 @@ public class PlayerController : MonoBehaviour
         isShooting = false;
     }
 
+    public void Load()
+    {
+        GameData gameData = SaveSystem.Load();
+
+        maxHealthpoints = gameData.maxHealthpoints;
+        dashCooldown = gameData.dashCooldown;
+        healing = gameData.healing;
+        shootingCooldown = gameData.shootingCooldown;
+    }
+
     public void updateHealthbar()
     {
-        healthbar.SetHealth(currentHealth);
+        healthbar.SetHealth(currentHealthpoints);
 
-        if (currentHealth <= 0)
+        if (currentHealthpoints <= 0)
         {
             SceneManager.LoadScene(5);
         }
@@ -148,20 +168,20 @@ public class PlayerController : MonoBehaviour
         shootingCooldown = newShootingCooldown;
     }
 
-    public void SetHealth(int health)
+    public void SetHealth()
     {
-        currentHealth += health;
+        currentHealthpoints += healing;
 
-        if (currentHealth > maxHealth)
+        if (currentHealthpoints > maxHealthpoints)
         {
-            currentHealth = maxHealth;
+            currentHealthpoints = maxHealthpoints;
         }
         updateHealthbar();
     }
 
     public void immortality()
     {
-        currentHealth = maxHealth;
+        currentHealthpoints = maxHealthpoints;
         updateHealthbar();
     }
 }

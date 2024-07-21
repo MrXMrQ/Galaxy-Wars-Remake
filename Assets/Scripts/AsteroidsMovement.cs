@@ -32,7 +32,7 @@ public class AsteroidsMovement : MonoBehaviour
             Destroy(gameObject);
             Destroy(other.gameObject);
 
-            if (rnd.Next(0, 100) >= 75)
+            if (rnd.Next(0, 100) >= 0)
             {
                 ItemHandler.Instance.SpawnItem(transform.position);
             }
@@ -43,7 +43,7 @@ public class AsteroidsMovement : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
-            PlayerController.currentHealth -= damage;
+            PlayerController.currentHealthpoints -= damage;
             SpawnParticles();
         }
     }

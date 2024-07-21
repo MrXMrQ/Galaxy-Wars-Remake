@@ -1131,7 +1131,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6289194308112020401, guid: 184e53708a9fbf44db2da85a2173e207, type: 3}
   shootingCooldown: 0.5
   shootParticles: {fileID: 3316150335570932208, guid: 69ae0e9ef21d2af42b0d12a54ae66b4d, type: 3}
-  maxHealth: 20
   healthbar: {fileID: 1894543286}
   score: {fileID: 1753030711}
 --- !u!61 &756186909

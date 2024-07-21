@@ -15,12 +15,11 @@ public class ItemHandler : MonoBehaviour
 
     [Header("Item settings")]
     public TextMeshProUGUI cooldownText;
-    public float itemCooldown;
+    public float itemCooldown = 0;
     public PlayerController playerController;
 
     [Header("Stats")]
     public float dashingCooldown;
-    public int healing;
     public bool immortality = false;
     public float shootingCooldown;
 
@@ -29,17 +28,24 @@ public class ItemHandler : MonoBehaviour
     private bool isActive;
     private System.Random rnd = new System.Random();
 
-    private void Awake()
+    /*private void Awake()
     {
-        if (Instance != null && Instance != this)
+        /*if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
+    }
+    */
+
+    private void Start()
+    {
+        Instance = this;
+        lastItemUse = Time.time;
+        Cooldown();
     }
 
     void Update()
@@ -64,12 +70,7 @@ public class ItemHandler : MonoBehaviour
             slots[index].SetSliderValue(items[index].itemDuration - (Time.time - lastItemUse));
         }
 
-        // Check item cooldown
-        if (Time.time - lastItemUse <= itemCooldown)
-        {
-            cooldownText.text = (itemCooldown - (Time.time - lastItemUse)).ToString("0");
-            return;
-        }
+        Cooldown();
 
         // Handle item activation based on input keys
         HandleItemActivation(KeyCode.Alpha1, 0, () =>
@@ -79,7 +80,7 @@ public class ItemHandler : MonoBehaviour
 
         HandleItemActivation(KeyCode.Alpha2, 1, () =>
         {
-            playerController.SetHealth(healing);
+            playerController.SetHealth();
         });
 
         HandleItemActivation(KeyCode.Alpha3, 2, () =>
@@ -116,5 +117,15 @@ public class ItemHandler : MonoBehaviour
     public void UpdateSprite(Sprite sprite, int index)
     {
         slots[index - 1].SetSprite(sprite);
+    }
+
+    public void Cooldown()
+    {
+        // Check item cooldown
+        if (Time.time - lastItemUse <= itemCooldown)
+        {
+            cooldownText.text = (itemCooldown - (Time.time - lastItemUse)).ToString("0");
+            return;
+        }
     }
 }
