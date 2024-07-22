@@ -1126,12 +1126,13 @@ MonoBehaviour:
   dashSpeed: 25
   dashDistance: 2.5
   dashDuration: 0.1
-  dashCooldown: 1
+  dashCooldownDefaultValue: 1.5
   dashParticles: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
   projectilePrefab: {fileID: 6289194308112020401, guid: 184e53708a9fbf44db2da85a2173e207, type: 3}
-  shootingCooldown: 0.5
   shootParticles: {fileID: 3316150335570932208, guid: 69ae0e9ef21d2af42b0d12a54ae66b4d, type: 3}
+  shootingCooldownDefaultValue: 1
   healthbar: {fileID: 1894543286}
+  healing: 5
   score: {fileID: 1753030711}
 --- !u!61 &756186909
 BoxCollider2D:
@@ -4434,7 +4435,7 @@ MonoBehaviour:
   cooldownText: {fileID: 2090497361}
   itemCooldown: 10
   playerController: {fileID: 756186908}
-  dashingCooldown: 0
+  dashCooldown: 0
   healing: 5
   immortality: 0
   shootingCooldown: 0.1

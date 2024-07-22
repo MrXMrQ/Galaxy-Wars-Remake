@@ -19,7 +19,8 @@ public class ItemHandler : MonoBehaviour
     public PlayerController playerController;
 
     [Header("Stats")]
-    public float dashingCooldown;
+    public float dashCooldown;
+    public int healing;
     public bool immortality = false;
     public float shootingCooldown;
 
@@ -43,6 +44,7 @@ public class ItemHandler : MonoBehaviour
 
     private void Start()
     {
+        Load();
         Instance = this;
         lastItemUse = Time.time;
         Cooldown();
@@ -70,17 +72,22 @@ public class ItemHandler : MonoBehaviour
             slots[index].SetSliderValue(items[index].itemDuration - (Time.time - lastItemUse));
         }
 
-        Cooldown();
+        // Check item cooldown
+        if (Time.time - lastItemUse <= itemCooldown)
+        {
+            cooldownText.text = (itemCooldown - (Time.time - lastItemUse)).ToString("0");
+            return;
+        }
 
         // Handle item activation based on input keys
         HandleItemActivation(KeyCode.Alpha1, 0, () =>
         {
-            playerController.SetDashingCooldown(dashingCooldown);
+            playerController.SetDashingCooldown(dashCooldown);
         });
 
         HandleItemActivation(KeyCode.Alpha2, 1, () =>
         {
-            playerController.SetHealth();
+            playerController.SetHealth(healing);
         });
 
         HandleItemActivation(KeyCode.Alpha3, 2, () =>
@@ -92,6 +99,16 @@ public class ItemHandler : MonoBehaviour
         {
             playerController.SetShootingCooldown(shootingCooldown);
         });
+    }
+
+    private void Load()
+    {
+        GameData gameData = SaveSystem.Load();
+
+        dashCooldown = gameData.dashCooldown;
+        healing = gameData.healing;
+        shootingCooldown = gameData.shootingCooldown;
+
     }
 
     private void HandleItemActivation(KeyCode keyCode, int imageIndex, Action onActivation)

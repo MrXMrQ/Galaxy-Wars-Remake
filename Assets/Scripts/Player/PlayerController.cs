@@ -14,27 +14,41 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed;
     public float dashDistance;
     public float dashDuration;
-    public static float dashCooldown;
+    public float dashCooldownDefaultValue;
+    private float dashCooldown;
     public ParticleSystem dashParticles;
     private bool isDashing;
     private bool canDash = true;
 
     [Header("Shooting")]
     public GameObject projectilePrefab;
-    public static float shootingCooldown;
     public ParticleSystem shootParticles;
+    public float shootingCooldownDefaultValue;
+    private float shootingCooldown;
     private bool isShooting;
 
     [Header("Health")]
-    public static int maxHealthpoints;
     public Healthbar healthbar;
     public static int currentHealthpoints;
-    public static int healing;
+    private int maxHealthpoints;
+    public int healing;
 
     [Header("Score")]
-    public static int totalScore;
-    public static int currentScore;
     public Score score;
+    public static int currentScore;
+    private int multiplier;
+    private int totalScore;
+    private int level;
+
+    [Header("Upgrades")]
+    private float dashCooldownUpgrade;
+    private int healingUpgrade;
+    private float shootingCooldownUpgrade;
+    private int maxHealthpointsCost;
+    private int dashCooldownCost;
+    private int healingCost;
+    private int shootingCooldownCost;
+    private int multiplierCost;
 
     void Start()
     {
@@ -42,12 +56,16 @@ public class PlayerController : MonoBehaviour
 
         currentScore = 0;
         currentHealthpoints = maxHealthpoints;
+
+        dashCooldown = dashCooldownDefaultValue;
+        shootingCooldown = shootingCooldownDefaultValue;
+
         healthbar.SetMaxHealth(maxHealthpoints);
     }
 
-
     void Update()
     {
+        Debug.Log(dashCooldown);
         updateHealthbar();
         updateScore();
 
@@ -84,8 +102,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        totalScore += currentScore;
-        SaveSystem.Save(new GameData(maxHealthpoints, totalScore, dashCooldown, healing, shootingCooldown, Upgrades.maxHealthpointsCost, Upgrades.dashCost, Upgrades.healingCost, Upgrades.shootingCost));
+        totalScore += (currentScore * multiplier);
+        SaveSystem.Save(new GameData(maxHealthpoints, totalScore, level, dashCooldownUpgrade, healingUpgrade, shootingCooldownUpgrade, multiplier, maxHealthpointsCost, dashCooldownCost, healingCost, shootingCooldownCost, multiplierCost));
     }
 
     private IEnumerator Dash()
@@ -128,9 +146,19 @@ public class PlayerController : MonoBehaviour
         GameData gameData = SaveSystem.Load();
 
         maxHealthpoints = gameData.maxHealthpoints;
-        dashCooldown = gameData.dashCooldown;
-        healing = gameData.healing;
-        shootingCooldown = gameData.shootingCooldown;
+        totalScore = gameData.totalScore;
+        level = gameData.level;
+
+        dashCooldownUpgrade = gameData.dashCooldown;
+        healingUpgrade = gameData.healing;
+        shootingCooldownUpgrade = gameData.shootingCooldown;
+        multiplier = gameData.multiplier;
+
+        maxHealthpointsCost = gameData.maxHealthpointsCost;
+        dashCooldownCost = gameData.dashCooldownCost;
+        healingCost = gameData.healingCost;
+        shootingCooldownCost = gameData.shootingCooldownCost;
+        multiplierCost = gameData.multiplierCost;
     }
 
     public void updateHealthbar()
@@ -150,7 +178,7 @@ public class PlayerController : MonoBehaviour
 
     public void ResetDashingCooldown()
     {
-        dashCooldown = 1;
+        dashCooldown = dashCooldownDefaultValue;
     }
 
     public void SetDashingCooldown(float newDashCooldown)
@@ -160,7 +188,7 @@ public class PlayerController : MonoBehaviour
 
     public void ResetShootingCooldown()
     {
-        shootingCooldown = 0.5f;
+        shootingCooldown = shootingCooldownDefaultValue;
     }
 
     public void SetShootingCooldown(float newShootingCooldown)
@@ -168,9 +196,9 @@ public class PlayerController : MonoBehaviour
         shootingCooldown = newShootingCooldown;
     }
 
-    public void SetHealth()
+    public void SetHealth(int heal)
     {
-        currentHealthpoints += healing;
+        currentHealthpoints += heal;
 
         if (currentHealthpoints > maxHealthpoints)
         {
