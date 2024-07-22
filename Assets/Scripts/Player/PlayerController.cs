@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("Movement")]
     public Rigidbody2D player;
     public float movementSpeed;
+    public float smoothing;
     private Vector2 movementDirection;
 
     [Header("Dashing")]
@@ -68,7 +69,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(dashCooldown);
         updateHealthbar();
         updateScore();
 
@@ -77,8 +77,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        float movementX = Input.GetAxis("Horizontal");
-        float movementY = Input.GetAxis("Vertical");
+        float movementX = Input.GetAxisRaw("Horizontal");
+        float movementY = Input.GetAxisRaw("Vertical");
 
         if (Input.GetKeyDown(KeyCode.Space) && !isShooting)
         {
@@ -102,7 +102,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        player.velocity = new Vector2(movementDirection.x * movementSpeed, movementDirection.y * movementSpeed);
+        Vector2 targetVelocity = movementDirection * movementSpeed;
+        player.velocity = Vector2.Lerp(player.velocity, targetVelocity, smoothing);
     }
 
     private void OnDestroy()

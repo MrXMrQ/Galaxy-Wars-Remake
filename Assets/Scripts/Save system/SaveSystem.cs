@@ -27,6 +27,7 @@ public static class SaveSystem
 
     public static void Save(GameData gameData)
     {
+        Debug.Log("File load at: " + path);
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Create);
 
