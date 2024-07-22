@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public static Spawner Instance { get; private set; }
     public GameObject[] asteroids;
     public float spawnrate;
     public float xOffSet;
@@ -11,6 +12,7 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         Spawn();
     }
 

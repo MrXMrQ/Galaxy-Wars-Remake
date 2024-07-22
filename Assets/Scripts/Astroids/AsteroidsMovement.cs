@@ -1,3 +1,4 @@
+using System.Data.Common;
 using UnityEngine;
 
 public class AsteroidsMovement : MonoBehaviour
@@ -7,16 +8,17 @@ public class AsteroidsMovement : MonoBehaviour
     public int score;
     public ParticleSystem dstroyParticles;
     private float multiplier = 0;
-    private int increaseValue = 100;
+    private bool incrase;
+    private static int increaseValue = 100;
     private float deadZone = -15;
     private System.Random rnd = new System.Random();
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + (Vector3.down * (movementSpeed + multiplier)) * Time.deltaTime;
-
         MultiplierIncrease();
+
+        transform.position = transform.position + (Vector3.down * (movementSpeed + multiplier)) * Time.deltaTime;
 
         if (transform.position.y < deadZone)
         {
@@ -32,7 +34,7 @@ public class AsteroidsMovement : MonoBehaviour
             Destroy(gameObject);
             Destroy(other.gameObject);
 
-            if (rnd.Next(0, 100) >= 0)
+            if (rnd.Next(0, 100) >= 50)
             {
                 ItemHandler.Instance.SpawnItem(transform.position);
             }
@@ -50,10 +52,39 @@ public class AsteroidsMovement : MonoBehaviour
 
     private void MultiplierIncrease()
     {
+        // Debug current score and increase value
+        Debug.Log($"Current Score: {PlayerController.currentScore}, Increase Value: {increaseValue}");
+
+        // Check if the current score has reached or surpassed the increase value
         if (PlayerController.currentScore >= increaseValue)
         {
-            multiplier += 1;
-            increaseValue += increaseValue;
+            Debug.Log("Condition met: currentScore >= increaseValue");
+
+            // Ensure that 'incrase' is true only if it's not already set
+            if (!incrase)
+            {
+                incrase = true;
+            }
+        }
+
+        // Check if the 'incrase' flag is set
+        if (incrase)
+        {
+            Debug.Log("Increasing speed and updating values");
+
+            // Perform your speed increase logic
+            if (Spawner.Instance.spawnrate > 0.09f)
+            {
+                Spawner.Instance.spawnrate -= 0.01f;
+            }
+
+            multiplier += 5;
+
+            // Update the increaseValue for the next check
+            increaseValue += 100;
+
+            // Reset the incrase flag to prevent continuous increase
+            incrase = false;
         }
     }
 
