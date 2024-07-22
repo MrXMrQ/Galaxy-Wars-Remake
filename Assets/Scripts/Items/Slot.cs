@@ -34,4 +34,9 @@ public class Slot : MonoBehaviour
     {
         item.sprite = sprite;
     }
+
+    public float GetSliderMax()
+    {
+        return slider.maxValue;
+    }
 }

@@ -25,7 +25,7 @@ public class ItemHandler : MonoBehaviour
     public float shootingCooldown;
 
     private int index;
-    private float lastItemUse = 0f;
+    private float lastItemUse;
     private bool isActive;
     private System.Random rnd = new System.Random();
 

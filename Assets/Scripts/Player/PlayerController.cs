@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public float dashDistance;
     public float dashDuration;
     public float dashCooldownDefaultValue;
-    private float dashCooldown;
+    public float dashCooldown;
     public ParticleSystem dashParticles;
     private bool isDashing;
     private bool canDash = true;
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     public ParticleSystem shootParticles;
     public float shootingCooldownDefaultValue;
-    private float shootingCooldown;
+    public float shootingCooldown;
     private bool isShooting;
 
     [Header("Health")]
@@ -49,6 +49,9 @@ public class PlayerController : MonoBehaviour
     private int healingCost;
     private int shootingCooldownCost;
     private int multiplierCost;
+
+    [Header("Cooldowns")]
+    public CooldownHandler cooldownHandler;
 
     void Start()
     {
@@ -79,11 +82,13 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && !isShooting)
         {
+            cooldownHandler.lastShot = Time.time;
             StartCoroutine(Shooting());
         }
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
+            cooldownHandler.lastDash = Time.time;
             StartCoroutine(Dash());
         }
 
