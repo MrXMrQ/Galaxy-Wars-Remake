@@ -26,17 +26,29 @@ public class CooldownHandler : MonoBehaviour
             slots[0].SetSliderMax(playerController.dashCooldown);
             slots[0].SetSliderValue(playerController.dashCooldown - (Time.time - lastDash));
         }
+        else
+        {
+            slots[0].SetSliderValue(0);
+        }
 
         if (Time.time - lastShot <= playerController.shootingCooldown)
         {
             slots[1].SetSliderMax(playerController.shootingCooldown);
             slots[1].SetSliderValue(playerController.shootingCooldown - (Time.time - lastShot));
         }
+        else
+        {
+            slots[1].SetSliderValue(0);
+        }
 
         if (Time.time - lastTeleport <= borders.teleportCooldown)
         {
             slots[2].SetSliderMax(borders.teleportCooldown);
             slots[2].SetSliderValue(borders.teleportCooldown - (Time.time - lastTeleport));
+        }
+        else
+        {
+            slots[2].SetSliderValue(0);
         }
     }
 }

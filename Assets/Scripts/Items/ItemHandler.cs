@@ -21,26 +21,14 @@ public class ItemHandler : MonoBehaviour
     [Header("Stats")]
     public float dashCooldown;
     public int healing;
-    public bool immortality = false;
+    public static bool isImmortal;
     public float shootingCooldown;
+    public int maxHealthpoints;
 
     private int index;
     private float lastItemUse;
     private bool isActive;
     private System.Random rnd = new System.Random();
-
-    /*private void Awake()
-    {
-        /*if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-    */
 
     private void Start()
     {
@@ -52,16 +40,11 @@ public class ItemHandler : MonoBehaviour
 
     void Update()
     {
-        if (immortality)
-        {
-            playerController.immortality();
-        }
-
         // Check if the current active item needs to be reset
         if (Time.time - lastItemUse >= items[index].itemDuration && isActive)
         {
             isActive = false;
-            immortality = false;
+            isImmortal = false;
             playerController.ResetDashingCooldown();
             playerController.ResetShootingCooldown();
         }
@@ -70,6 +53,10 @@ public class ItemHandler : MonoBehaviour
         if (isActive)
         {
             slots[index].SetSliderValue(items[index].itemDuration - (Time.time - lastItemUse));
+        }
+        else
+        {
+            slots[index].SetSliderValue(0);
         }
 
         // Check item cooldown
@@ -92,7 +79,8 @@ public class ItemHandler : MonoBehaviour
 
         HandleItemActivation(KeyCode.Alpha3, 2, () =>
         {
-            immortality = true;
+            isImmortal = true;
+            PlayerController.currentHealthpoints = maxHealthpoints;
         });
 
         HandleItemActivation(KeyCode.Alpha4, 3, () =>
@@ -105,6 +93,7 @@ public class ItemHandler : MonoBehaviour
     {
         GameData gameData = SaveSystem.Load();
 
+        maxHealthpoints = gameData.maxHealthpoints;
         dashCooldown = gameData.dashCooldown;
         healing = gameData.healing;
         shootingCooldown = gameData.shootingCooldown;

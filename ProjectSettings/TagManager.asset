@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - Item
   - Item Manager
+  - Boss
   layers:
   - Default
   - TransparentFX

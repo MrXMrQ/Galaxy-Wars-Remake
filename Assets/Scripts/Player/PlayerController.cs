@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -210,12 +209,6 @@ public class PlayerController : MonoBehaviour
         {
             currentHealthpoints = maxHealthpoints;
         }
-        updateHealthbar();
-    }
-
-    public void immortality()
-    {
-        currentHealthpoints = maxHealthpoints;
         updateHealthbar();
     }
 }
