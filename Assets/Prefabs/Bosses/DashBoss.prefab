@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3943585856618316793}
   - component: {fileID: 2213441834975516497}
   - component: {fileID: 5806268720756012915}
-  - component: {fileID: 2176249651973844275}
+  - component: {fileID: -170953703615222000}
   - component: {fileID: 7624252159638179181}
   m_Layer: 0
   m_Name: DashBoss
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2176249651973844275
+--- !u!114 &-170953703615222000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,13 +159,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2659891126375243337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62da200823507d143b6876f3de91a441, type: 3}
+  m_Script: {fileID: 11500000, guid: 7be239b4dbe07c44285311ae05c3eed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 5806268720756012915}
-  movementSpeed: 10
-  smoothing: 0.1
-  changeDirectionInterval: 0.5
 --- !u!114 &7624252159638179181
 MonoBehaviour:
   m_ObjectHideFlags: 0

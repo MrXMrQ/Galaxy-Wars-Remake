@@ -21,8 +21,6 @@ public class Borders : MonoBehaviour
     {
         if (canTeleport && other.gameObject.tag == "Player")
         {
-
-
             Vector2 newPosition = player.position;
 
             if (other.contacts[0].normal == Vector2.left || other.contacts[0].normal == Vector2.right)
@@ -36,6 +34,14 @@ public class Borders : MonoBehaviour
                 lastTeleportTime = Time.time;
                 canTeleport = false;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Projectile"))
+        {
+            Destroy(other.gameObject);
         }
     }
 }

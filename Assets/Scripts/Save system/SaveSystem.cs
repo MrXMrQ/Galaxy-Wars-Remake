@@ -12,7 +12,7 @@ public static class SaveSystem
     // item data default values
     private static float dashCooldown = 0.8f;
     private static int healing = 1;
-    private static float shootingCooldown = 0.75f;
+    private static float shootingCooldown = 0.5f;
     private static int multiplier = 1;
 
     // item costs default values 

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    public Rigidbody2D player;
+    public static Rigidbody2D player;
     public float movementSpeed;
     public float smoothing;
     private Vector2 movementDirection;
@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        player = GetComponent<Rigidbody2D>();
         Load();
 
         currentScore = 0;
@@ -135,7 +136,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Shooting()
     {
         isShooting = true;
-
         float x = transform.position.x;
         float y = transform.position.y + 0.5f;
         Vector2 pos = new Vector2(x, y);

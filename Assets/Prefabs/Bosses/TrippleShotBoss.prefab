@@ -163,9 +163,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 5806268720756012915}
+  projectilePrefab: {fileID: 6289194308112020401, guid: 2ca793570f9628c42b5b87ada34486c9, type: 3}
   movementSpeed: 10
   smoothing: 0.1
   changeDirectionInterval: 0.5
+  shootingCooldown: 1
+  bossWidth: 0
 --- !u!114 &7624252159638179181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +183,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossName: Tripple Shot Boss
   maxHealthpoints: 5
-  damage: 0
   collisionDamage: 100
   score: 0
