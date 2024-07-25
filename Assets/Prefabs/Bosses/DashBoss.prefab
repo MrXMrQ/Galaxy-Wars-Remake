@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7624252159638179181}
   m_Layer: 0
   m_Name: DashBoss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,6 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be239b4dbe07c44285311ae05c3eed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 5806268720756012915}
+  changeDirectionInterval: 1
+  dashSpeed: 60
 --- !u!114 &7624252159638179181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +178,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossName: Dash Boss
-  maxHealthpoints: 20
-  collisionDamage: 100
+  maxHealthpoints: 5
+  collisionDamage: 1
   score: 0

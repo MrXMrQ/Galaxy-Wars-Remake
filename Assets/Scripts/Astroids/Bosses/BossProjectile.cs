@@ -26,7 +26,5 @@ public class BossProjectile : MonoBehaviour
     public void SetDirection(Vector2 moveDirection)
     {
         this.moveDirection = moveDirection.normalized;
-
-
     }
 }

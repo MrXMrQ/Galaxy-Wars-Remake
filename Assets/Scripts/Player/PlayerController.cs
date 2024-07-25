@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     public Healthbar healthbar;
     public static int currentHealthpoints;
     private int maxHealthpoints;
-    public int healing;
 
     [Header("Score")]
     public Score score;
@@ -53,9 +52,13 @@ public class PlayerController : MonoBehaviour
     [Header("Cooldowns")]
     public CooldownHandler cooldownHandler;
 
+    [Header("Knock back")]
+    public static KnockBack knockBack;
+
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
+        knockBack = GetComponent<KnockBack>();
         Load();
 
         currentScore = 0;
@@ -72,7 +75,7 @@ public class PlayerController : MonoBehaviour
         updateHealthbar();
         updateScore();
 
-        if (isDashing)
+        if (isDashing || knockBack.isBeingKnockBack)
         {
             return;
         }

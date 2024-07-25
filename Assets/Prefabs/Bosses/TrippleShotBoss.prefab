@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7624252159638179181}
   m_Layer: 0
   m_Name: TrippleShotBoss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,7 +168,6 @@ MonoBehaviour:
   smoothing: 0.1
   changeDirectionInterval: 0.5
   shootingCooldown: 1
-  bossWidth: 0
 --- !u!114 &7624252159638179181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,5 +182,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossName: Tripple Shot Boss
   maxHealthpoints: 5
-  collisionDamage: 100
+  collisionDamage: 1
   score: 0

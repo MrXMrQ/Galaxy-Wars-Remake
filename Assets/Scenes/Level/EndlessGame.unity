@@ -1677,7 +1677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95359f526d75194298c4ea40dc5ad8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 756186910}
   movementSpeed: 30
   smoothing: 0.25
   dashSpeed: 25
@@ -5572,7 +5571,7 @@ MonoBehaviour:
   - {fileID: 8936925031074530390, guid: 64c25b5e7781bd14086c48cb231adcd9, type: 3}
   - {fileID: 4804703964749269725, guid: e2da52918e1743a4bbd0a3a76535e7d5, type: 3}
   bosses:
-  - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
+  - {fileID: 2659891126375243337, guid: c8f08c08be19ab84dae3878d2600ff4b, type: 3}
   spawnrate: 0.75
   scoreToSpawnBoss: 0
   isBossAlive: 0
