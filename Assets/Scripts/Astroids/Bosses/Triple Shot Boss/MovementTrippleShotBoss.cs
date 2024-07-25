@@ -12,6 +12,7 @@ public class MovementTripleShotBoss : MonoBehaviour
     private float bossWidth;
     private bool isShooting;
     private Vector2 movementDirection;
+    private Vector2 attackDirection;
     private System.Random rnd = new System.Random();
     private float nextChangeTime;
     private float leftBoundary;
@@ -40,6 +41,8 @@ public class MovementTripleShotBoss : MonoBehaviour
         {
             StartCoroutine(Shoot());
         }
+
+        attackDirection = PlayerController.player.transform.position - transform.position;
     }
 
     void FixedUpdate()
@@ -92,7 +95,7 @@ public class MovementTripleShotBoss : MonoBehaviour
     {
         isShooting = true;
         float x = transform.position.x;
-        float y = transform.position.y + 0.5f;
+        float y = transform.position.y + 0.5f; //?
         Vector2 pos = new Vector2(x, y);
 
         MakeInstance(Instantiate(projectilePrefab, pos, Quaternion.identity), pos, -3);
@@ -106,12 +109,19 @@ public class MovementTripleShotBoss : MonoBehaviour
     private void MakeInstance(GameObject projectile, Vector2 pos, float xOffset)
     {
         Vector2 moveDirection = new Vector2(PlayerController.player.transform.position.x, PlayerController.player.transform.position.y) - pos;
-        Debug.Log("boom");
         BossProjectile projScript = projectile.GetComponent<BossProjectile>();
 
         if (projScript != null)
         {
             projScript.SetDirection(new Vector2(moveDirection.x - xOffset, moveDirection.y));
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerController.knockBack.CallKnockBack(attackDirection, Vector2.zero, new Vector2(Input.GetAxis("Horizontal"), Input.GetAxisRaw("Vertical")));
         }
     }
 }
