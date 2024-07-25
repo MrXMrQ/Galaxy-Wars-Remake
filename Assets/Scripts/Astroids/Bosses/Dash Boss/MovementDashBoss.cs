@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class MovementDashBoss : MonoBehaviour
@@ -12,6 +13,9 @@ public class MovementDashBoss : MonoBehaviour
     private Vector2 attackDirection;
     private bool isDashing;
 
+    [Header("Shot")]
+    public GameObject projectilePrefab;
+
     [Header("Camera")]
     private Camera mainCamera;
     private float leftBoundary;
@@ -22,7 +26,7 @@ public class MovementDashBoss : MonoBehaviour
     {
         mainCamera = Camera.main;
         CalculateCameraBounds();
-        Dash();
+        //Dash();
         nextChangeTime = Time.time + changeDirectionInterval;
         bossWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
     }
@@ -37,10 +41,10 @@ public class MovementDashBoss : MonoBehaviour
 
         if (isDashing)
         {
-            Debug.Log("if");
             float distance = Vector2.Distance(boss.position, targetPosition);
             if (distance < 1f)
             {
+                Shoot();
                 StopDash();
             }
         }
@@ -64,11 +68,33 @@ public class MovementDashBoss : MonoBehaviour
         boss.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);
     }
 
+    private void Shoot()
+    {
+        float x = transform.position.x;
+        float y = transform.position.y + 0.5f; //?
+        Vector2 pos = new Vector2(x, y);
+
+        MakeInstance(Instantiate(projectilePrefab, pos, Quaternion.identity), Vector2.up);
+        MakeInstance(Instantiate(projectilePrefab, pos, Quaternion.identity), Vector2.down);
+        MakeInstance(Instantiate(projectilePrefab, pos, Quaternion.identity), Vector2.left);
+        MakeInstance(Instantiate(projectilePrefab, pos, Quaternion.identity), Vector2.right);
+    }
+
+    private void MakeInstance(GameObject projectile, Vector2 pos)
+    {
+        Vector2 moveDirection = pos;
+        BossProjectile projScript = projectile.GetComponent<BossProjectile>();
+
+        if (projScript != null)
+        {
+            projScript.SetDirection(new Vector2(moveDirection.x, moveDirection.y));
+        }
+    }
+
     private void StopDash()
     {
         boss.velocity = Vector2.zero;
         isDashing = false;
-        Debug.Log("Stopped at position: " + transform.position);
     }
 
     public void OnTriggerEnter2D(Collider2D other)

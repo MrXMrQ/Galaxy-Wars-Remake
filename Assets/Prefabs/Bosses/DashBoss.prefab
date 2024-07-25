@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7624252159638179181}
   m_Layer: 0
   m_Name: DashBoss
-  m_TagString: Boss
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,6 +165,7 @@ MonoBehaviour:
   boss: {fileID: 5806268720756012915}
   changeDirectionInterval: 1
   dashSpeed: 60
+  projectilePrefab: {fileID: 6289194308112020401, guid: 2ca793570f9628c42b5b87ada34486c9, type: 3}
 --- !u!114 &7624252159638179181
 MonoBehaviour:
   m_ObjectHideFlags: 0
