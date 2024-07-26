@@ -21,7 +21,7 @@ public class ItemHandler : MonoBehaviour
     [Header("Stats")]
     public float dashCooldown;
     public int healing;
-    public static bool isImmortal;
+    public static bool isImmortal = false;
     public float shootingCooldown;
     public int maxHealthpoints;
 
