@@ -184,3 +184,4 @@ MonoBehaviour:
   maxHealthpoints: 5
   collisionDamage: 1
   score: 0
+  spawnPoint: {x: 0, y: 5}

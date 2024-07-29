@@ -3,36 +3,24 @@ using UnityEngine;
 
 public class MovementRapidFireBoss : MonoBehaviour
 {
-    public Rigidbody2D boss;
     public GameObject projectilePrefab;
     public GameObject missilePrefab;
-    public float movementSpeed;
-    public float smoothing;
-    public float changeDirectionInterval;
     public float shootingCooldownPhase1;
     public float shootingCooldownPhase3;
     public float rotationSpeed;
-    public float nextChangeTimeMovement;
     public float nextChangeTimePhase;
 
     private enum BossPhase { Phase1, Phase2, Phase3 }
     private BossPhase currentPhase;
     private bool isSpawned;
 
-    private Camera mainCamera;
-    private float bossWidth;
-    private float leftBoundary;
-    private float rightBoundary;
     private bool isShooting;
-    private Vector2 movementDirection;
     private Vector2 attackDirection;
     private System.Random rnd = new System.Random();
     private float lastPhaseChangeTime;
 
     void Start()
     {
-        mainCamera = Camera.main;
-        CalculateCameraBounds();
         ChangePhase();
     }
 
@@ -67,9 +55,6 @@ public class MovementRapidFireBoss : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 targetVelocity = movementDirection * movementSpeed;
-        boss.velocity = Vector2.Lerp(boss.velocity, targetVelocity, smoothing);
-
         if (currentPhase == BossPhase.Phase1 && Time.time - lastPhaseChangeTime <= nextChangeTimePhase / 2)
         {
             transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
@@ -78,19 +63,6 @@ public class MovementRapidFireBoss : MonoBehaviour
         {
             transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
         }
-
-        // Clamp the boss position to stay within camera bounds
-        Vector3 clampedPosition = transform.position;
-        clampedPosition.x = Mathf.Clamp(clampedPosition.x, leftBoundary + bossWidth, rightBoundary - bossWidth);
-        transform.position = clampedPosition;
-    }
-
-    private void CalculateCameraBounds()
-    {
-        Vector3 leftBoundaryWorldPosition = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane));
-        Vector3 rightBoundaryWorldPosition = mainCamera.ViewportToWorldPoint(new Vector3(1, 0, mainCamera.nearClipPlane));
-        leftBoundary = leftBoundaryWorldPosition.x;
-        rightBoundary = rightBoundaryWorldPosition.x;
     }
 
     private void ChangePhase()

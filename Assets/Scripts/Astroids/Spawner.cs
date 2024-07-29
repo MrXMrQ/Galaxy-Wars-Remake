@@ -60,17 +60,9 @@ public class Spawner : MonoBehaviour
     private void SpawnBoss()
     {
         int index = rnd.Next(0, bosses.Length);
-        Vector3 position = new Vector3(0, 7, 0);
-
         GameObject boss = bosses[index];
+        Logic logic = boss.GetComponent<Logic>();
         healthbarManager.Init(boss);
-        Instantiate(boss, position, transform.rotation);
-
-
-        /*int index = rnd.Next(0, bosses.Length);
-        Vector3 position = new Vector3(0, 7, 0);
-
-        Instantiate(bosses[index], position, transform.rotation);
-        bossHealthbar.SetValues(index);*/
+        Instantiate(boss, logic.spawnPoint, transform.rotation);
     }
 }

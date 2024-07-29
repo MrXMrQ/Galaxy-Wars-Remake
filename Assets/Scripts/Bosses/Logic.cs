@@ -7,6 +7,7 @@ public class Logic : MonoBehaviour
     public int collisionDamage;
     public int score;
     public static int currentHealthpoints;
+    public Vector2 spawnPoint;
 
     void Start()
     {

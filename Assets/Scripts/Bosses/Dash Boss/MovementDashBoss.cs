@@ -16,19 +16,10 @@ public class MovementDashBoss : MonoBehaviour
     [Header("Shot")]
     public GameObject projectilePrefab;
 
-    [Header("Camera")]
-    private Camera mainCamera;
-    private float leftBoundary;
-    private float rightBoundary;
-    private float bossWidth;
-
     void Start()
     {
-        mainCamera = Camera.main;
-        CalculateCameraBounds();
         //Dash();
         nextChangeTime = Time.time + changeDirectionInterval;
-        bossWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
     }
 
     void Update()
@@ -50,14 +41,6 @@ public class MovementDashBoss : MonoBehaviour
         }
 
         attackDirection = PlayerController.player.transform.position - transform.position;
-    }
-
-    private void CalculateCameraBounds()
-    {
-        Vector3 leftBoundaryWorldPosition = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane));
-        Vector3 rightBoundaryWorldPosition = mainCamera.ViewportToWorldPoint(new Vector3(1, 0, mainCamera.nearClipPlane));
-        leftBoundary = leftBoundaryWorldPosition.x;
-        rightBoundary = rightBoundaryWorldPosition.x;
     }
 
     private void Dash()
