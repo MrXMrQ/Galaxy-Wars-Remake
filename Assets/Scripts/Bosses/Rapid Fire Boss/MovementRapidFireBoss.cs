@@ -5,16 +5,19 @@ public class MovementRapidFireBoss : MonoBehaviour
 {
     public Rigidbody2D boss;
     public GameObject projectilePrefab;
+    public GameObject missilePrefab;
     public float movementSpeed;
     public float smoothing;
     public float changeDirectionInterval;
-    public float shootingCooldown;
+    public float shootingCooldownPhase1;
+    public float shootingCooldownPhase3;
     public float rotationSpeed;
     public float nextChangeTimeMovement;
     public float nextChangeTimePhase;
 
     private enum BossPhase { Phase1, Phase2, Phase3 }
     private BossPhase currentPhase;
+    private bool isSpawned;
 
     private Camera mainCamera;
     private float bossWidth;
@@ -46,7 +49,13 @@ public class MovementRapidFireBoss : MonoBehaviour
                 Phase1Behavior();
                 break;
             case BossPhase.Phase2:
-                Phase2Behavior();
+                if (!isSpawned)
+                {
+                    isSpawned = true;
+                    Vector2 posLeft = new Vector2(transform.position.x - 5, transform.position.y);
+                    Vector2 posRight = new Vector2(transform.position.x + 5, transform.position.y);
+                    Phase2Behavior(posLeft, posRight);
+                }
                 break;
             case BossPhase.Phase3:
                 Phase3Behavior();
@@ -84,7 +93,22 @@ public class MovementRapidFireBoss : MonoBehaviour
         rightBoundary = rightBoundaryWorldPosition.x;
     }
 
-    private IEnumerator Shoot()
+    private void ChangePhase()
+    {
+        isSpawned = false;
+        currentPhase = (BossPhase)rnd.Next(0, 3);
+        lastPhaseChangeTime = Time.time;
+    }
+
+    private void Phase1Behavior()
+    {
+        if (!isShooting)
+        {
+            StartCoroutine(ShootPhase1());
+        }
+    }
+
+    private IEnumerator ShootPhase1()
     {
         isShooting = true;
         Vector2 pos = new Vector2(transform.position.x, transform.position.y + 0.5f);
@@ -94,7 +118,32 @@ public class MovementRapidFireBoss : MonoBehaviour
         InstantiateProjectile(pos, Vector2.left);
         InstantiateProjectile(pos, Vector2.right);
 
-        yield return new WaitForSeconds(shootingCooldown);
+        yield return new WaitForSeconds(shootingCooldownPhase1);
+        isShooting = false;
+    }
+
+    private void Phase2Behavior(Vector2 posLeft, Vector2 posRight)
+    {
+        Instantiate(missilePrefab, posLeft, Quaternion.identity);
+        Instantiate(missilePrefab, posRight, Quaternion.identity);
+    }
+
+    private void Phase3Behavior()
+    {
+        if (!isShooting)
+        {
+            StartCoroutine(ShootPhase3());
+        }
+    }
+
+    private IEnumerator ShootPhase3()
+    {
+        isShooting = true;
+        Vector2 pos = new Vector2(transform.position.x, transform.position.y + 0.5f);
+
+        InstantiateProjectile(pos, Vector2.up);
+
+        yield return new WaitForSeconds(shootingCooldownPhase3);
         isShooting = false;
     }
 
@@ -106,35 +155,6 @@ public class MovementRapidFireBoss : MonoBehaviour
         {
             projScript.SetDirection(direction);
         }
-    }
-
-    private void ChangePhase()
-    {
-        currentPhase = (BossPhase)rnd.Next(0, 3);
-        lastPhaseChangeTime = Time.time;
-    }
-
-    private void Phase1Behavior()
-    {
-        Debug.Log("Phase 1");
-
-        movementDirection = Vector2.zero - (Vector2)transform.position;
-        if (Vector2.Distance(boss.position, Vector2.zero) <= 0.5f && !isShooting)
-        {
-            StartCoroutine(Shoot());
-        }
-    }
-
-    private void Phase2Behavior()
-    {
-        Debug.Log("Phase 2");
-        // Spawns two projectiles that follows the player;
-    }
-
-    private void Phase3Behavior()
-    {
-        Debug.Log("Phase 3");
-        // Add Phase 3 behavior here
     }
 
     public void OnTriggerEnter2D(Collider2D other)
