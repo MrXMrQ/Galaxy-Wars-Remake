@@ -9300,6 +9300,12 @@ MonoBehaviour:
   - {fileID: 4804703964749269725, guid: e2da52918e1743a4bbd0a3a76535e7d5, type: 3}
   bosses:
   - {fileID: 2659891126375243337, guid: 067cc3cd33e837946b4e8fa1d3674f16, type: 3}
+  - {fileID: 2659891126375243337, guid: c8f08c08be19ab84dae3878d2600ff4b, type: 3}
+  - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
+  particleSystems:
+  - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
+  - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
+  - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
   spawnrate: 0.75
   scoreToSpawnBoss: 0
   isBossAlive: 0

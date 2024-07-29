@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -5,6 +7,7 @@ public class Spawner : MonoBehaviour
     public static Spawner Instance { get; private set; }
     public GameObject[] asteroids;
     public GameObject[] bosses;
+    public ParticleSystem[] particleSystems;
     public float spawnrate;
     public int scoreToSpawnBoss;
     public bool isBossAlive;
@@ -27,7 +30,7 @@ public class Spawner : MonoBehaviour
         {
             scoreToSpawnBoss += 50;
             isBossAlive = true;
-            SpawnBoss();
+            StartCoroutine(SpawnBoss());
         }
 
         if (isBossAlive)
@@ -57,11 +60,16 @@ public class Spawner : MonoBehaviour
         Instantiate(asteroids[index], position, transform.rotation);
     }
 
-    private void SpawnBoss()
+    private IEnumerator SpawnBoss()
     {
         int index = rnd.Next(0, bosses.Length);
         GameObject boss = bosses[index];
         Logic logic = boss.GetComponent<Logic>();
+
+        Instantiate(particleSystems[index], logic.spawnPoint, Quaternion.identity);
+
+        yield return new WaitForSeconds(particleSystems[index].main.duration);
+
         healthbarManager.Init(boss);
         Instantiate(boss, logic.spawnPoint, transform.rotation);
     }
