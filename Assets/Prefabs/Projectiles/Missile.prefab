@@ -277,6 +277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missile: {fileID: 1442125749208964232}
   projectilePrefab: {fileID: 6289194308112020401, guid: 2ca793570f9628c42b5b87ada34486c9, type: 3}
-  movementSpeed: 15
+  movementSpeed: 10
   smoothing: 0.1
   nextPhaseTime: 5

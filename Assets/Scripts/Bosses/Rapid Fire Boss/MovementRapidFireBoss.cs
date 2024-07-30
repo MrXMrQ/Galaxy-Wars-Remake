@@ -5,22 +5,28 @@ public class MovementRapidFireBoss : MonoBehaviour
 {
     public GameObject projectilePrefab;
     public GameObject missilePrefab;
-    public float shootingCooldownPhase1;
-    public float shootingCooldownPhase3;
+    public GameObject minePrefab;
+    public float shootingCooldown;
+    public float mineSpawnCooldown;
     public float rotationSpeed;
     public float nextChangeTimePhase;
 
     private enum BossPhase { Phase1, Phase2, Phase3 }
     private BossPhase currentPhase;
-    private bool isSpawned;
+    private bool isMissileSpawned;
+    private bool isMineSpawned;
 
     private bool isShooting;
+    private float minX, minY, maxX, maxY;
     private Vector2 attackDirection;
     private System.Random rnd = new System.Random();
     private float lastPhaseChangeTime;
+    private Camera mainCamera;
 
     void Start()
     {
+        mainCamera = Camera.main;
+        CalculateCameraBounds();
         ChangePhase();
     }
 
@@ -37,9 +43,9 @@ public class MovementRapidFireBoss : MonoBehaviour
                 Phase1Behavior();
                 break;
             case BossPhase.Phase2:
-                if (!isSpawned)
+                if (!isMissileSpawned)
                 {
-                    isSpawned = true;
+                    isMissileSpawned = true;
                     Vector2 posLeft = new Vector2(transform.position.x - 5, transform.position.y);
                     Vector2 posRight = new Vector2(transform.position.x + 5, transform.position.y);
                     Phase2Behavior(posLeft, posRight);
@@ -65,9 +71,27 @@ public class MovementRapidFireBoss : MonoBehaviour
         }
     }
 
+    private void CalculateCameraBounds()
+    {
+        float distance = mainCamera.nearClipPlane; // You can use cam.farClipPlane or any custom distance
+
+        // Calculate the corners of the frustum at the given distance
+        Vector3 bottomLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, distance));
+        Vector3 topLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 1, distance));
+        Vector3 topRight = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, distance));
+        Vector3 bottomRight = mainCamera.ViewportToWorldPoint(new Vector3(1, 0, distance));
+
+        minX = bottomLeft.x;
+        maxX = bottomRight.x;
+        minY = bottomLeft.y;
+        maxY = topLeft.y;
+
+        Debug.Log(minX + " " + maxX + " " + minY + " " + maxY);
+    }
+
     private void ChangePhase()
     {
-        isSpawned = false;
+        isMissileSpawned = false;
         currentPhase = (BossPhase)rnd.Next(0, 3);
         lastPhaseChangeTime = Time.time;
     }
@@ -90,22 +114,42 @@ public class MovementRapidFireBoss : MonoBehaviour
         InstantiateProjectile(pos, Vector2.left);
         InstantiateProjectile(pos, Vector2.right);
 
-        yield return new WaitForSeconds(shootingCooldownPhase1);
+        yield return new WaitForSeconds(shootingCooldown);
         isShooting = false;
     }
 
     private void Phase2Behavior(Vector2 posLeft, Vector2 posRight)
     {
+        ChangePhase();
         Instantiate(missilePrefab, posLeft, Quaternion.identity);
         Instantiate(missilePrefab, posRight, Quaternion.identity);
     }
 
     private void Phase3Behavior()
     {
+        if (!isMineSpawned)
+        {
+            StartCoroutine(SpawnMine());
+        }
+
         if (!isShooting)
         {
             StartCoroutine(ShootPhase3());
         }
+    }
+    private IEnumerator SpawnMine()
+    {
+        isMineSpawned = true;
+        Instantiate(minePrefab, GenerateRandomPos(), Quaternion.identity);
+        yield return new WaitForSeconds(mineSpawnCooldown);
+        isMineSpawned = false;
+    }
+
+    private Vector2 GenerateRandomPos()
+    {
+        float randomX = Random.Range(minX, maxX);
+        float randomY = Random.Range(minY, maxY);
+        return new Vector2(randomX, randomY);
     }
 
     private IEnumerator ShootPhase3()
@@ -115,7 +159,7 @@ public class MovementRapidFireBoss : MonoBehaviour
 
         InstantiateProjectile(pos, Vector2.up);
 
-        yield return new WaitForSeconds(shootingCooldownPhase3);
+        yield return new WaitForSeconds(shootingCooldown);
         isShooting = false;
     }
 

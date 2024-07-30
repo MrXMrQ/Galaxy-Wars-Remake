@@ -14,7 +14,10 @@ public class BossProjectile : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
-            PlayerController.currentHealthpoints--;
+            if (!ItemHandler.isImmortal)
+            {
+                PlayerController.currentHealthpoints--;
+            }
         }
 
         if (other.CompareTag("Border"))

@@ -1,13 +1,10 @@
 using UnityEngine;
 
-public class Missile : MonoBehaviour
+public class Mine : MonoBehaviour
 {
-    public Rigidbody2D missile;
     public GameObject projectilePrefab;
-    public float movementSpeed;
-    public float smoothing;
     public float nextPhaseTime;
-    private Vector2 movementDirection;
+    private Vector2 attackDirection;
     private float lifeTime;
     private float instanceTime;
     private bool isDetonated;
@@ -21,19 +18,13 @@ public class Missile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movementDirection = (PlayerController.player.transform.position - transform.position).normalized;
+        attackDirection = (PlayerController.player.transform.position - transform.position).normalized;
 
         if (Time.time - instanceTime >= lifeTime && !isDetonated)
         {
             isDetonated = true;
             Detonate();
         }
-    }
-
-    private void FixedUpdate()
-    {
-        Vector2 targetVelocity = movementDirection * movementSpeed;
-        missile.velocity = Vector2.Lerp(missile.velocity, targetVelocity, smoothing);
     }
 
     private void Detonate()
@@ -66,7 +57,7 @@ public class Missile : MonoBehaviour
         {
             Destroy(gameObject);
             Detonate();
-            PlayerController.knockBack.CallKnockBack(movementDirection, Vector2.zero, new Vector2(Input.GetAxis("Horizontal"), Input.GetAxisRaw("Vertical")));
+            PlayerController.knockBack.CallKnockBack(attackDirection, Vector2.zero, new Vector2(Input.GetAxis("Horizontal"), Input.GetAxisRaw("Vertical")));
             PlayerController.currentHealthpoints--;
         }
 
