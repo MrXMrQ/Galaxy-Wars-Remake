@@ -17,6 +17,8 @@ public class HealthbarManager : MonoBehaviour
     public void Init(GameObject newBossLogic)
     {
         bossLogic = newBossLogic.GetComponentInChildren<Logic>();
+        bossHealthbar.border.sprite = bossLogic.sprite;
+        bossHealthbar.border.SetNativeSize();
         bossHealthbar.SetMaxHealth(bossLogic.maxHealthpoints, bossLogic.bossName);
         bossHealthbar.healthbar.SetActive(true);
     }

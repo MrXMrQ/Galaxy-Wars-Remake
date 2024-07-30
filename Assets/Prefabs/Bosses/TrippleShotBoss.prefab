@@ -183,5 +183,6 @@ MonoBehaviour:
   bossName: Tripple Shot Boss
   maxHealthpoints: 5
   collisionDamage: 1
+  sprite: {fileID: 21300000, guid: d81cfead89cb9514b9842269d80661c2, type: 3}
   score: 0
   spawnPoint: {x: 0, y: 5}

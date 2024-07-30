@@ -7,6 +7,7 @@ public class BossHealthbar : MonoBehaviour
     public Slider slider;
     public Gradient gradient;
     public Image fill;
+    public Image border;
     public TextMeshProUGUI healthpointsText;
     public GameObject healthbar;
 

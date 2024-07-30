@@ -162,16 +162,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734644b8419a6df458c96f4e152c2fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 5806268720756012915}
   projectilePrefab: {fileID: 6289194308112020401, guid: 2ca793570f9628c42b5b87ada34486c9, type: 3}
   missilePrefab: {fileID: 1559016023766301487, guid: 2260b94c7f152fa40aa1a5b1154f34b2, type: 3}
-  movementSpeed: 10
-  smoothing: 0.1
-  changeDirectionInterval: 0
   shootingCooldownPhase1: 0.1
   shootingCooldownPhase3: 0.1
   rotationSpeed: 100
-  nextChangeTimeMovement: 0
   nextChangeTimePhase: 5
 --- !u!114 &7624252159638179181
 MonoBehaviour:
@@ -188,4 +183,6 @@ MonoBehaviour:
   bossName: Rapid Fire
   maxHealthpoints: 10
   collisionDamage: 1
+  sprite: {fileID: 21300000, guid: 11310ccd3145b6d49becf2ce28a12d61, type: 3}
   score: 0
+  spawnPoint: {x: 0, y: 0}

@@ -5,6 +5,7 @@ public class Logic : MonoBehaviour
     public string bossName;
     public int maxHealthpoints;
     public int collisionDamage;
+    public Sprite sprite;
     public int score;
     public static int currentHealthpoints;
     public Vector2 spawnPoint;
