@@ -5,10 +5,17 @@ public class MovementTripleShotBoss : MonoBehaviour
 {
     public Rigidbody2D boss;
     public GameObject projectilePrefab;
+    public GameObject bombPrefab;
     public float movementSpeed;
     public float smoothing;
     public float changeDirectionInterval;
     public float shootingCooldown;
+    public float nextChangeTimePhase;
+    private float lastPhaseChangeTime;
+
+    private enum BossPhase { Phase1, Phase2 }
+    private BossPhase currentPhase;
+
     private float bossWidth;
     private bool isShooting;
     private Vector2 movementDirection;
@@ -25,21 +32,31 @@ public class MovementTripleShotBoss : MonoBehaviour
         CalculateCameraBounds();
         nextChangeTime = Time.time + changeDirectionInterval;
         ChangeDirection();
-
+        ChangePhase();
         bossWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
     }
 
     void Update()
     {
+        if (Time.time - lastPhaseChangeTime >= nextChangeTimePhase)
+        {
+            ChangePhase();
+        }
+
         if (Time.time >= nextChangeTime)
         {
             ChangeDirection();
             nextChangeTime = Time.time + changeDirectionInterval;
         }
 
-        if (!isShooting)
+        switch (currentPhase)
         {
-            StartCoroutine(Shoot());
+            case BossPhase.Phase1:
+                Phase1Behavior();
+                break;
+            case BossPhase.Phase2:
+                Phase2Behavior();
+                break;
         }
 
         attackDirection = PlayerController.player.transform.position - transform.position;
@@ -54,6 +71,12 @@ public class MovementTripleShotBoss : MonoBehaviour
         Vector3 clampedPosition = transform.position;
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, leftBoundary + bossWidth, rightBoundary - bossWidth);
         transform.position = clampedPosition;
+    }
+
+    private void ChangePhase()
+    {
+        currentPhase = (BossPhase)rnd.Next(0, 2);
+        lastPhaseChangeTime = Time.time;
     }
 
     private void ChangeDirection()
@@ -83,6 +106,22 @@ public class MovementTripleShotBoss : MonoBehaviour
         return movementX == 0 ? -1 : movementX;
     }
 
+    private void Phase1Behavior()
+    {
+        if (!isShooting)
+        {
+            StartCoroutine(Shoot());
+        }
+    }
+
+    private void Phase2Behavior()
+    {
+        if (!isShooting)
+        {
+            StartCoroutine(Bomb());
+        }
+    }
+
     private void CalculateCameraBounds()
     {
         Vector3 leftBoundaryWorldPosition = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, mainCamera.nearClipPlane));
@@ -95,18 +134,33 @@ public class MovementTripleShotBoss : MonoBehaviour
     {
         isShooting = true;
         float x = transform.position.x;
-        float y = transform.position.y + 0.5f; //?
+        float y = transform.position.y - 2.5f; //?
         Vector2 pos = new Vector2(x, y);
 
-        MakeInstance(Instantiate(projectilePrefab, pos, Quaternion.identity), pos, -3);
-        MakeInstance(Instantiate(projectilePrefab, pos, Quaternion.identity), pos, 0);
-        MakeInstance(Instantiate(projectilePrefab, pos, Quaternion.identity), pos, +3);
+        MakeInstanceProjectile(Instantiate(projectilePrefab, new Vector2(x - 3, y), Quaternion.identity), pos, -3);
+        MakeInstanceProjectile(Instantiate(projectilePrefab, new Vector2(x, y), Quaternion.identity), pos, 0);
+        MakeInstanceProjectile(Instantiate(projectilePrefab, new Vector2(x + 3, y), Quaternion.identity), pos, +3);
 
         yield return new WaitForSeconds(shootingCooldown);
         isShooting = false;
     }
 
-    private void MakeInstance(GameObject projectile, Vector2 pos, float xOffset)
+    private IEnumerator Bomb()
+    {
+        isShooting = true;
+        float x = transform.position.x;
+        float y = transform.position.y - 2.5f; //?
+        Vector2 pos = new Vector2(x, y);
+
+        MakeInstanceBomb(Instantiate(bombPrefab, new Vector2(x - 3, y), Quaternion.identity), pos, -3);
+        MakeInstanceBomb(Instantiate(bombPrefab, new Vector2(x, y), Quaternion.identity), pos, 0);
+        MakeInstanceBomb(Instantiate(bombPrefab, new Vector2(x + 3, y), Quaternion.identity), pos, +3);
+
+        yield return new WaitForSeconds(shootingCooldown);
+        isShooting = false;
+    }
+
+    private void MakeInstanceProjectile(GameObject projectile, Vector2 pos, float xOffset)
     {
         Vector2 moveDirection = new Vector2(PlayerController.player.transform.position.x, PlayerController.player.transform.position.y) - pos;
         BossProjectile projScript = projectile.GetComponent<BossProjectile>();
@@ -114,6 +168,17 @@ public class MovementTripleShotBoss : MonoBehaviour
         if (projScript != null)
         {
             projScript.SetDirection(new Vector2(moveDirection.x - xOffset, moveDirection.y));
+        }
+    }
+
+    private void MakeInstanceBomb(GameObject bomb, Vector2 pos, float xOffset)
+    {
+        Vector2 moveDirection = new Vector2(PlayerController.player.transform.position.x, PlayerController.player.transform.position.y) - pos;
+        Bomb bombScript = bomb.GetComponent<Bomb>();
+
+        if (bombScript != null)
+        {
+            bombScript.SetDirection(new Vector2(moveDirection.x - xOffset, moveDirection.y));
         }
     }
 
