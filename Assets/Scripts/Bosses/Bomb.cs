@@ -6,6 +6,7 @@ public class Bomb : MonoBehaviour
     public GameObject projectilePrefab;
     public float movementSpeed;
     public float smoothing;
+    public float mineLifeTime;
     public float maxLifeTime;
 
     private Vector2 moveDirection;
@@ -18,7 +19,7 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lifeTime = (float)(rnd.NextDouble() * maxLifeTime + 0.25f);
+        lifeTime = (float)(rnd.NextDouble() * maxLifeTime + mineLifeTime);
         instanceTime = Time.time;
     }
 

@@ -7850,7 +7850,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -891, y: -492}
+  m_AnchoredPosition: {x: -895.3, y: -507.7}
   m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1753030709
@@ -9056,8 +9056,6 @@ MonoBehaviour:
   - {fileID: 8936925031074530390, guid: 64c25b5e7781bd14086c48cb231adcd9, type: 3}
   - {fileID: 4804703964749269725, guid: e2da52918e1743a4bbd0a3a76535e7d5, type: 3}
   bosses:
-  - {fileID: 2659891126375243337, guid: 067cc3cd33e837946b4e8fa1d3674f16, type: 3}
-  - {fileID: 2659891126375243337, guid: c8f08c08be19ab84dae3878d2600ff4b, type: 3}
   - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
   particleSystems:
   - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
