@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour
+public class CooldownSlots : MonoBehaviour
 {
     public Slider slider;
-    public Image item;
-    public Sprite sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -22,16 +20,5 @@ public class Slot : MonoBehaviour
     public void SetSliderValue(float value)
     {
         slider.value = value;
-    }
-
-    public void SetSprite(Sprite sprite)
-    {
-        item.color = Color.white;
-        item.sprite = sprite;
-    }
-
-    public void ResetSprite()
-    {
-        item.sprite = sprite;
     }
 }

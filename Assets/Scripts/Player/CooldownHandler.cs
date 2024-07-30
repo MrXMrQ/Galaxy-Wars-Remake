@@ -1,14 +1,11 @@
-using System.Threading;
 using UnityEngine;
 
 public class CooldownHandler : MonoBehaviour
 {
     public PlayerController playerController;
     public Borders borders;
-    public Slot[] slots;
-    public float lastDash;
-    public float lastShot;
-    public float lastTeleport;
+    public CooldownSlots[] slots;
+    public float lastDash, lastShot, lastTeleport;
 
     // Start is called before the first frame update
     void Start()

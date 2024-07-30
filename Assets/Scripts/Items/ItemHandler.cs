@@ -40,6 +40,11 @@ public class ItemHandler : MonoBehaviour
 
     void Update()
     {
+        if (isImmortal)
+        {
+            playerController.healthbar.fill.color = Color.yellow;
+        }
+
         // Check if the current active item needs to be reset
         if (Time.time - lastItemUse >= items[index].itemDuration && isActive)
         {
@@ -80,6 +85,7 @@ public class ItemHandler : MonoBehaviour
         HandleItemActivation(KeyCode.Alpha3, 2, () =>
         {
             isImmortal = true;
+            playerController.healthbar.fill.color = Color.yellow;
             PlayerController.currentHealthpoints = maxHealthpoints;
         });
 
