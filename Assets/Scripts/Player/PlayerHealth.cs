@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
     [Header("HEALTH")]
     [SerializeField] public Healthbar healthbar;
-    [SerializeField] public int MAXHEALTHPOINTS;
+    [SerializeField] int MAXHEALTHPOINTS;
     int _current_healthpoints;
 
     [HideInInspector]

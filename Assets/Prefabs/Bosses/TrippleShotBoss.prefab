@@ -236,5 +236,5 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 7076a8e4b72e11a4aa5861231c51bc6d, type: 3}
   MAX_HEALTHPOINTS: 5
   COLLISION_DAMAGE: 1
-  SCORE: 100
+  SCORE: 50
   spawn_point: {x: 0, y: 7}

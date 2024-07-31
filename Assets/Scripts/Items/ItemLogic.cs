@@ -24,7 +24,7 @@ public class ItemLogic : MonoBehaviour
     [Header("COOLDOWNS")]
     [SerializeField] float item_cooldown;
     float _dash_cooldown;
-    public int _healing;
+    int _healing;
     public static bool is_immortal = false;
     float _shooting_cooldown;
 

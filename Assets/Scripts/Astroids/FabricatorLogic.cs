@@ -14,6 +14,7 @@ public class FabricatorLogic : MonoBehaviour
     [SerializeField] public float spawn_rate;
     bool _can_spawn_asteroid;
     [SerializeField] int score_to_spawn_boss;
+    [SerializeField] int increse_score_to_spawn_boss;
     [SerializeField] BossHealthbarManager boss_healthbar;
     [HideInInspector] public bool is_boss_alive;
 
@@ -21,7 +22,6 @@ public class FabricatorLogic : MonoBehaviour
     Camera main_camera;
     Vector3 _LEFT_POINT;
     Vector3 _RIGHT_POINT;
-    //public HealthbarManager healthbarManager;
 
     void Start()
     {
@@ -87,9 +87,7 @@ public class FabricatorLogic : MonoBehaviour
     private IEnumerator SpawnBoss()
     {
         is_boss_alive = true;
-        score_to_spawn_boss += 50;
-
-        //TODO: REFACTOR
+        score_to_spawn_boss += increse_score_to_spawn_boss;
 
         int index = Random.Range(0, boss_prefabs.Length);
         GameObject boss = boss_prefabs[index];

@@ -68,12 +68,6 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Shoot());
         }
 
-        Debug.Log("max HP: " + health.MAXHEALTHPOINTS);
-        Debug.Log("max healing: " + ItemLogic.Instance._healing);
-        Debug.Log("dash cooldown: " + dash_cooldown);
-        Debug.Log("shot cooldown: " + shot_cooldown);
-        Debug.Log("multiplier: " + score._multiplier);
-
         _movement_direction = new Vector2(movementX, movementY).normalized;
         current_position = transform.position;
     }

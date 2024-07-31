@@ -6,7 +6,7 @@ public class Score : MonoBehaviour
     [SerializeField] TextMeshProUGUI score_text;
     [HideInInspector] public int score;
     int _total_score;
-    public int _multiplier;
+    int _multiplier;
 
     void Start()
     {

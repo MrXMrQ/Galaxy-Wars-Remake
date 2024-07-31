@@ -3847,7 +3847,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score_text: {fileID: 1753030709}
   score: 0
-  _multiplier: 0
 --- !u!1 &761391652
 GameObject:
   m_ObjectHideFlags: 0
@@ -8288,7 +8287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item_prefabs:
-  - {fileID: 5628552393378786604, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
+  - {fileID: 7339093370751643323, guid: 4e935ebb4c3bf434bb701719ba27ef19, type: 3}
   - {fileID: 7339093370751643323, guid: 6d0d4c1d90feb91499bf88c1efc82cd1, type: 3}
   - {fileID: 7339093370751643323, guid: 934fb4dd73d29cf40a1a5a174a7ec19c, type: 3}
   - {fileID: 7339093370751643323, guid: 23803c5169fbbd542b775347ea8ae9ca, type: 3}
@@ -8302,10 +8301,9 @@ MonoBehaviour:
   - {fileID: 2582757282253825667, guid: 6d0d4c1d90feb91499bf88c1efc82cd1, type: 3}
   - {fileID: 2582757282253825667, guid: 934fb4dd73d29cf40a1a5a174a7ec19c, type: 3}
   - {fileID: -2370543407539129302, guid: 23803c5169fbbd542b775347ea8ae9ca, type: 3}
-  collected_items: 0000000000
+  collected_items: 00000000
   cooldown_text: {fileID: 694549747}
   item_cooldown: 10
-  _healing: 0
 --- !u!114 &1810199181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9007,12 +9005,15 @@ MonoBehaviour:
   - {fileID: 4804703964749269725, guid: e2da52918e1743a4bbd0a3a76535e7d5, type: 3}
   boss_prefabs:
   - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
+  - {fileID: 2659891126375243337, guid: c8f08c08be19ab84dae3878d2600ff4b, type: 3}
+  - {fileID: 2659891126375243337, guid: 067cc3cd33e837946b4e8fa1d3674f16, type: 3}
   particleSystem_prefabs:
   - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
   - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
   - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
   spawn_rate: 0.5
-  score_to_spawn_boss: 1000
+  score_to_spawn_boss: 100
+  increse_score_to_spawn_boss: 200
   boss_healthbar: {fileID: 1810199179}
   is_boss_alive: 0
 --- !u!4 &1975321916
