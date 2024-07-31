@@ -43,14 +43,12 @@ public class Upgrades : MonoBehaviour
     private int shootingCooldownCost;
     private int multiplierCost;
 
-    // Start is called before the first frame update
     void Start()
     {
         Load();
         UpdateText();
     }
 
-    // Load game data from save system
     public void Load()
     {
         GameData gameData = SaveSystem.Load();
@@ -71,7 +69,6 @@ public class Upgrades : MonoBehaviour
         multiplierCost = gameData.multiplierCost;
     }
 
-    // Save game data to save system
     public void Save()
     {
         SaveSystem.Save(new GameData(maxHealthpoints, totalScore, level, dashCooldown, healing, shootingCooldown, multiplier, maxHealthpointsCost, dashCooldownCost, healingCost, shootingCooldownCost, multiplierCost));
@@ -82,7 +79,6 @@ public class Upgrades : MonoBehaviour
         return (int)(cost * increaseCostForUpgrades);
     }
 
-    // Upgrade health points
     public void LevelUpHealthpoints()
     {
         if (totalScore >= maxHealthpointsCost && maxHealthpoints + increaseMaxHealthpoints <= maxHealthpointsValue)
@@ -95,7 +91,6 @@ public class Upgrades : MonoBehaviour
         }
     }
 
-    // Upgrade dash cooldown
     public void LevelUpDashCooldown()
     {
         if (totalScore >= dashCooldownCost && dashCooldown - reduceDashCooldown >= minDashCooldownValue)
@@ -113,7 +108,6 @@ public class Upgrades : MonoBehaviour
         }
     }
 
-    // Upgrade healing
     public void LevelUpHealing()
     {
         if (totalScore >= healingCost && healing + increaseHealingAmount <= maxHealingValue)
@@ -126,7 +120,6 @@ public class Upgrades : MonoBehaviour
         }
     }
 
-    // Upgrade shooting cooldown
     public void LevelUpShootingCooldown()
     {
         if (totalScore >= shootingCooldownCost && shootingCooldown - reduceShootingCooldown >= minShootingCooldownValue)
@@ -156,7 +149,6 @@ public class Upgrades : MonoBehaviour
         }
     }
 
-    // Level up and reduce score
     private void LevelUp(int cost)
     {
         totalScore -= cost;
@@ -165,7 +157,6 @@ public class Upgrades : MonoBehaviour
         Save();
     }
 
-    // Update the UI text
     public void UpdateText()
     {
         totalScoreText.text = "Score points: " + totalScore.ToString();
@@ -187,7 +178,6 @@ public class Upgrades : MonoBehaviour
         multiplierCostText.text = multiplier >= maxMultiplierValue ? "MAX" : "Cost: " + multiplierCost.ToString();
     }
 
-    // Load game modes scene
     public void LoadGameModes()
     {
         SceneManager.LoadScene(1);

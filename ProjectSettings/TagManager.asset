@@ -5,11 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Border
-  - Enemy
   - Projectile
   - Item
-  - Item Manager
   - Boss
+  - Asteroid
   layers:
   - Default
   - TransparentFX

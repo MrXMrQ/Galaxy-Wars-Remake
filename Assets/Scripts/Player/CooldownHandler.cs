@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CooldownHandler : MonoBehaviour
 {
-    public PlayerController playerController;
+    public PlayerMovement playerController;
     public Borders borders;
     public CooldownSlots[] slots;
     public float lastDash, lastShot, lastTeleport;
@@ -11,7 +11,7 @@ public class CooldownHandler : MonoBehaviour
     void Start()
     {
         lastDash = -playerController.dashCooldownDefaultValue;
-        lastShot = -playerController.shootingCooldownDefaultValue;
+        lastShot = -playerController.shotCooldownDefaultValue;
         lastTeleport = -borders.teleportCooldown;
     }
 
@@ -28,10 +28,10 @@ public class CooldownHandler : MonoBehaviour
             slots[0].SetSliderValue(0);
         }
 
-        if (Time.time - lastShot <= playerController.shootingCooldown)
+        if (Time.time - lastShot <= playerController.shotCooldown)
         {
-            slots[1].SetSliderMax(playerController.shootingCooldown);
-            slots[1].SetSliderValue(playerController.shootingCooldown - (Time.time - lastShot));
+            slots[1].SetSliderMax(playerController.shotCooldown);
+            slots[1].SetSliderValue(playerController.shotCooldown - (Time.time - lastShot));
         }
         else
         {

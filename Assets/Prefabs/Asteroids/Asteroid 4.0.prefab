@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5301932898274327696}
   m_Layer: 0
   m_Name: Asteroid 4.0
-  m_TagString: Enemy
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e473d61bd949d3469ca6a1613c94345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
-  damage: 3
-  score: 10
-  dstroyParticles: {fileID: 1436120879680602442, guid: 16cac0d40e1cf234dae9693248ed48b6, type: 3}
+  MOVEMENT_SPEED: 10
+  DAMAGE: 5
+  SCORE_VALUE: 10
+  EXPLOSION_EFFECT: {fileID: 1436120879680602442, guid: 16cac0d40e1cf234dae9693248ed48b6, type: 3}
 --- !u!58 &4761720071430908489
 CircleCollider2D:
   m_ObjectHideFlags: 0

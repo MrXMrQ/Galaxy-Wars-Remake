@@ -6,35 +6,35 @@ public class ItemHandler : MonoBehaviour
 {
     public static ItemHandler Instance { get; private set; }
 
-    [Header("Arrays")]
-    public GameObject[] prefabs;
-    public Slot[] slots;
-    public ItemMovement[] items;
-    public bool[] collectedItem = { false, false, false, false, false };
+    [Header("ARRAYS")]
+    [SerializeField] GameObject[] prefabs;
+    [SerializeField] Slot[] slots;
+    [SerializeField] ItemMovement[] items;
+    [SerializeField] public bool[] collectedItem = { false, false, false, false, false };
 
 
     [Header("Item settings")]
-    public TextMeshProUGUI cooldownText;
-    public float itemCooldown = 0;
-    public PlayerController playerController;
+    [SerializeField] TextMeshProUGUI cooldownText;
+    [SerializeField] float itemCooldown = 0;
+    [SerializeField] PlayerMovement playerMovement;
 
-    [Header("Stats")]
-    public float dashCooldown;
-    public int healing;
+    [Header("STATS")]
+    float _dashCooldown;
+    int _healing;
     public static bool isImmortal = false;
-    public float shootingCooldown;
-    public int maxHealthpoints;
+    float _shootingCooldown;
+    int _maxHealthpoints;
 
-    private int index;
-    private float lastItemUse;
-    private bool isActive;
-    private System.Random rnd = new System.Random();
+    int _index;
+    float _lastItemUse;
+    bool _isActive;
+    System.Random rnd = new System.Random();
 
     private void Start()
     {
         Load();
         Instance = this;
-        lastItemUse = Time.time;
+        _lastItemUse = Time.time;
         Cooldown();
     }
 
@@ -42,56 +42,60 @@ public class ItemHandler : MonoBehaviour
     {
         if (isImmortal)
         {
-            playerController.healthbar.fill.color = Color.yellow;
+            playerMovement.health.healthbar.fill.color = Color.yellow;
         }
 
         // Check if the current active item needs to be reset
-        if (Time.time - lastItemUse >= items[index].itemDuration && isActive)
+        if (Time.time - _lastItemUse >= items[_index].itemDuration && _isActive)
         {
-            isActive = false;
+            _isActive = false;
             isImmortal = false;
-            playerController.ResetDashingCooldown();
-            playerController.ResetShootingCooldown();
+            PlayerMovement.Instance.dashCooldown = PlayerMovement.Instance.dashCooldownDefaultValue;
+            PlayerMovement.Instance.shotCooldown = PlayerMovement.Instance.shotCooldownDefaultValue;
         }
 
         // Slot cooldown rendering
-        if (isActive)
+        if (_isActive)
         {
-            slots[index].SetSliderValue(items[index].itemDuration - (Time.time - lastItemUse));
+            slots[_index].SetSliderValue(items[_index].itemDuration - (Time.time - _lastItemUse));
         }
         else
         {
-            slots[index].SetSliderValue(0);
+            slots[_index].SetSliderValue(0);
         }
 
         // Check item cooldown
-        if (Time.time - lastItemUse <= itemCooldown)
+        if (Time.time - _lastItemUse <= itemCooldown)
         {
-            cooldownText.text = (itemCooldown - (Time.time - lastItemUse)).ToString("0");
+            cooldownText.text = (itemCooldown - (Time.time - _lastItemUse)).ToString("0");
             return;
         }
 
         // Handle item activation based on input keys
         HandleItemActivation(KeyCode.Alpha1, 0, () =>
         {
-            playerController.SetDashingCooldown(dashCooldown);
+            PlayerMovement.Instance.dashCooldown = _dashCooldown;
+            //playerController.SetDashingCooldown(_dashCooldown);
         });
 
         HandleItemActivation(KeyCode.Alpha2, 1, () =>
         {
-            playerController.SetHealth(healing);
+            PlayerMovement.Instance.health.currentHealthpoints += _healing;
+            //playerController.SetHealth(_healing);
         });
 
         HandleItemActivation(KeyCode.Alpha3, 2, () =>
         {
             isImmortal = true;
-            playerController.healthbar.fill.color = Color.yellow;
-            PlayerController.currentHealthpoints = maxHealthpoints;
+            PlayerMovement.Instance.health.healthbar.fill.color = Color.yellow;
+            Debug.Log(_maxHealthpoints);
+            PlayerMovement.Instance.health.currentHealthpoints = _maxHealthpoints;
         });
 
         HandleItemActivation(KeyCode.Alpha4, 3, () =>
         {
-            playerController.SetShootingCooldown(shootingCooldown);
+            PlayerMovement.Instance.shotCooldown = _shootingCooldown;
+            //playerController.SetShootingCooldown(_shootingCooldown);
         });
     }
 
@@ -99,24 +103,23 @@ public class ItemHandler : MonoBehaviour
     {
         GameData gameData = SaveSystem.Load();
 
-        maxHealthpoints = gameData.maxHealthpoints;
-        dashCooldown = gameData.dashCooldown;
-        healing = gameData.healing;
-        shootingCooldown = gameData.shootingCooldown;
-
+        _maxHealthpoints = gameData.maxHealthpoints;
+        _dashCooldown = gameData.dashCooldown;
+        _healing = gameData.healing;
+        _shootingCooldown = gameData.shootingCooldown;
     }
 
     private void HandleItemActivation(KeyCode keyCode, int imageIndex, Action onActivation)
     {
         //Activate item function (only one item can active)
-        if (Input.GetKeyDown(keyCode) && collectedItem[imageIndex] && !isActive)
+        if (Input.GetKeyDown(keyCode) && collectedItem[imageIndex] && !_isActive)
         {
             slots[imageIndex].SetSliderMax(items[imageIndex].itemDuration);
             collectedItem[imageIndex] = false;
-            index = imageIndex;
-            isActive = true;
+            _index = imageIndex;
+            _isActive = true;
             slots[imageIndex].ResetSprite();
-            lastItemUse = Time.time;
+            _lastItemUse = Time.time;
             onActivation?.Invoke();
         }
     }
@@ -133,10 +136,9 @@ public class ItemHandler : MonoBehaviour
 
     public void Cooldown()
     {
-        // Check item cooldown
-        if (Time.time - lastItemUse <= itemCooldown)
+        if (Time.time - _lastItemUse <= itemCooldown)
         {
-            cooldownText.text = (itemCooldown - (Time.time - lastItemUse)).ToString("0");
+            cooldownText.text = (itemCooldown - (Time.time - _lastItemUse)).ToString("0");
             return;
         }
     }

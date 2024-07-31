@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7624252159638179181}
   m_Layer: 0
   m_Name: RapidFireBoss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,13 +162,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734644b8419a6df458c96f4e152c2fab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 6289194308112020401, guid: 2ca793570f9628c42b5b87ada34486c9, type: 3}
-  missilePrefab: {fileID: 1559016023766301487, guid: 2260b94c7f152fa40aa1a5b1154f34b2, type: 3}
-  minePrefab: {fileID: 6204850584142058782, guid: 51dc6ba5b60dadc499f67a0d1d7c1f41, type: 3}
-  shootingCooldown: 0.01
-  mineSpawnCooldown: 1
-  rotationSpeed: 50
-  nextChangeTimePhase: 5
+  boss_projectile_prefab: {fileID: 6289194308112020401, guid: 2ca793570f9628c42b5b87ada34486c9, type: 3}
+  boss_missile_prefab: {fileID: 1559016023766301487, guid: 2260b94c7f152fa40aa1a5b1154f34b2, type: 3}
+  boss_mine_prefab: {fileID: 6204850584142058782, guid: 51dc6ba5b60dadc499f67a0d1d7c1f41, type: 3}
+  SHOT_COOLDOWN: 0.01
+  MINE_COOLDOWN: 0.5
+  MISSILE_X_OFF_SET: 5
+  ROTATION_SPEED: 50
+  NEXT_PHASE_TIME: 5
 --- !u!114 &7624252159638179181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,9 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51456505e0346649a417444a8b68fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossName: Rapid Fire
-  maxHealthpoints: 10
-  collisionDamage: 1
+  boss_name: ads
   sprite: {fileID: 21300000, guid: 5f614c8b3c00a30419c872455953e9d8, type: 3}
-  score: 0
-  spawnPoint: {x: 0, y: 0}
+  MAX_HEALTHPOINTS: 5
+  COLLISION_DAMAGE: 1
+  SCORE: 100
+  spawn_point: {x: 0, y: 0}

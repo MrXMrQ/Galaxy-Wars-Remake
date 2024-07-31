@@ -37,6 +37,5 @@ public class GameData
         this.healingCost = healingCost;
         this.shootingCooldownCost = shootingCost;
         this.multiplierCost = multiplierCost;
-
     }
 }

@@ -3,10 +3,18 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
-    public Slider slider;
-    public Gradient gradient;
-    public Image fill;
+    [SerializeField] Slider slider;
+    [SerializeField] Gradient gradient;
+    [SerializeField] public Image fill;
+    [SerializeField] public Image border;
+    [SerializeField] bool state;
+    public Sprite sprite;
 
+    void Start()
+    {
+        SetActive(state);
+        border.sprite = sprite;
+    }
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
@@ -18,5 +26,15 @@ public class Healthbar : MonoBehaviour
     {
         slider.value = health;
         fill.color = gradient.Evaluate(slider.normalizedValue);
+
+        if (health <= 0)
+        {
+            SetActive(false);
+        }
+    }
+
+    public void SetActive(bool state)
+    {
+        gameObject.SetActive(state);
     }
 }
