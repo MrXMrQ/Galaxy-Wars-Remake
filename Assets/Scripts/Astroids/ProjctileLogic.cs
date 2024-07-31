@@ -20,7 +20,7 @@ public class ProjctileLogic : MonoBehaviour
 
             if (Random.Range(0, 100) >= 100 - _ITEM_DROP_CHANCE)
             {
-                ItemHandler.Instance.SpawnItem(other.transform.position);
+                ItemLogic.Instance.SpawnItem(other.transform.position);
             }
 
             AsteroidLogic asteroidLogic = other.GetComponent<AsteroidLogic>();

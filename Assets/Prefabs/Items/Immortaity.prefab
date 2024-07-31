@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d93c009350fc14cb8e8a1cf4e3f001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 2
-  index: 3
-  itemDuration: 5
-  particles: {fileID: 1708769960059313985, guid: 409b60918e56a83489a9563be3751769, type: 3}
+  MOVEMENT_SPEED: 2
+  index: 2
+  ITEM_DURATION: 5
+  COLLECT_PARTICLES: {fileID: 1708769960059313985, guid: 409b60918e56a83489a9563be3751769, type: 3}
 --- !u!58 &636495436117783829
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -66,8 +66,8 @@ public class BossProjectile3 : MonoBehaviour
         {
             Destroy(gameObject);
             Detonate();
-            PlayerMovement.Instance.knockBack.CallKnockBack(attackDirection, Vector2.zero, new Vector2(Input.GetAxis("Horizontal"), Input.GetAxisRaw("Vertical")));
-            PlayerMovement.Instance.health.currentHealthpoints--;
+            PlayerMovement.Instance.knock_back.CallKnockBack(attackDirection, Vector2.zero, new Vector2(Input.GetAxis("Horizontal"), Input.GetAxisRaw("Vertical")));
+            PlayerMovement.Instance.health.current_healthpoints--;
         }
     }
 

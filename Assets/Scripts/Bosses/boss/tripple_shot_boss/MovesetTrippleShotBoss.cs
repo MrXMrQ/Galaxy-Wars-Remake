@@ -164,7 +164,7 @@ public class MovesetTrippleShotBoss : MonoBehaviour
 
     private void MakeInstanceProjectile(GameObject projectile, Vector2 pos, float xOffset)
     {
-        Vector2 move_direction = PlayerMovement.Instance.currentPosition - pos;
+        Vector2 move_direction = PlayerMovement.Instance.current_position - pos;
         BossProjectile1 boss_projectile = projectile.GetComponent<BossProjectile1>();
 
         if (boss_projectile != null)
@@ -175,7 +175,7 @@ public class MovesetTrippleShotBoss : MonoBehaviour
 
     private void MakeInstanceGrenade(GameObject boss_grenade, Vector2 pos, float xOffset)
     {
-        Vector2 move_direction = PlayerMovement.Instance.currentPosition - pos;
+        Vector2 move_direction = PlayerMovement.Instance.current_position - pos;
         BossProjectile3 boss_grenade_script = boss_grenade.GetComponent<BossProjectile3>();
 
         if (boss_grenade_script != null)

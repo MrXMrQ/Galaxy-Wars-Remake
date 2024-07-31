@@ -1,13 +1,12 @@
-using System;
 using TMPro;
 using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI scoreText;
-    [HideInInspector] public int _score;
-    int _totalScore;
-    int _multiplier;
+    [SerializeField] TextMeshProUGUI score_text;
+    [HideInInspector] public int score;
+    int _total_score;
+    public int _multiplier;
 
     void Start()
     {
@@ -17,21 +16,21 @@ public class Score : MonoBehaviour
 
     public void UpdateScorePoints(int points)
     {
-        _score += points;
+        score += points;
         UpdateScoreText();
     }
 
     private void UpdateScoreText()
     {
-        scoreText.text = _score + " x" + _multiplier;
+        score_text.text = score + " x" + _multiplier;
     }
 
     public void OnDeath()
     {
-        _totalScore += _score * _multiplier;
+        _total_score += score * _multiplier;
 
         GameData gameData = SaveSystem.Load();
-        gameData.totalScore = _totalScore;
+        gameData.totalScore = _total_score;
         SaveSystem.Save(gameData);
     }
 
@@ -39,6 +38,6 @@ public class Score : MonoBehaviour
     {
         GameData gameData = SaveSystem.Load();
         _multiplier = gameData.multiplier;
-        _totalScore = gameData.totalScore;
+        _total_score = gameData.totalScore;
     }
 }

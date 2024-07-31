@@ -23,7 +23,7 @@ public class BossProjectile2 : MonoBehaviour
     void Update()
     {
 
-        _movement_direction = (PlayerMovement.Instance.currentPosition - (Vector2)transform.position).normalized;
+        _movement_direction = (PlayerMovement.Instance.current_position - (Vector2)transform.position).normalized;
         transform.Translate(_movement_direction * MOVEMENT_SPEED * Time.deltaTime);
 
         if (Time.time - _instanciate_time >= _life_time && !_is_detonated)
@@ -63,8 +63,8 @@ public class BossProjectile2 : MonoBehaviour
         {
             Destroy(gameObject);
             Detonate();
-            PlayerMovement.Instance.knockBack.CallKnockBack(_movement_direction, Vector2.zero, new Vector2(Input.GetAxis("Horizontal"), Input.GetAxisRaw("Vertical")));
-            PlayerMovement.Instance.health.currentHealthpoints -= DAMAGE;
+            PlayerMovement.Instance.knock_back.CallKnockBack(_movement_direction, Vector2.zero, new Vector2(Input.GetAxis("Horizontal"), Input.GetAxisRaw("Vertical")));
+            PlayerMovement.Instance.health.current_healthpoints -= DAMAGE;
         }
     }
 }

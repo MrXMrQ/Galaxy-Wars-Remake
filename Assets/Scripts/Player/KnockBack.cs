@@ -9,14 +9,14 @@ public class KnockBack : MonoBehaviour
     [SerializeField] float CONSTFORCE;
     [SerializeField] float INPUTFORCE;
     Coroutine _coroutine;
-    bool _isBeingKnockBack { get; set; }
+    bool _is_being_knoc_backed { get; set; }
 
     [HideInInspector]
-    public bool isBeingKnockBack
+    public bool is_being_knock_backed
     {
         get
         {
-            return _isBeingKnockBack;
+            return _is_being_knoc_backed;
         }
     }
 
@@ -27,7 +27,7 @@ public class KnockBack : MonoBehaviour
 
     private IEnumerator KnockBackAction(Vector2 hitDirection, Vector2 constantForceDirection, Vector2 inputDirection)
     {
-        _isBeingKnockBack = true;
+        _is_being_knoc_backed = true;
 
         Vector2 hitForce = hitDirection * HITDIRECTIONFORCE;
         Vector2 constantForce = constantForceDirection * CONSTFORCE;
@@ -53,7 +53,7 @@ public class KnockBack : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        _isBeingKnockBack = false;
+        _is_being_knoc_backed = false;
     }
 
     public void CallKnockBack(Vector2 hitDirection, Vector2 constantForceDirection, Vector2 inputDirection)

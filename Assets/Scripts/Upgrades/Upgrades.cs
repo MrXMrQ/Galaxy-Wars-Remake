@@ -1,47 +1,46 @@
-using System.ComponentModel.Design.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Upgrades : MonoBehaviour
 {
-    [Header("GUI components")]
-    public TextMeshProUGUI totalScoreText;
-    public TextMeshProUGUI levelText;
-    public TextMeshProUGUI maxHealthpointsText, maxHealthpointsCostText;
-    public TextMeshProUGUI dashCooldownText, dashCooldownCostText;
-    public TextMeshProUGUI healingText, healingCostText;
-    public TextMeshProUGUI shootingCooldownText, shootingCooldownCostText;
-    public TextMeshProUGUI multiplierText, multiplierCostText;
+    [Header("GUI COMPONENTS")]
+    [SerializeField] TextMeshProUGUI total_score_text;
+    [SerializeField] TextMeshProUGUI level_text;
+    [SerializeField] TextMeshProUGUI _max_healthpoints_text, _max_healthpoints_cost_text;
+    [SerializeField] TextMeshProUGUI dash_cooldown_text, dash_cooldown_cost_text;
+    [SerializeField] TextMeshProUGUI healing_text, healing_cost_text;
+    [SerializeField] TextMeshProUGUI shot_cooldown_text, shot_cooldown_cost_text;
+    [SerializeField] TextMeshProUGUI multiplier_text, multiplier_cost_text;
 
-    [Header("Current stats")]
-    private int totalScore;
-    private int level;
-    private int maxHealthpoints;
-    private float dashCooldown;
-    private int healing;
-    private float shootingCooldown;
-    private int multiplier;
+    [Header("OLD STATS")]
+    int _total_score;
+    int _level;
+    int _max_healthpoints;
+    float _dash_cooldown;
+    int _healing;
+    float _shot_cooldown;
+    int _multiplier;
 
-    [Header("Upgrade values")]
-    private int increaseMaxHealthpoints = 10;
-    private float reduceDashCooldown = 0.1f;
-    private int increaseHealingAmount = 1;
-    private float reduceShootingCooldown = 0.1f;
-    private int increaseMultiplier = 2;
-    private int maxHealthpointsValue = 100;
-    private float minDashCooldownValue = 0;
-    private int maxHealingValue = 50;
-    private float minShootingCooldownValue = 0;
-    private int maxMultiplierValue = 8;
+    [Header("UPGRADE VALUES")]
+    int _increase_max_healthpoints = 10;
+    float _reduce_dash_cooldown = 0.1f;
+    int _increase_healing_amount = 1;
+    float _reduce_shooting_cooldown = 0.1f;
+    int increase_multiplier = 2;
+    int _max_healthpoints_value = 100;
+    float _min_dash_cooldown_value = 0;
+    int _max_healing_value = 50;
+    float _min_shooting_cooldown_value = 0;
+    int _max_multiplier_value = 8;
 
-    [Header("Upgrade costs")]
-    private float increaseCostForUpgrades = 1.5f;
-    private int maxHealthpointsCost;
-    private int dashCooldownCost;
-    private int healingCost;
-    private int shootingCooldownCost;
-    private int multiplierCost;
+    [Header("UPGRADE COST")]
+    float increase_cost_for_upgrades = 1.5f;
+    int _max_healthpoints_cost;
+    int _dash_cooldown_cost;
+    int healing_cost;
+    int _shooting_cooldown_cost;
+    int _multiplier_cost;
 
     void Start()
     {
@@ -53,39 +52,39 @@ public class Upgrades : MonoBehaviour
     {
         GameData gameData = SaveSystem.Load();
 
-        maxHealthpoints = gameData.maxHealthpoints;
-        totalScore = gameData.totalScore;
-        level = gameData.level;
+        _max_healthpoints = gameData.maxHealthpoints;
+        _total_score = gameData.totalScore;
+        _level = gameData.level;
 
-        dashCooldown = gameData.dashCooldown;
-        healing = gameData.healing;
-        shootingCooldown = gameData.shootingCooldown;
-        multiplier = gameData.multiplier;
+        _dash_cooldown = gameData.dashCooldown;
+        _healing = gameData.healing;
+        _shot_cooldown = gameData.shootingCooldown;
+        _multiplier = gameData.multiplier;
 
-        maxHealthpointsCost = gameData.maxHealthpointsCost;
-        dashCooldownCost = gameData.dashCooldownCost;
-        healingCost = gameData.healingCost;
-        shootingCooldownCost = gameData.shootingCooldownCost;
-        multiplierCost = gameData.multiplierCost;
+        _max_healthpoints_cost = gameData.maxHealthpointsCost;
+        _dash_cooldown_cost = gameData.dashCooldownCost;
+        healing_cost = gameData.healingCost;
+        _shooting_cooldown_cost = gameData.shootingCooldownCost;
+        _multiplier_cost = gameData.multiplierCost;
     }
 
     public void Save()
     {
-        SaveSystem.Save(new GameData(maxHealthpoints, totalScore, level, dashCooldown, healing, shootingCooldown, multiplier, maxHealthpointsCost, dashCooldownCost, healingCost, shootingCooldownCost, multiplierCost));
+        SaveSystem.Save(new GameData(_max_healthpoints, _total_score, _level, _dash_cooldown, _healing, _shot_cooldown, _multiplier, _max_healthpoints_cost, _dash_cooldown_cost, healing_cost, _shooting_cooldown_cost, _multiplier_cost));
     }
 
     public int increaseCost(float cost)
     {
-        return (int)(cost * increaseCostForUpgrades);
+        return (int)(cost * increase_cost_for_upgrades);
     }
 
     public void LevelUpHealthpoints()
     {
-        if (totalScore >= maxHealthpointsCost && maxHealthpoints + increaseMaxHealthpoints <= maxHealthpointsValue)
+        if (_total_score >= _max_healthpoints_cost && _max_healthpoints + _increase_max_healthpoints <= _max_healthpoints_value)
         {
-            maxHealthpoints += increaseMaxHealthpoints;
-            LevelUp(maxHealthpointsCost);
-            maxHealthpointsCost = increaseCost(maxHealthpointsCost);
+            _max_healthpoints += _increase_max_healthpoints;
+            LevelUp(_max_healthpoints_cost);
+            _max_healthpoints_cost = increaseCost(_max_healthpoints_cost);
             UpdateText();
             Save();
         }
@@ -93,28 +92,28 @@ public class Upgrades : MonoBehaviour
 
     public void LevelUpDashCooldown()
     {
-        if (totalScore >= dashCooldownCost && dashCooldown - reduceDashCooldown >= minDashCooldownValue)
+        if (_total_score >= _dash_cooldown_cost && _dash_cooldown - _reduce_dash_cooldown >= _min_dash_cooldown_value)
         {
-            dashCooldown -= reduceDashCooldown;
-            LevelUp(dashCooldownCost);
-            dashCooldownCost = increaseCost(dashCooldownCost);
+            _dash_cooldown -= _reduce_dash_cooldown;
+            LevelUp(_dash_cooldown_cost);
+            _dash_cooldown_cost = increaseCost(_dash_cooldown_cost);
             UpdateText();
             Save();
         }
-        else if (totalScore >= dashCooldownCost && dashCooldown - reduceDashCooldown != minDashCooldownValue - reduceDashCooldown)
+        else if (_total_score >= _dash_cooldown_cost && _dash_cooldown - _reduce_dash_cooldown != _min_dash_cooldown_value - _reduce_dash_cooldown)
         {
-            dashCooldown = 0;
-            LevelUp(dashCooldownCost);
+            _dash_cooldown = 0;
+            LevelUp(_dash_cooldown_cost);
         }
     }
 
     public void LevelUpHealing()
     {
-        if (totalScore >= healingCost && healing + increaseHealingAmount <= maxHealingValue)
+        if (_total_score >= healing_cost && _healing + _increase_healing_amount <= _max_healing_value)
         {
-            healing += increaseHealingAmount;
-            LevelUp(healingCost);
-            healingCost = increaseCost(healingCost);
+            _healing += _increase_healing_amount;
+            LevelUp(healing_cost);
+            healing_cost = increaseCost(healing_cost);
             UpdateText();
             Save();
         }
@@ -122,28 +121,28 @@ public class Upgrades : MonoBehaviour
 
     public void LevelUpShootingCooldown()
     {
-        if (totalScore >= shootingCooldownCost && shootingCooldown - reduceShootingCooldown >= minShootingCooldownValue)
+        if (_total_score >= _shooting_cooldown_cost && _shot_cooldown - _reduce_shooting_cooldown >= _min_shooting_cooldown_value)
         {
-            shootingCooldown -= reduceShootingCooldown;
-            LevelUp(shootingCooldownCost);
-            shootingCooldownCost = increaseCost(shootingCooldownCost);
+            _shot_cooldown -= _reduce_shooting_cooldown;
+            LevelUp(_shooting_cooldown_cost);
+            _shooting_cooldown_cost = increaseCost(_shooting_cooldown_cost);
             UpdateText();
             Save();
         }
-        else if (totalScore >= shootingCooldownCost && shootingCooldown - reduceShootingCooldown != minShootingCooldownValue - reduceShootingCooldown)
+        else if (_total_score >= _shooting_cooldown_cost && _shot_cooldown - _reduce_shooting_cooldown != _min_shooting_cooldown_value - _reduce_shooting_cooldown)
         {
-            shootingCooldown = 0;
-            LevelUp(shootingCooldownCost);
+            _shot_cooldown = 0;
+            LevelUp(_shooting_cooldown_cost);
         }
     }
 
     public void LevelUpMultiplier()
     {
-        if (totalScore >= multiplierCost && multiplier + increaseMultiplier <= maxMultiplierValue)
+        if (_total_score >= _multiplier_cost && _multiplier + increase_multiplier <= _max_multiplier_value)
         {
-            multiplier *= increaseMultiplier;
-            LevelUp(multiplierCost);
-            multiplierCost = increaseCost(multiplierCost);
+            _multiplier *= increase_multiplier;
+            LevelUp(_multiplier_cost);
+            _multiplier_cost = increaseCost(_multiplier_cost);
             UpdateText();
             Save();
         }
@@ -151,31 +150,31 @@ public class Upgrades : MonoBehaviour
 
     private void LevelUp(int cost)
     {
-        totalScore -= cost;
-        level++;
+        _total_score -= cost;
+        _level++;
         UpdateText();
         Save();
     }
 
     public void UpdateText()
     {
-        totalScoreText.text = "Score points: " + totalScore.ToString();
-        levelText.text = "Level: " + level.ToString();
+        total_score_text.text = "Score points: " + _total_score.ToString();
+        level_text.text = "Level: " + _level.ToString();
 
-        maxHealthpointsText.text = "Healthpoints: " + maxHealthpoints.ToString();
-        maxHealthpointsCostText.text = maxHealthpoints >= maxHealthpointsValue ? "MAX" : "Cost: " + maxHealthpointsCost.ToString();
+        _max_healthpoints_text.text = "Healthpoints: " + _max_healthpoints.ToString();
+        _max_healthpoints_cost_text.text = _max_healthpoints >= _max_healthpoints_value ? "MAX" : "Cost: " + _max_healthpoints_cost.ToString();
 
-        dashCooldownText.text = "Dash cooldown: " + dashCooldown.ToString("F2");
-        dashCooldownCostText.text = dashCooldown <= minDashCooldownValue ? "MAX" : "Cost: " + dashCooldownCost.ToString();
+        dash_cooldown_text.text = "Dash cooldown: " + _dash_cooldown.ToString("F2");
+        dash_cooldown_cost_text.text = _dash_cooldown <= _min_dash_cooldown_value ? "MAX" : "Cost: " + _dash_cooldown_cost.ToString();
 
-        healingText.text = "Healing: " + healing.ToString();
-        healingCostText.text = healing >= maxHealingValue ? "MAX" : "Cost: " + healingCost.ToString();
+        healing_text.text = "Healing: " + _healing.ToString();
+        healing_cost_text.text = _healing >= _max_healing_value ? "MAX" : "Cost: " + healing_cost.ToString();
 
-        shootingCooldownText.text = "Shooting cooldown: " + shootingCooldown.ToString("F2");
-        shootingCooldownCostText.text = shootingCooldown <= minShootingCooldownValue ? "MAX" : "Cost: " + shootingCooldownCost.ToString();
+        shot_cooldown_text.text = "Shooting cooldown: " + _shot_cooldown.ToString("F2");
+        shot_cooldown_cost_text.text = _shot_cooldown <= _min_shooting_cooldown_value ? "MAX" : "Cost: " + _shooting_cooldown_cost.ToString();
 
-        multiplierText.text = "Multiplier: " + multiplier.ToString();
-        multiplierCostText.text = multiplier >= maxMultiplierValue ? "MAX" : "Cost: " + multiplierCost.ToString();
+        multiplier_text.text = "Multiplier: " + _multiplier.ToString();
+        multiplier_cost_text.text = _multiplier >= _max_multiplier_value ? "MAX" : "Cost: " + _multiplier_cost.ToString();
     }
 
     public void LoadGameModes()

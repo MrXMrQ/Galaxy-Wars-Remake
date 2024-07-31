@@ -2,18 +2,25 @@ using UnityEngine;
 
 public class ItemMovement : MonoBehaviour
 {
-    public float movementSpeed = 2f;
-    public int index;
-    public float itemDuration;
-    public ParticleSystem particles;
-    private float deadZone = -15f;
+    [SerializeField] float MOVEMENT_SPEED = 2f;
+    [SerializeField] int index;
+    [SerializeField] public float ITEM_DURATION;
+    [SerializeField] ParticleSystem COLLECT_PARTICLES;
+    float _dead_zone;
+    Camera _main_camera;
 
-    // Update is called once per frame
+    void Start()
+    {
+        _main_camera = Camera.main;
+        CalculateCameraBounds();
+
+    }
+
     void Update()
     {
-        transform.position += Vector3.down * movementSpeed * Time.deltaTime;
+        transform.Translate(Vector2.down * MOVEMENT_SPEED * Time.deltaTime);
 
-        if (transform.position.y < deadZone)
+        if (transform.position.y < _dead_zone)
         {
             Destroy(gameObject);
         }
@@ -23,10 +30,16 @@ public class ItemMovement : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Instantiate(particles, transform.position, Quaternion.identity);
-            ItemHandler.Instance.UpdateSprite(GetComponent<SpriteRenderer>().sprite, index);
-            ItemHandler.Instance.collectedItem[index - 1] = true;
+            Instantiate(COLLECT_PARTICLES, transform.position, Quaternion.identity);
+            ItemLogic.Instance.UpdateSprite(GetComponent<SpriteRenderer>().sprite, index);
+            ItemLogic.Instance.collected_items[index] = true;
             Destroy(gameObject);
         }
+    }
+
+    private void CalculateCameraBounds()
+    {
+        Vector3 bottom_right = _main_camera.ViewportToWorldPoint(new Vector3(-1, -1, _main_camera.nearClipPlane));
+        _dead_zone = bottom_right.y;
     }
 }

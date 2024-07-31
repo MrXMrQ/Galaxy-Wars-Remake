@@ -44,7 +44,7 @@ public class MovesetDashBoss : MonoBehaviour
     private void Dash()
     {
         _is_dashing = true;
-        _target_position = PlayerMovement.Instance.currentPosition;
+        _target_position = PlayerMovement.Instance.current_position;
 
         Vector2 movement_direction = (_target_position - (Vector2)transform.position).normalized;
         boss.velocity = new Vector2(movement_direction.x * DASH_SPEED, movement_direction.y * DASH_SPEED);

@@ -9,6 +9,7 @@ TagManager:
   - Item
   - Boss
   - Asteroid
+  - BossProjectile2
   layers:
   - Default
   - TransparentFX

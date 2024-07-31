@@ -1,17 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CooldownSlots : MonoBehaviour
+public class CooldownSlotLogic : MonoBehaviour
 {
-    public Slider slider;
+    [SerializeField] Slider slider;
 
-    // Start is called before the first frame update
     void Start()
     {
         slider.value = 0;
     }
 
-    public void SetSliderMax(float itemDuration)
+    public void SetSliderMaxValue(float itemDuration)
     {
         slider.maxValue = itemDuration;
         slider.value = slider.maxValue;

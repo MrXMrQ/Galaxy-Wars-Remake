@@ -50,7 +50,7 @@ public class FabricatorLogic : MonoBehaviour
             StartCoroutine(Timer());
         }
 
-        if (score_to_spawn_boss <= PlayerMovement.Instance.score._score)
+        if (score_to_spawn_boss <= PlayerMovement.Instance.score.score)
         {
             StartCoroutine(SpawnBoss());
         }

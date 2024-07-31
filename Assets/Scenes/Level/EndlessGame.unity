@@ -1355,7 +1355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 247209733}
   item: {fileID: 1382523108}
-  sprite: {fileID: 21300000, guid: b9115e7705325ba4294fffd5bacf04eb, type: 3}
 --- !u!114 &247209733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,7 +1460,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 247469864}
   item: {fileID: 197337458}
-  sprite: {fileID: 21300000, guid: e24777b0c97b86444a640f889281c074, type: 3}
 --- !u!114 &247469864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1807,7 +1805,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 440713085}
   item: {fileID: 514047255}
-  sprite: {fileID: 21300000, guid: 055236750deddae45ac0679644001dbb, type: 3}
 --- !u!114 &440713085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2560,7 +2557,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 549340403}
   item: {fileID: 86742717}
-  sprite: {fileID: 21300000, guid: 055236750deddae45ac0679644001dbb, type: 3}
 --- !u!114 &549340403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2779,9 +2775,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 756186910}
-  cooldownHandler: {fileID: 2020898638}
-  teleportCooldown: 10
-  teleportParticle: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
+  ability_cooldown_logic: {fileID: 1810199181}
+  TELEPORT_COOLDOWN: 10
+  teleport_particle: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
 --- !u!1 &588687762
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,7 +2832,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 588687765}
   item: {fileID: 523794960}
-  sprite: {fileID: 21300000, guid: 684710827cdfde342a222af1d4be0cf3, type: 3}
 --- !u!114 &588687765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3790,22 +3785,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 756186910}
-  movementSpeed: 30
-  smoothing: 0.25
-  currentPosition: {x: 0, y: 0}
-  dashSpeed: 50
-  dashDistance: 1.5
-  dashDuration: 0.1
-  dashCooldownDefaultValue: 1
-  dashCooldown: 1
-  dashParticles: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
-  projectilePrefab: {fileID: 6289194308112020401, guid: 184e53708a9fbf44db2da85a2173e207, type: 3}
-  shotParticles: {fileID: 3316150335570932208, guid: 69ae0e9ef21d2af42b0d12a54ae66b4d, type: 3}
-  shotCooldownDefaultValue: 0.5
-  shotCooldown: 0.5
+  MOVEMENT_SPEED: 30
+  SMOOTHING: 0.25
+  current_position: {x: 0, y: 0}
+  DASH_SPEED: 50
+  DASH_DISTANCE: 1.5
+  DASH_DURATION: 0.1
+  DASH_COOLDOWN_DEFAULT_VALUE: 1
+  dash_cooldown: 0
+  dash_particles: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
+  player_projectile_prefab: {fileID: 6289194308112020401, guid: 184e53708a9fbf44db2da85a2173e207, type: 3}
+  shot_particles: {fileID: 3316150335570932208, guid: 69ae0e9ef21d2af42b0d12a54ae66b4d, type: 3}
+  SHOT_COOLDOWN_DEFAULT_VALUE: 0.5
+  shot_cooldown: 0
   health: {fileID: 756186917}
-  knockBack: {fileID: 756186918}
+  knock_back: {fileID: 756186918}
   score: {fileID: 756186919}
+  ability_cooldown_logic: {fileID: 1810199181}
 --- !u!114 &756186917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3849,8 +3845,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0505b97f69155b84b812a25e86bc9728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1753030709}
-  _score: 0
+  score_text: {fileID: 1753030709}
+  score: 0
+  _multiplier: 0
 --- !u!1 &761391652
 GameObject:
   m_ObjectHideFlags: 0
@@ -4719,7 +4716,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 928575992}
   item: {fileID: 1064861764}
-  sprite: {fileID: 21300000, guid: 055236750deddae45ac0679644001dbb, type: 3}
 --- !u!114 &928575992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5772,7 +5768,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1312158974}
   item: {fileID: 77732640}
-  sprite: {fileID: 21300000, guid: 055236750deddae45ac0679644001dbb, type: 3}
 --- !u!114 &1312158974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6373,7 +6368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1452322392}
   item: {fileID: 1649292116}
-  sprite: {fileID: 21300000, guid: 055236750deddae45ac0679644001dbb, type: 3}
 --- !u!114 &1452322392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6479,7 +6473,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1483179612}
   item: {fileID: 1640056727}
-  sprite: {fileID: 21300000, guid: 055236750deddae45ac0679644001dbb, type: 3}
 --- !u!114 &1483179612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7764,7 +7757,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1731423135}
   item: {fileID: 629226249}
-  sprite: {fileID: 21300000, guid: 055236750deddae45ac0679644001dbb, type: 3}
 --- !u!114 &1731423135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7902,7 +7894,6 @@ GameObject:
   - component: {fileID: 1753030708}
   - component: {fileID: 1753030710}
   - component: {fileID: 1753030709}
-  - component: {fileID: 1753030711}
   m_Layer: 5
   m_Name: score-text
   m_TagString: Untagged
@@ -8026,19 +8017,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753030707}
   m_CullTransparentMesh: 1
---- !u!114 &1753030711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753030707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d42d1fefa3e05b44ba9349ef8d7355f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1753030709}
 --- !u!1 &1793482304
 GameObject:
   m_ObjectHideFlags: 0
@@ -8261,6 +8239,7 @@ GameObject:
   - component: {fileID: 1810199178}
   - component: {fileID: 1810199180}
   - component: {fileID: 1810199179}
+  - component: {fileID: 1810199181}
   m_Layer: 0
   m_Name: game-manager
   m_TagString: Untagged
@@ -8308,8 +8287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec401e0f0bd90049b77ad3aa2a08fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 7339093370751643323, guid: 4e935ebb4c3bf434bb701719ba27ef19, type: 3}
+  item_prefabs:
+  - {fileID: 5628552393378786604, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
   - {fileID: 7339093370751643323, guid: 6d0d4c1d90feb91499bf88c1efc82cd1, type: 3}
   - {fileID: 7339093370751643323, guid: 934fb4dd73d29cf40a1a5a174a7ec19c, type: 3}
   - {fileID: 7339093370751643323, guid: 23803c5169fbbd542b775347ea8ae9ca, type: 3}
@@ -8323,10 +8302,31 @@ MonoBehaviour:
   - {fileID: 2582757282253825667, guid: 6d0d4c1d90feb91499bf88c1efc82cd1, type: 3}
   - {fileID: 2582757282253825667, guid: 934fb4dd73d29cf40a1a5a174a7ec19c, type: 3}
   - {fileID: -2370543407539129302, guid: 23803c5169fbbd542b775347ea8ae9ca, type: 3}
-  collectedItem: 0000000000
-  cooldownText: {fileID: 694549747}
-  itemCooldown: 10
-  playerMovement: {fileID: 756186916}
+  collected_items: 0000000000
+  cooldown_text: {fileID: 694549747}
+  item_cooldown: 10
+  _healing: 0
+--- !u!114 &1810199181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810199177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a76e4f06e32f545aa401f0894632e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_movement: {fileID: 756186916}
+  border: {fileID: 561031696}
+  cooldown_slots:
+  - {fileID: 231715019}
+  - {fileID: 1916418445}
+  - {fileID: 201224135}
+  last_dash: 0
+  last_shot: 0
+  last_teleport: 0
 --- !u!1 &1825735731
 GameObject:
   m_ObjectHideFlags: 0
@@ -8889,7 +8889,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1957692802}
   - component: {fileID: 1957692804}
-  - component: {fileID: 1957692803}
   m_Layer: 5
   m_Name: Final Player Healthbar
   m_TagString: Untagged
@@ -8919,83 +8918,6 @@ RectTransform:
   m_AnchoredPosition: {x: -656, y: -196}
   m_SizeDelta: {x: 500, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1957692803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957692801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0cc3f515aa99c440a58638cb2259280, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1957692804}
-  gradient:
-    key0:
-      r: 1
-      g: 0
-      b: 0
-      a: 1
-    key1:
-      r: 1
-      g: 0.3717701
-      b: 0
-      a: 1
-    key2:
-      r: 0.49803922
-      g: 0.79607844
-      b: 0
-      a: 0
-    key3:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    key4:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    key5:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    key6:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    key7:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
-    ctime0: 21627
-    ctime1: 43253
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 1
-    m_ColorSpace: -1
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
-  fill: {fileID: 8715272}
-  border: {fileID: 0}
-  healthbar: {fileID: 1957692801}
 --- !u!114 &1957692804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9058,7 +8980,7 @@ GameObject:
   - component: {fileID: 1975321916}
   - component: {fileID: 1975321915}
   m_Layer: 0
-  m_Name: Fabricator
+  m_Name: fabricator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9084,15 +9006,13 @@ MonoBehaviour:
   - {fileID: 8936925031074530390, guid: 64c25b5e7781bd14086c48cb231adcd9, type: 3}
   - {fileID: 4804703964749269725, guid: e2da52918e1743a4bbd0a3a76535e7d5, type: 3}
   boss_prefabs:
-  - {fileID: 2659891126375243337, guid: c8f08c08be19ab84dae3878d2600ff4b, type: 3}
-  - {fileID: 2659891126375243337, guid: 067cc3cd33e837946b4e8fa1d3674f16, type: 3}
   - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
   particleSystem_prefabs:
   - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
   - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
   - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
   spawn_rate: 0.5
-  score_to_spawn_boss: 0
+  score_to_spawn_boss: 1000
   boss_healthbar: {fileID: 1810199179}
   is_boss_alive: 0
 --- !u!4 &1975321916
@@ -9197,9 +9117,8 @@ GameObject:
   - component: {fileID: 2020898637}
   - component: {fileID: 2020898636}
   - component: {fileID: 2020898635}
-  - component: {fileID: 2020898638}
   m_Layer: 5
-  m_Name: cooldowns
+  m_Name: ability-cooldowns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9290,27 +9209,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &2020898638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020898633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a76e4f06e32f545aa401f0894632e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 756186916}
-  borders: {fileID: 561031696}
-  slots:
-  - {fileID: 231715019}
-  - {fileID: 201224135}
-  - {fileID: 1916418445}
-  lastDash: 0
-  lastShot: 0
-  lastTeleport: 0
 --- !u!1 &2027133451
 GameObject:
   m_ObjectHideFlags: 0
@@ -9573,7 +9471,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 2080121042}
   item: {fileID: 117695757}
-  sprite: {fileID: 21300000, guid: 055236750deddae45ac0679644001dbb, type: 3}
 --- !u!114 &2080121042
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class BossProjectile1 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
-            PlayerMovement.Instance.health.currentHealthpoints -= DAMAGE;
+            PlayerMovement.Instance.health.current_healthpoints -= DAMAGE;
         }
     }
 

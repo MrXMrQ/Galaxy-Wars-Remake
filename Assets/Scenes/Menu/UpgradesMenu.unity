@@ -620,18 +620,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc4a469674d026409081c0fd8157ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalScoreText: {fileID: 1802104116}
-  levelText: {fileID: 215788583}
-  maxHealthpointsText: {fileID: 1821080058}
-  maxHealthpointsCostText: {fileID: 1431299576}
-  dashCooldownText: {fileID: 640375472}
-  dashCooldownCostText: {fileID: 1228061347}
-  healingText: {fileID: 1079557269}
-  healingCostText: {fileID: 1924701986}
-  shootingCooldownText: {fileID: 874718252}
-  shootingCooldownCostText: {fileID: 1487466914}
-  multiplierText: {fileID: 377165253}
-  multiplierCostText: {fileID: 1951619091}
+  total_score_text: {fileID: 1802104116}
+  level_text: {fileID: 215788583}
+  _max_healthpoints_text: {fileID: 1821080058}
+  _max_healthpoints_cost_text: {fileID: 1431299576}
+  dash_cooldown_text: {fileID: 640375472}
+  dash_cooldown_cost_text: {fileID: 1228061347}
+  healing_text: {fileID: 1079557269}
+  healing_cost_text: {fileID: 1924701986}
+  shot_cooldown_text: {fileID: 874718252}
+  shot_cooldown_cost_text: {fileID: 1487466914}
+  multiplier_text: {fileID: 377165253}
+  multiplier_cost_text: {fileID: 1951619091}
 --- !u!1 &370097958
 GameObject:
   m_ObjectHideFlags: 0

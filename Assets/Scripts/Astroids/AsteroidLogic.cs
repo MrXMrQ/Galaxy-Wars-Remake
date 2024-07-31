@@ -13,15 +13,21 @@ public class AsteroidLogic : MonoBehaviour
     float _DIFFICULTY_MULTIPLIER_INCREMENT_VALUE = 5;
     float _MIN_SPAWN_RATE = 0.09f;
     float _SPAWN_RATE_INCREASE_AMOUNT = 0.01f;
-    float _OFF_SCREEN_Y_THRESHOLD = -15;
+    float _OFF_SCREEN_Y_THRESHOLD;
+    Camera _main_camera;
 
+    void Start()
+    {
+        _main_camera = Camera.main;
+        CalculateCameraBounds();
+    }
     void Update()
     {
         if (transform.position.y < _OFF_SCREEN_Y_THRESHOLD)
         {
             Destroy(gameObject);
             PlayerMovement.Instance.score.UpdateScorePoints(1);
-            _player_score = PlayerMovement.Instance.score._score;
+            _player_score = PlayerMovement.Instance.score.score;
             AdjustDifficulty();
         }
 
@@ -34,10 +40,15 @@ public class AsteroidLogic : MonoBehaviour
         {
             Destroy(gameObject);
 
-            PlayerMovement.Instance.health.currentHealthpoints -= DAMAGE;
+            PlayerMovement.Instance.health.current_healthpoints -= DAMAGE;
 
             SpawnParticles();
         }
+    }
+    private void CalculateCameraBounds()
+    {
+        Vector3 bottom_right = _main_camera.ViewportToWorldPoint(new Vector3(-1, -1, _main_camera.nearClipPlane));
+        _OFF_SCREEN_Y_THRESHOLD = bottom_right.y;
     }
 
     public void AdjustDifficulty()

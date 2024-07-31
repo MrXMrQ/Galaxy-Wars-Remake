@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7887351284321321613}
   m_Layer: 0
   m_Name: boss_mine
-  m_TagString: Missile
+  m_TagString: BossProjectile2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -6,7 +6,7 @@ public static class SaveSystem
 {
     // player data default values
     private static int maxHealthpoints = 10;
-    private static int totalScore = 10000000;
+    private static int totalScore = 999999;
     private static int level = 0;
 
     // item data default values

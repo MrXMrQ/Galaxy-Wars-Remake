@@ -38,15 +38,15 @@ public class BossLogic : MonoBehaviour
 
     void Update()
     {
-        _attack_direction = PlayerMovement.Instance.currentPosition - (Vector2)transform.position;
+        _attack_direction = PlayerMovement.Instance.current_position - (Vector2)transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            PlayerMovement.Instance.health.currentHealthpoints -= COLLISION_DAMAGE;
-            PlayerMovement.Instance.knockBack.CallKnockBack(_attack_direction, Vector2.zero, new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+            PlayerMovement.Instance.health.current_healthpoints -= COLLISION_DAMAGE;
+            PlayerMovement.Instance.knock_back.CallKnockBack(_attack_direction, Vector2.zero, new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
         }
     }
 }

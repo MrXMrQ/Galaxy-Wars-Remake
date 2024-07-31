@@ -5,25 +5,25 @@ public class PlayerHealth : MonoBehaviour
 {
     [Header("HEALTH")]
     [SerializeField] public Healthbar healthbar;
-    [SerializeField] int MAXHEALTHPOINTS;
-    int _currentHealthpoints;
+    [SerializeField] public int MAXHEALTHPOINTS;
+    int _current_healthpoints;
 
     [HideInInspector]
-    public int currentHealthpoints
+    public int current_healthpoints
     {
         get
         {
-            return _currentHealthpoints;
+            return _current_healthpoints;
         }
         set
         {
-            if (!ItemHandler.isImmortal)
+            if (!ItemLogic.is_immortal)
             {
-                _currentHealthpoints = value;
-                healthbar.SetHealth(currentHealthpoints);
+                _current_healthpoints = value;
+                healthbar.SetHealth(current_healthpoints);
             }
 
-            if (currentHealthpoints <= 0)
+            if (current_healthpoints <= 0)
             {
                 PlayerMovement.Instance.score.OnDeath();
                 SceneManager.LoadScene(5);
@@ -34,8 +34,8 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         Load();
-        currentHealthpoints = MAXHEALTHPOINTS;
-        healthbar.SetHealth(currentHealthpoints);
+        current_healthpoints = MAXHEALTHPOINTS;
+        healthbar.SetMaxHealth(MAXHEALTHPOINTS);
     }
 
     private void Load()

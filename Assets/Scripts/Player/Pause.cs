@@ -4,7 +4,7 @@ using UnityEngine;
 public class Pause : MonoBehaviour
 {
     [SerializeField] GameObject pauseScreen;
-    bool _isPaused;
+    bool _is_paused;
 
     void Start()
     {
@@ -21,25 +21,25 @@ public class Pause : MonoBehaviour
 
     private void TogglePause()
     {
-        _isPaused = !_isPaused;
-        pauseScreen.SetActive(_isPaused);
-        Time.timeScale = _isPaused ? 0f : 1f;
+        _is_paused = !_is_paused;
+        pauseScreen.SetActive(_is_paused);
+        Time.timeScale = _is_paused ? 0f : 1f;
     }
     public void ResumeGame()
     {
-        _isPaused = false;
+        _is_paused = false;
         pauseScreen.SetActive(false);
         Time.timeScale = 1f;
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
     }
 
     public void LoadMainMenu()
     {
         ResumeGame();
         SceneManager.LoadScene(0);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
