@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 1268580951457350375}
   - component: {fileID: 8233577967725709158}
   m_Layer: 0
-  m_Name: particle_rapid_fire_boss_spawn
+  m_Name: particl_dash_boss_spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 1268580951457350375}
   - component: {fileID: 8233577967725709158}
   m_Layer: 0
-  m_Name: particle_rapid_fire_boss_spawn
+  m_Name: particle_tripple_shot_boss_spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1854,16 +1854,16 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 0.72156864, g: 0.27450982, b: 0.72156864, a: 1}
+        key1: {r: 1, g: 0, b: 1, a: 1}
         key2: {r: 0.23137257, g: 0.07058824, b: 0.23137257, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
+        ctime0: 17733
+        ctime1: 43253
         ctime2: 65535
         ctime3: 0
         ctime4: 0
@@ -1880,7 +1880,7 @@ ParticleSystem:
         atime7: 0
         m_Mode: 0
         m_ColorSpace: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2

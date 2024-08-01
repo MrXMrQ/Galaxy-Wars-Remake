@@ -279,3 +279,4 @@ MonoBehaviour:
   ITEM_DROP_CHANCE: 100
   COIN_DROP_CHANCE: 100
   DAMAGE: 1
+  hit_particles: {fileID: 739995767386574900, guid: 917f021215eb0ec4183bd33e2134db29, type: 3}

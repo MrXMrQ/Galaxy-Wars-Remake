@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 655ac7799ee7c1d4899b1e28bec32bd6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -237,4 +237,5 @@ MonoBehaviour:
   MAX_HEALTHPOINTS: 5
   COLLISION_DAMAGE: 1
   SCORE: 50
+  spawn_particles: {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
   spawn_point: {x: 0, y: 7}

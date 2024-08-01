@@ -5,7 +5,6 @@ public class AsteroidLogic : MonoBehaviour
     [SerializeField] float MOVEMENT_SPEED;
     [SerializeField] int DAMAGE;
     [SerializeField] public int SCORE_VALUE;
-    [SerializeField] ParticleSystem EXPLOSION_EFFECT;
     static float _score_For_Difficulty_Increase = 100;
     int _DIFFICULTY_INCREMENT_VALUE = 100;
     int _player_score;
@@ -39,10 +38,7 @@ public class AsteroidLogic : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
-
             PlayerMovement.Instance.health.current_healthpoints -= DAMAGE;
-
-            SpawnParticles();
         }
     }
     private void CalculateCameraBounds()
@@ -63,10 +59,5 @@ public class AsteroidLogic : MonoBehaviour
             _difficultyMultiplier += _DIFFICULTY_MULTIPLIER_INCREMENT_VALUE;
             _score_For_Difficulty_Increase += _DIFFICULTY_INCREMENT_VALUE;
         }
-    }
-
-    public void SpawnParticles()
-    {
-        Instantiate(EXPLOSION_EFFECT, transform.position, Quaternion.identity);
     }
 }
