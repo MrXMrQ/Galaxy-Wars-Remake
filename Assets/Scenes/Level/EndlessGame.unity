@@ -8291,18 +8291,18 @@ MonoBehaviour:
   - {fileID: 7339093370751643323, guid: 6d0d4c1d90feb91499bf88c1efc82cd1, type: 3}
   - {fileID: 7339093370751643323, guid: 934fb4dd73d29cf40a1a5a174a7ec19c, type: 3}
   - {fileID: 7339093370751643323, guid: 23803c5169fbbd542b775347ea8ae9ca, type: 3}
+  coin_prefabs:
+  - {fileID: 4687985049390995471, guid: cff750bf660160d44bb7147582f7b798, type: 3}
+  - {fileID: 4687985049390995471, guid: 2fc7b9580b5f9e14daa70bdf9e4a3bbd, type: 3}
+  - {fileID: 4687985049390995471, guid: 107dfb91bc6028544b319e730346a0ec, type: 3}
   slots:
   - {fileID: 1452322391}
   - {fileID: 588687764}
   - {fileID: 247469863}
   - {fileID: 247209732}
-  items:
-  - {fileID: 8986159832660831482, guid: 4e935ebb4c3bf434bb701719ba27ef19, type: 3}
-  - {fileID: 2582757282253825667, guid: 6d0d4c1d90feb91499bf88c1efc82cd1, type: 3}
-  - {fileID: 2582757282253825667, guid: 934fb4dd73d29cf40a1a5a174a7ec19c, type: 3}
-  - {fileID: -2370543407539129302, guid: 23803c5169fbbd542b775347ea8ae9ca, type: 3}
   collected_items: 00000000
   cooldown_text: {fileID: 694549747}
+  healthbar_background: {r: 0, g: 0, b: 0, a: 0}
   item_cooldown: 10
 --- !u!114 &1810199181
 MonoBehaviour:
@@ -9012,7 +9012,7 @@ MonoBehaviour:
   - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
   - {fileID: 1268580951457350375, guid: 74b44ade0a3cf6344ac3c66957940ddb, type: 3}
   spawn_rate: 0.5
-  score_to_spawn_boss: 100
+  score_to_spawn_boss: 1000
   increse_score_to_spawn_boss: 200
   boss_healthbar: {fileID: 1810199179}
   is_boss_alive: 0

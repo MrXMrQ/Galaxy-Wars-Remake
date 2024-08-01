@@ -7,8 +7,8 @@ public class ItemLogic : MonoBehaviour
 
     [Header("ARRAYS")]
     [SerializeField] GameObject[] item_prefabs;
+    [SerializeField] GameObject[] coin_prefabs;
     [SerializeField] ItemSlotLogic[] slots;
-    [SerializeField] ItemMovement[] items;
     [SerializeField] public bool[] collected_items = { false, false, false, false };
 
     [Header("OBJECTS")]
@@ -19,7 +19,7 @@ public class ItemLogic : MonoBehaviour
     bool _is_active;
     int _INDEX;
     int _MAX_HEALTHPOINTS;
-    Color healthbar_background;
+    [HideInInspector] public Color healthbar_background;
 
     [Header("COOLDOWNS")]
     [SerializeField] float item_cooldown;
@@ -62,7 +62,14 @@ public class ItemLogic : MonoBehaviour
 
         HandleItemActivation(KeyCode.Alpha2, 1, () =>
         {
-            PlayerMovement.Instance.health.current_healthpoints += _healing;
+            if (_healing + PlayerMovement.Instance.health.current_healthpoints > _MAX_HEALTHPOINTS)
+            {
+                PlayerMovement.Instance.health.current_healthpoints = _MAX_HEALTHPOINTS;
+            }
+            else
+            {
+                PlayerMovement.Instance.health.current_healthpoints += _healing;
+            }
         });
 
         HandleItemActivation(KeyCode.Alpha3, 2, () =>
@@ -84,7 +91,7 @@ public class ItemLogic : MonoBehaviour
         // Activate item function (only one item can be active)
         if (Input.GetKeyDown(keyCode) && collected_items[imageIndex] && !_is_active)
         {
-            slots[imageIndex].SetSliderMaxValue(items[imageIndex].ITEM_DURATION);
+            slots[imageIndex].SetSliderMaxValue(item_prefabs[imageIndex].GetComponent<SpawnItem>().ITEM_DURATION);
             collected_items[imageIndex] = false;
             _INDEX = imageIndex;
             _is_active = true;
@@ -96,12 +103,16 @@ public class ItemLogic : MonoBehaviour
 
     private void ResetItems()
     {
-        if (Time.time - _last_item_time >= items[_INDEX].ITEM_DURATION && _is_active)
+        if (Time.time - _last_item_time >= item_prefabs[_INDEX].GetComponent<SpawnItem>().ITEM_DURATION && _is_active)
         {
+            if (is_immortal)
+            {
+                PlayerMovement.Instance.health.healthbar.fill.color = healthbar_background;
+            }
+
             _is_active = false;
             is_immortal = false;
             PlayerMovement.Instance.dash_cooldown = PlayerMovement.Instance.DASH_COOLDOWN_DEFAULT_VALUE;
-            PlayerMovement.Instance.health.healthbar.fill.color = healthbar_background;
             PlayerMovement.Instance.shot_cooldown = PlayerMovement.Instance.SHOT_COOLDOWN_DEFAULT_VALUE;
         }
     }
@@ -110,7 +121,7 @@ public class ItemLogic : MonoBehaviour
     {
         if (_is_active)
         {
-            slots[_INDEX].SetSliderValue(items[_INDEX].ITEM_DURATION - (Time.time - _last_item_time));
+            slots[_INDEX].SetSliderValue(item_prefabs[_INDEX].GetComponent<SpawnItem>().ITEM_DURATION - (Time.time - _last_item_time));
         }
         else
         {
@@ -139,7 +150,14 @@ public class ItemLogic : MonoBehaviour
 
     public void SpawnItem(Vector2 position)
     {
-        Instantiate(item_prefabs[Random.Range(0, item_prefabs.Length)], position, Quaternion.identity);
+        int index = Random.Range(0, item_prefabs.Length);
+        Instantiate(item_prefabs[index], position, Quaternion.identity);
+    }
+
+    public void SpawnCoin(Vector2 position)
+    {
+        int index = Random.Range(0, coin_prefabs.Length);
+        Instantiate(coin_prefabs[index], position, Quaternion.identity);
     }
 
     public void UpdateSprite(Sprite sprite, int index)
