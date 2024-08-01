@@ -7,6 +7,7 @@ public class BossLogic : MonoBehaviour
     [SerializeField] public int MAX_HEALTHPOINTS;
     [SerializeField] int COLLISION_DAMAGE;
     [SerializeField] int SCORE;
+    [SerializeField] public ParticleSystem spawn_particles;
     static int _currentHealthpoints { get; set; }
     Vector2 _attack_direction;
     public Vector2 spawn_point;
@@ -48,5 +49,10 @@ public class BossLogic : MonoBehaviour
             PlayerMovement.Instance.health.current_healthpoints -= COLLISION_DAMAGE;
             PlayerMovement.Instance.knock_back.CallKnockBack(_attack_direction, Vector2.zero, new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
         }
+    }
+
+    public void SpawnParticles()
+    {
+        Instantiate(spawn_particles, spawn_point, Quaternion.identity);
     }
 }

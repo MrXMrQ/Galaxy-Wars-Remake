@@ -8,7 +8,6 @@ public class FabricatorLogic : MonoBehaviour
     [Header("PREFABS")]
     [SerializeField] GameObject[] asteroid_prefabs;
     [SerializeField] GameObject[] boss_prefabs;
-    [SerializeField] ParticleSystem[] particleSystem_prefabs;
 
     [Header("VALUES")]
     [SerializeField] public float spawn_rate;
@@ -93,9 +92,12 @@ public class FabricatorLogic : MonoBehaviour
         GameObject boss = boss_prefabs[index];
         BossLogic logic = boss.GetComponent<BossLogic>();
 
-        Instantiate(particleSystem_prefabs[index], logic.spawn_point, Quaternion.identity);
+        if (logic != null)
+        {
+            logic.SpawnParticles();
+        }
 
-        yield return new WaitForSeconds(particleSystem_prefabs[index].main.duration);
+        yield return new WaitForSeconds(logic.spawn_particles.main.duration);
 
         boss_healthbar.Init(boss);
         Instantiate(boss, logic.spawn_point, transform.rotation);

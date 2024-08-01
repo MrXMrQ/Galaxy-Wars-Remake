@@ -6,6 +6,7 @@ public class ProjctileLogic : MonoBehaviour
     [SerializeField] float ITEM_DROP_CHANCE;
     [SerializeField] float COIN_DROP_CHANCE;
     [SerializeField] int DAMAGE;
+    [SerializeField] ParticleSystem hit_particles;
 
     void Update()
     {
@@ -31,7 +32,8 @@ public class ProjctileLogic : MonoBehaviour
 
             AsteroidLogic asteroidLogic = other.GetComponent<AsteroidLogic>();
             PlayerMovement.Instance.score.UpdateScorePoints(asteroidLogic.SCORE_VALUE);
-            asteroidLogic.SpawnParticles();
+            //asteroidLogic.SpawnParticles();
+            SpawnParticles(other.transform.position);
             asteroidLogic.AdjustDifficulty();
         }
 
@@ -40,6 +42,7 @@ public class ProjctileLogic : MonoBehaviour
             Destroy(gameObject);
             BossLogic bossLogic = other.GetComponent<BossLogic>();
             bossLogic.current_healthpoints -= DAMAGE;
+            SpawnParticles(transform.position);
         }
 
         if (other.CompareTag("BossProjectile2"))
@@ -47,6 +50,12 @@ public class ProjctileLogic : MonoBehaviour
             Destroy(gameObject);
             BossProjectile2 boss_missile = other.GetComponent<BossProjectile2>();
             boss_missile.Detonate();
+            SpawnParticles(other.transform.position);
         }
+    }
+
+    private void SpawnParticles(Vector2 positon)
+    {
+        Instantiate(hit_particles, positon, Quaternion.identity);
     }
 }
