@@ -276,5 +276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PROJECTILE_SPEED: 30
-  _ITEM_DROP_CHANCE: 100
+  ITEM_DROP_CHANCE: 100
+  COIN_DROP_CHANCE: 100
   DAMAGE: 1

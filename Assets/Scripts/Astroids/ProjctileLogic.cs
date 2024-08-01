@@ -3,7 +3,8 @@ using UnityEngine;
 public class ProjctileLogic : MonoBehaviour
 {
     [SerializeField] float PROJECTILE_SPEED;
-    [SerializeField] float _ITEM_DROP_CHANCE;
+    [SerializeField] float ITEM_DROP_CHANCE;
+    [SerializeField] float COIN_DROP_CHANCE;
     [SerializeField] int DAMAGE;
 
     void Update()
@@ -18,9 +19,14 @@ public class ProjctileLogic : MonoBehaviour
             Destroy(gameObject);
             Destroy(other.gameObject);
 
-            if (Random.Range(0, 100) >= 100 - _ITEM_DROP_CHANCE)
+            if (Random.Range(0, 100) >= 100 - ITEM_DROP_CHANCE)
             {
                 ItemLogic.Instance.SpawnItem(other.transform.position);
+            }
+
+            if (Random.Range(0, 100) >= 100 - COIN_DROP_CHANCE)
+            {
+                ItemLogic.Instance.SpawnCoin(other.transform.position);
             }
 
             AsteroidLogic asteroidLogic = other.GetComponent<AsteroidLogic>();
