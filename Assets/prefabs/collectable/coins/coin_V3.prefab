@@ -147,5 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fed5be2d70fbb4892f5db81bf30a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  COLLECT_PARTICLES: {fileID: 1708769960059313985, guid: 409b60918e56a83489a9563be3751769, type: 3}
+  COLLECT_PARTICLES: {fileID: 5650276106416178771, guid: dad4d42b320541044b250d4c26563b50, type: 3}
   SCORE_VALUE: 100

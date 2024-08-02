@@ -138,7 +138,6 @@ public class MovesetRapidFireBoss : MonoBehaviour
     }
     private IEnumerator SpawnMine()
     {
-        Debug.Log("mine");
         _is_mine_spawned = true;
         Instantiate(boss_mine_prefab, GenerateRandomPos(), Quaternion.identity);
         yield return new WaitForSeconds(MINE_COOLDOWN);

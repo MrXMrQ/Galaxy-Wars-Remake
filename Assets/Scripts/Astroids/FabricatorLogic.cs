@@ -11,11 +11,12 @@ public class FabricatorLogic : MonoBehaviour
 
     [Header("VALUES")]
     [SerializeField] public float spawn_rate;
-    bool _can_spawn_asteroid;
     [SerializeField] int score_to_spawn_boss;
     [SerializeField] int increse_score_to_spawn_boss;
     [SerializeField] BossHealthbarManager boss_healthbar;
     [HideInInspector] public bool is_boss_alive;
+    bool _can_spawn_asteroid;
+    int _last_boss_index;
 
     [Header("CAMERA BOUNDS")]
     Camera main_camera;
@@ -88,16 +89,29 @@ public class FabricatorLogic : MonoBehaviour
         is_boss_alive = true;
         score_to_spawn_boss += increse_score_to_spawn_boss;
 
-        int index = Random.Range(0, boss_prefabs.Length);
+        int index;
+
+        do
+        {
+            index = Random.Range(0, boss_prefabs.Length);
+        } while (index == _last_boss_index);
+
+        _last_boss_index = index;
+
         GameObject boss = boss_prefabs[index];
         BossLogic logic = boss.GetComponent<BossLogic>();
 
-        if (logic != null)
+        if (logic == null)
         {
-            logic.SpawnParticles();
+            Debug.LogError("BossLogic component missing on the boss prefab.");
+            yield break;
         }
 
-        yield return new WaitForSeconds(logic.spawn_particles.main.duration);
+        logic.SpawnParticles();
+
+        ParticleSystem.MainModule mainModule = logic.spawn_particles.main;
+
+        yield return new WaitForSeconds(mainModule.duration);
 
         boss_healthbar.Init(boss);
         Instantiate(boss, logic.spawn_point, transform.rotation);

@@ -14,7 +14,7 @@ public class SpawnCoin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Instantiate(COLLECT_PARTICLES, transform.position, Quaternion.identity);
+            Instantiate(COLLECT_PARTICLES, other.transform.position, Quaternion.identity);
             PlayerMovement.Instance.score.UpdateScorePoints(SCORE_VALUE);
             Destroy(gameObject);
         }

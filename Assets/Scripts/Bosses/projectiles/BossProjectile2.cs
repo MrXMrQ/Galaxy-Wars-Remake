@@ -17,7 +17,6 @@ public class BossProjectile2 : MonoBehaviour
     {
         _life_time = Random.Range(MAX_LIFE_TIME, MIN_LIFE_TIME);
         _instanciate_time = Time.time;
-        Debug.Log("Spawn");
     }
 
     void Update()
