@@ -3794,10 +3794,12 @@ MonoBehaviour:
   DASH_COOLDOWN_DEFAULT_VALUE: 1
   dash_cooldown: 0
   dash_particles: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
-  player_projectile_prefab: {fileID: 6289194308112020401, guid: 184e53708a9fbf44db2da85a2173e207, type: 3}
+  player_projectile_prefab: {fileID: 6289194308112020401, guid: f767733f967969e40b1dad5025aec90a, type: 3}
   shot_particles: {fileID: 3316150335570932208, guid: 69ae0e9ef21d2af42b0d12a54ae66b4d, type: 3}
   SHOT_COOLDOWN_DEFAULT_VALUE: 0.5
   shot_cooldown: 0
+  ITEM_DROP_CHANCE: 100
+  COIN_DROP_CHANCE: 100
   health: {fileID: 756186917}
   knock_back: {fileID: 756186918}
   score: {fileID: 756186919}
