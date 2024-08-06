@@ -6,7 +6,7 @@ public static class SaveSystem
 {
     // player data default values
     private static int maxHealthpoints = 10;
-    private static int totalScore = 999999;
+    private static int totalScore = 100000;
     private static int level = 0;
 
     // item data default values
@@ -27,7 +27,7 @@ public static class SaveSystem
 
     public static void Save(GameData gameData)
     {
-        Debug.Log("File load at: " + path);
+        Debug.Log("File save at: " + path);
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(path, FileMode.Create);
 
