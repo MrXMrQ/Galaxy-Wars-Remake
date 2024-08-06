@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
         ability_cooldown_logic.last_shot = Time.time;
 
         float x = transform.position.x;
-        float y = transform.position.y + 0.5f; // The shot is spawned a little higher so that it is not immediately deleted if the player sits on the lower border
+        float y = transform.position.y + 0.5f; //! The shot is spawned a little higher so that it is not immediately deleted if the player sits on the lower border
         Vector2 pos = new Vector2(x, y);
 
         Instantiate(player_projectile_prefab, pos, Quaternion.identity);

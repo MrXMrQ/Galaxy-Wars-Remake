@@ -7,17 +7,7 @@ public class CardDisplayWeapons : MonoBehaviour
     [SerializeField] TextMeshProUGUI weapon_name_text;
     [SerializeField] TextMeshProUGUI weapon_cost_text;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    //TODO: logic here
 
     public void Unlock()
     {

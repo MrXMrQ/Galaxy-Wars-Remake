@@ -88,7 +88,7 @@ public class ItemLogic : MonoBehaviour
 
     private void HandleItemActivation(KeyCode keyCode, int imageIndex, System.Action onActivation)
     {
-        // Activate item function (only one item can be active)
+        //* Activate item function (only one item can be active)
         if (Input.GetKeyDown(keyCode) && collected_items[imageIndex] && !_is_active)
         {
             slots[imageIndex].SetSliderMaxValue(item_prefabs[imageIndex].GetComponent<SpawnItem>().ITEM_DURATION);

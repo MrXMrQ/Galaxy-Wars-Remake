@@ -3,19 +3,19 @@ using System;
 [Serializable]
 public class GameData
 {
-    // player stats
+    //* player stats
     public int max_healthpoints;
     public int total_score;
     public int level;
     public int damge;
 
-    // item stats
+    //* item stats
     public float dash_cooldown;
     public int healing;
     public float shot_cooldown;
     public int multiplier;
 
-    // item costs
+    //* item costs
     public int max_healthpoints_cost;
     public int damge_cost;
     public int dash_cooldown_cost;

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class GameModeMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
     public void LoadEndless()
     {
         SceneManager.LoadScene(2);

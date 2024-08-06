@@ -4,19 +4,19 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    // player default stats
+    //* player default stats
     static int MAX_HEALTHPOINTS = 10;
     static int TOTAL_SCORE = 100000;
     static int LEVEL = 0;
     static int DAMAGE = 1;
 
-    // item default stats
+    //* item default stats
     static float DASH_COOLDOWN = 0.8f;
     static int HEALING = 1;
     static float SHOT_COOLDOWN = 0.25f;
     static int MULTIPLIER = 1;
 
-    // item default costs 
+    //* item default costs 
     static int HEALTHPOINTS_COST = 3000;
     static int DAMAGE_COST = 1000;
     static int DASH_COOLDOWN_COST = 500;
@@ -24,7 +24,7 @@ public static class SaveSystem
     static int SHOT_COOLDOWN_COST = 2000;
     static int MULTIPLIER_COST = 10000;
 
-    // C:/Users/username/AppData/LocalLow/Galaxy-Wars-Remake/Galaxy-Wars-Remake/saveFile.sv on Windows
+    //! C:/Users/username/AppData/LocalLow/Galaxy-Wars-Remake/Galaxy-Wars-Remake/saveFile.sv on Windows
     static string PATH = Application.persistentDataPath + "/saveFile.sv";
 
     public static void Save(GameData gameData)
@@ -33,7 +33,7 @@ public static class SaveSystem
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(PATH, FileMode.Create);
 
-        //GameData data = new GameData(gameData.maxHealthpoints, gameData.totalScore, gameData.level, gameData.dashCooldown, gameData.healing, gameData.shootingCooldown, gameData.multiplier, gameData.maxHealthpointsCost, gameData.dashCooldownCost, gameData.healingCost, gameData.shootingCooldownCost, gameData.multiplierCost);
+        ////GameData data = new GameData(gameData.maxHealthpoints, gameData.totalScore, gameData.level, gameData.dashCooldown, gameData.healing, gameData.shootingCooldown, gameData.multiplier, gameData.maxHealthpointsCost, gameData.dashCooldownCost, gameData.healingCost, gameData.shootingCooldownCost, gameData.multiplierCost);
 
         GameData data = new GameData(gameData);
 
