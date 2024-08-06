@@ -4,34 +4,38 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    // player data default values
-    private static int maxHealthpoints = 10;
-    private static int totalScore = 100000;
-    private static int level = 0;
+    // player default stats
+    static int MAX_HEALTHPOINTS = 10;
+    static int TOTAL_SCORE = 100000;
+    static int LEVEL = 0;
+    static int DAMAGE = 1;
 
-    // item data default values
-    private static float dashCooldown = 0.8f;
-    private static int healing = 1;
-    private static float shootingCooldown = 0.25f;
-    private static int multiplier = 1;
+    // item default stats
+    static float DASH_COOLDOWN = 0.8f;
+    static int HEALING = 1;
+    static float SHOT_COOLDOWN = 0.25f;
+    static int MULTIPLIER = 1;
 
-    // item costs default values 
-    private static int healthpointsCost = 3000;
-    private static int dashCost = 500;
-    private static int healingCost = 750;
-    private static int shootingCost = 2000;
-    private static int multiplierCost = 10000;
+    // item default costs 
+    static int HEALTHPOINTS_COST = 3000;
+    static int DAMAGE_COST = 1000;
+    static int DASH_COOLDOWN_COST = 500;
+    static int HEALING_COST = 750;
+    static int SHOT_COOLDOWN_COST = 2000;
+    static int MULTIPLIER_COST = 10000;
 
-    // path
-    private static string path = Application.persistentDataPath + "/saveFile.sv";
+    // C:/Users/username/AppData/LocalLow/Galaxy-Wars-Remake/Galaxy-Wars-Remake/saveFile.sv on Windows
+    static string PATH = Application.persistentDataPath + "/saveFile.sv";
 
     public static void Save(GameData gameData)
     {
-        Debug.Log("File save at: " + path);
+        Debug.Log("File save at: " + PATH);
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream stream = new FileStream(path, FileMode.Create);
+        FileStream stream = new FileStream(PATH, FileMode.Create);
 
-        GameData data = new GameData(gameData.maxHealthpoints, gameData.totalScore, gameData.level, gameData.dashCooldown, gameData.healing, gameData.shootingCooldown, gameData.multiplier, gameData.maxHealthpointsCost, gameData.dashCooldownCost, gameData.healingCost, gameData.shootingCooldownCost, gameData.multiplierCost);
+        //GameData data = new GameData(gameData.maxHealthpoints, gameData.totalScore, gameData.level, gameData.dashCooldown, gameData.healing, gameData.shootingCooldown, gameData.multiplier, gameData.maxHealthpointsCost, gameData.dashCooldownCost, gameData.healingCost, gameData.shootingCooldownCost, gameData.multiplierCost);
+
+        GameData data = new GameData(gameData);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -39,10 +43,10 @@ public static class SaveSystem
 
     public static GameData Load()
     {
-        if (File.Exists(path))
+        if (File.Exists(PATH))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
+            FileStream stream = new FileStream(PATH, FileMode.Open);
 
             GameData data = (GameData)formatter.Deserialize(stream);
             stream.Close();
@@ -51,7 +55,22 @@ public static class SaveSystem
         }
         else
         {
-            GameData data = new GameData(maxHealthpoints, totalScore, level, dashCooldown, healing, shootingCooldown, multiplier, healthpointsCost, dashCost, healingCost, shootingCost, multiplierCost);
+            GameData data = new GameData
+            (MAX_HEALTHPOINTS,
+            TOTAL_SCORE,
+            LEVEL,
+            DAMAGE,
+            DASH_COOLDOWN,
+            HEALING,
+            SHOT_COOLDOWN,
+            MULTIPLIER,
+            HEALTHPOINTS_COST,
+            DAMAGE_COST,
+            DASH_COOLDOWN_COST,
+            HEALING_COST,
+            SHOT_COOLDOWN_COST,
+            MULTIPLIER_COST);
+
             Save(data);
             return Load();
         }

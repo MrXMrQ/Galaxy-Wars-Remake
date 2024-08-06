@@ -58,16 +58,22 @@ public class SwipeController : MonoBehaviour
         }
     }
 
-    public void GetCurrentCard()
+    public void GetUpgradeCard()
     {
-        cardes[_current_card - 1].GetComponentInChildren<CardDisplay>().Upgrade();
+        cardes[_current_card - 1].GetComponentInChildren<CardDisplayUpgrades>().Upgrade();
+        UpdateText();
+    }
+
+    public void GetWeaponCard()
+    {
+        cardes[_current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Unlock();
         UpdateText();
     }
 
     private void UpdateText()
     {
         GameData gameData = SaveSystem.Load();
-        total_scroe_text.text = "Score Points: " + gameData.totalScore.ToString();
+        total_scroe_text.text = "Score Points: " + gameData.total_score.ToString();
         level_text.text = "Level: " + gameData.level.ToString();
     }
 }

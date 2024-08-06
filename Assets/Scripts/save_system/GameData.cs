@@ -3,39 +3,63 @@ using System;
 [Serializable]
 public class GameData
 {
-    //Player data
-    public int maxHealthpoints;
-    public int totalScore;
+    // player stats
+    public int max_healthpoints;
+    public int total_score;
     public int level;
+    public int damge;
 
-    //Item data
-    public float dashCooldown;
+    // item stats
+    public float dash_cooldown;
     public int healing;
-    public float shootingCooldown;
+    public float shot_cooldown;
     public int multiplier;
 
-    //Item costs
-    public int maxHealthpointsCost;
-    public int dashCooldownCost;
-    public int healingCost;
-    public int shootingCooldownCost;
-    public int multiplierCost;
+    // item costs
+    public int max_healthpoints_cost;
+    public int damge_cost;
+    public int dash_cooldown_cost;
+    public int healing_cost;
+    public int shot_cooldown_cost;
+    public int multiplier_cost;
 
-    public GameData(int maxHealthpoints, int totalScore, int level, float dashCooldown, int healing, float shootingCooldown, int multiplier, int healthpointsCost, int dashCost, int healingCost, int shootingCost, int multiplierCost)
+    public GameData(int max_healthpoints, int total_score, int level, int damge, float dash_cooldown, int healing, float shot_cooldown, int multiplier, int max_healthpoints_cost, int damge_cost, int dash_cooldown_cost, int healing_cost, int shot_cooldown_cost, int multiplier_cost)
     {
-        this.maxHealthpoints = maxHealthpoints;
-        this.totalScore = totalScore;
+        this.max_healthpoints = max_healthpoints;
+        this.total_score = total_score;
         this.level = level;
+        this.damge = damge;
 
-        this.dashCooldown = dashCooldown;
+        this.dash_cooldown = dash_cooldown;
         this.healing = healing;
-        this.shootingCooldown = shootingCooldown;
+        this.shot_cooldown = shot_cooldown;
         this.multiplier = multiplier;
 
-        this.maxHealthpointsCost = healthpointsCost;
-        this.dashCooldownCost = dashCost;
-        this.healingCost = healingCost;
-        this.shootingCooldownCost = shootingCost;
-        this.multiplierCost = multiplierCost;
+        this.max_healthpoints_cost = max_healthpoints_cost;
+        this.damge_cost = damge_cost;
+        this.dash_cooldown_cost = dash_cooldown_cost;
+        this.healing_cost = healing_cost;
+        this.shot_cooldown_cost = shot_cooldown_cost;
+        this.multiplier_cost = multiplier_cost;
+    }
+
+    public GameData(GameData game_data)
+    {
+        max_healthpoints = game_data.max_healthpoints;
+        total_score = game_data.total_score;
+        level = game_data.level;
+        damge = game_data.damge;
+
+        dash_cooldown = game_data.dash_cooldown;
+        healing = game_data.healing;
+        shot_cooldown = game_data.shot_cooldown;
+        multiplier = game_data.multiplier;
+
+        max_healthpoints_cost = game_data.max_healthpoints_cost;
+        damge_cost = game_data.damge_cost;
+        dash_cooldown_cost = game_data.dash_cooldown_cost;
+        healing_cost = game_data.healing_cost;
+        shot_cooldown_cost = game_data.shot_cooldown_cost;
+        multiplier_cost = game_data.multiplier_cost;
     }
 }

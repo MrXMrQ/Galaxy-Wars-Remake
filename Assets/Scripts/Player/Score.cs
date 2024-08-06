@@ -30,7 +30,7 @@ public class Score : MonoBehaviour
         _total_score += score * _multiplier;
 
         GameData gameData = SaveSystem.Load();
-        gameData.totalScore = _total_score;
+        gameData.total_score = _total_score;
         SaveSystem.Save(gameData);
     }
 
@@ -38,6 +38,6 @@ public class Score : MonoBehaviour
     {
         GameData gameData = SaveSystem.Load();
         _multiplier = gameData.multiplier;
-        _total_score = gameData.totalScore;
+        _total_score = gameData.total_score;
     }
 }

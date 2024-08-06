@@ -4,9 +4,15 @@ public class ProjctileDefaultLogic : MonoBehaviour
 {
     [SerializeField] float PROJECTILE_SPEED;
     [SerializeField] Vector2 MOVE_DIRECTION;
-    [SerializeField] int DAMAGE;
     [SerializeField] bool is_destructible;
     [SerializeField] ParticleSystem hit_particles;
+    int _DAMAGE;
+
+    void Start()
+    {
+        GameData gameData = SaveSystem.Load();
+        _DAMAGE = gameData.damge;
+    }
 
     void Update()
     {
@@ -44,7 +50,7 @@ public class ProjctileDefaultLogic : MonoBehaviour
         {
             Destroy(gameObject);
             BossLogic bossLogic = other.GetComponent<BossLogic>();
-            bossLogic.current_healthpoints -= DAMAGE;
+            bossLogic.current_healthpoints -= _DAMAGE;
             SpawnParticles(transform.position);
         }
 
