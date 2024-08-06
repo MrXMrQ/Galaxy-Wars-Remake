@@ -1,9 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class CardDisplay : MonoBehaviour
+public class CardDisplayUpgrades : MonoBehaviour
 {
-    [SerializeField] Card card;
+    [SerializeField] CardUpgrades card;
     [SerializeField] TextMeshProUGUI card_name;
     [SerializeField] TextMeshProUGUI cost_text;
     GameData _game_data;
@@ -19,7 +19,7 @@ public class CardDisplay : MonoBehaviour
     public void Upgrade()
     {
         _game_data = SaveSystem.Load();
-        card.ApplyUpgrade(_game_data.totalScore);
+        card.ApplyUpgrade(_game_data.total_score);
         UpdateText();
     }
 
