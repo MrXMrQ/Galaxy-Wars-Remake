@@ -3794,7 +3794,7 @@ MonoBehaviour:
   DASH_COOLDOWN_DEFAULT_VALUE: 1
   dash_cooldown: 0
   dash_particles: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
-  player_projectile_prefab: {fileID: 6289194308112020401, guid: f767733f967969e40b1dad5025aec90a, type: 3}
+  player_projectile_prefab: {fileID: 6289194308112020401, guid: 184e53708a9fbf44db2da85a2173e207, type: 3}
   shot_particles: {fileID: 3316150335570932208, guid: 69ae0e9ef21d2af42b0d12a54ae66b4d, type: 3}
   SHOT_COOLDOWN_DEFAULT_VALUE: 0.5
   shot_cooldown: 0
@@ -9007,10 +9007,10 @@ MonoBehaviour:
   - {fileID: 4804703964749269725, guid: e2da52918e1743a4bbd0a3a76535e7d5, type: 3}
   boss_prefabs:
   - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
-  - {fileID: 2659891126375243337, guid: c8f08c08be19ab84dae3878d2600ff4b, type: 3}
-  - {fileID: 2659891126375243337, guid: 067cc3cd33e837946b4e8fa1d3674f16, type: 3}
+  - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
+  - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
   spawn_rate: 0.5
-  score_to_spawn_boss: 10000
+  score_to_spawn_boss: 100000
   increse_score_to_spawn_boss: 200
   boss_healthbar: {fileID: 1810199179}
   is_boss_alive: 0
