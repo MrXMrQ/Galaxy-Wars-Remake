@@ -9010,7 +9010,7 @@ MonoBehaviour:
   - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
   - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
   spawn_rate: 0.5
-  score_to_spawn_boss: 100000
+  score_to_spawn_boss: 0
   increse_score_to_spawn_boss: 200
   boss_healthbar: {fileID: 1810199179}
   is_boss_alive: 0

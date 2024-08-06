@@ -14,7 +14,7 @@ public class GameModeMenu : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-    public void LoadUpgrades()
+    public void LoadShop()
     {
         SceneManager.LoadScene(4);
     }

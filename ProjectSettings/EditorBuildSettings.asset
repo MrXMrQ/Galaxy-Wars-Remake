@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/scenes/menu/level.unity
     guid: 4abf668a8d1e5434b8934a65d1398d02
   - enabled: 1
-    path: Assets/scenes/menu/upgrades.unity
+    path: Assets/scenes/menu/shop.unity
     guid: 2d0e1814f0312cf4cbddb2e729f306c6
   - enabled: 1
     path: Assets/scenes/game_state/game_over.unity
