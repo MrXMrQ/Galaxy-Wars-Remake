@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146d057d49c24694fa159a99291b68e4, type: 3}
   m_Name: dash_card
   m_EditorClassIdentifier: 
-  upgradeType: 1
+  _upgrade_type: 1
   card_name: DASH
-  upgradeValue: 0.1
+  upgrade_value: 0.1
   max_upgrad_value: 0
-  increaseCostForUpgrades: 1.1
-  _currentStat: 0
-  cost: 972
-  name_card: 
+  increase_cost_for_upgrade: 1.1
+  current_stat: 0.8
+  cost: 500

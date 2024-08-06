@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146d057d49c24694fa159a99291b68e4, type: 3}
   m_Name: healthpoints_card
   m_EditorClassIdentifier: 
-  upgradeType: 0
+  _upgrade_type: 0
   card_name: HEALTHPOINTS
-  upgradeValue: 10
+  upgrade_value: 10
   max_upgrad_value: 100
-  increaseCostForUpgrades: 1.1
-  _currentStat: 100
-  cost: 7071
-  name_card: 
+  increase_cost_for_upgrade: 1.1
+  current_stat: 10
+  cost: 3000

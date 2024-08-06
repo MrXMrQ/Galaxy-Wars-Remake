@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146d057d49c24694fa159a99291b68e4, type: 3}
   m_Name: multiplier_card
   m_EditorClassIdentifier: 
-  upgradeType: 4
+  _upgrade_type: 4
   card_name: MULTIPLIER
-  upgradeValue: 2
+  upgrade_value: 2
   max_upgrad_value: 8
-  increaseCostForUpgrades: 1.1
-  _currentStat: 8
-  cost: 13310
-  name_card: 
+  increase_cost_for_upgrade: 1.1
+  current_stat: 1
+  cost: 10000

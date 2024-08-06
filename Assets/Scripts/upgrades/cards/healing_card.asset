@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146d057d49c24694fa159a99291b68e4, type: 3}
   m_Name: healing_card
   m_EditorClassIdentifier: 
-  upgradeType: 2
+  _upgrade_type: 2
   card_name: HEALING
-  upgradeValue: 1
+  upgrade_value: 1
   max_upgrad_value: 10
-  increaseCostForUpgrades: 1.1
-  _currentStat: 10
-  cost: 1762
-  name_card: 
+  increase_cost_for_upgrade: 1.1
+  current_stat: 1
+  cost: 750
