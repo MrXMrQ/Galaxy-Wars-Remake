@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Runtime.ExceptionServices;
 using UnityEngine;
 
 public class MovesetTrippleShotBoss : MonoBehaviour

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "_card", menuName = "Card")]
+[CreateAssetMenu(fileName = "_card", menuName = "Upgrade Card")]
 public class CardUpgrades : ScriptableObject
 {
     public enum UPGRADES_TYPES

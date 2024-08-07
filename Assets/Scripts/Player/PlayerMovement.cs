@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -22,10 +23,10 @@ public class PlayerMovement : MonoBehaviour
     bool _can_dash = true;
 
     [Header("SHOOT")]
-    [SerializeField] GameObject player_projectile_prefab;
     [SerializeField] ParticleSystem shot_particles;
     [SerializeField] public float SHOT_COOLDOWN_DEFAULT_VALUE;
     [HideInInspector] public float shot_cooldown;
+    GameObject _player_projectile_prefab;
     bool _isShooting;
 
     [Header("OTHER")]
@@ -38,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Load();
+
         if (Instance == null)
         {
             Instance = this;
@@ -111,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
         float y = transform.position.y + 0.5f; //! The shot is spawned a little higher so that it is not immediately deleted if the player sits on the lower border
         Vector2 pos = new Vector2(x, y);
 
-        Instantiate(player_projectile_prefab, pos, Quaternion.identity);
+        Instantiate(_player_projectile_prefab, pos, Quaternion.identity);
         SpawnParticles(shot_particles);
 
         yield return new WaitForSeconds(shot_cooldown);
@@ -121,5 +124,17 @@ public class PlayerMovement : MonoBehaviour
     private void SpawnParticles(ParticleSystem particle)
     {
         Instantiate(particle, transform.position, Quaternion.identity);
+    }
+
+    private void Load()
+    {
+        GameData game_data = SaveSystem.Load();
+        string path = game_data.weapon_prefab;
+        _player_projectile_prefab = Resources.Load(path) as GameObject;
+
+        if (_player_projectile_prefab == null)
+        {
+            Debug.LogError("Failed to load weapon prefab from path: " + path);
+        }
     }
 }

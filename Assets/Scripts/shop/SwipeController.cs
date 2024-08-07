@@ -12,8 +12,7 @@ public class SwipeController : MonoBehaviour
     [SerializeField] float SCALE_DOWN;
     [SerializeField] TextMeshProUGUI total_scroe_text;
     [SerializeField] TextMeshProUGUI level_text;
-
-    int _current_card = 3;
+    [SerializeField] int current_card;
     Vector3 _target_position;
 
     void Start()
@@ -25,9 +24,9 @@ public class SwipeController : MonoBehaviour
 
     public void NextCard()
     {
-        if (_current_card < cardes.Length)
+        if (current_card < cardes.Length)
         {
-            _current_card++;
+            current_card++;
             _target_position += card_step;
             MoveCards();
         }
@@ -35,9 +34,9 @@ public class SwipeController : MonoBehaviour
 
     public void PreviousCard()
     {
-        if (_current_card > 1)
+        if (current_card > 1)
         {
-            _current_card--;
+            current_card--;
             _target_position -= card_step;
             MoveCards();
         }
@@ -53,20 +52,20 @@ public class SwipeController : MonoBehaviour
     {
         for (int i = 0; i < cardes.Length; i++)
         {
-            float target_scale = (i + 1 == _current_card) ? SCALE_UP : SCALE_DOWN;
+            float target_scale = (i + 1 == current_card) ? SCALE_UP : SCALE_DOWN;
             cardes[i].LeanScale(Vector3.one * target_scale, TWEEN_TIME).setEase(tween_type);
         }
     }
 
     public void GetUpgradeCard()
     {
-        cardes[_current_card - 1].GetComponentInChildren<CardDisplayUpgrades>().Upgrade();
+        cardes[current_card - 1].GetComponentInChildren<CardDisplayUpgrades>().Upgrade();
         UpdateText();
     }
 
     public void GetWeaponCard()
     {
-        cardes[_current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Unlock();
+        cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Unlock();
         UpdateText();
     }
 

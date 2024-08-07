@@ -10,6 +10,13 @@ public static class SaveSystem
     static int LEVEL = 0;
     static int DAMAGE = 1;
 
+    //* weapon default stats
+    static string WEAPON_PREFAB_PATH = "prefabs/player_projectiles/player_projectile_default";
+    static bool BOMB_UNLOCKED;
+    static bool DUAL_SHOT_UNLOCKED;
+    static bool TRIPPLE_SHOT_UNLOCKED;
+    static bool SNIPER_UNLOCKED;
+
     //* item default stats
     static float DASH_COOLDOWN = 0.8f;
     static int HEALING = 1;
@@ -60,6 +67,11 @@ public static class SaveSystem
             TOTAL_SCORE,
             LEVEL,
             DAMAGE,
+            WEAPON_PREFAB_PATH,
+            BOMB_UNLOCKED,
+            DUAL_SHOT_UNLOCKED,
+            TRIPPLE_SHOT_UNLOCKED,
+            SNIPER_UNLOCKED,
             DASH_COOLDOWN,
             HEALING,
             SHOT_COOLDOWN,
