@@ -18,9 +18,9 @@ public static class SaveSystem
     static bool SNIPER_UNLOCKED;
 
     //* item default stats
-    static float DASH_COOLDOWN = 0.8f;
+    public static float DASH_COOLDOWN = 0.8f;
     static int HEALING = 1;
-    static float SHOT_COOLDOWN = 0.25f;
+    public static float SHOT_COOLDOWN = 0.25f;
     static int MULTIPLIER = 1;
 
     //* item default costs 

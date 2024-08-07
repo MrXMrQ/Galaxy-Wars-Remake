@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146d057d49c24694fa159a99291b68e4, type: 3}
   m_Name: multiplier_card
   m_EditorClassIdentifier: 
-  _upgrade_type: 5
+  upgrade_type: 5
   card_name: MULTIPLIER
   upgrade_value: 2
   max_upgrad_value: 8

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146d057d49c24694fa159a99291b68e4, type: 3}
   m_Name: damage_card
   m_EditorClassIdentifier: 
-  _upgrade_type: 1
+  upgrade_type: 1
   card_name: DAMAGE
   upgrade_value: 1
   max_upgrad_value: 10
   increase_cost_for_upgrade: 1.1
-  current_stat: 10
-  cost: 2356
+  current_stat: 1
+  cost: 1000

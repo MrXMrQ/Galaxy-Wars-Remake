@@ -13,9 +13,9 @@ public class CardUpgrades : ScriptableObject
         Multiplier
     }
 
-    [SerializeField] UPGRADES_TYPES _upgrade_type;
+    [SerializeField] public UPGRADES_TYPES upgrade_type;
     [SerializeField] public string card_name;
-    [SerializeField] float upgrade_value;
+    [SerializeField] public float upgrade_value;
     [SerializeField] public float max_upgrad_value;
     [SerializeField] float increase_cost_for_upgrade;
     [HideInInspector] public float current_stat;
@@ -23,7 +23,11 @@ public class CardUpgrades : ScriptableObject
 
     public void LoadDataOnCard(GameData game_data)
     {
-        switch (_upgrade_type)
+        if (game_data == null)
+        {
+            Debug.LogWarning("null");
+        }
+        switch (upgrade_type)
         {
             case UPGRADES_TYPES.Healthpoints:
                 current_stat = game_data.max_healthpoints;
@@ -55,14 +59,14 @@ public class CardUpgrades : ScriptableObject
         }
     }
 
-    public void ApplyUpgrade(int total_score)
+    public void ApplyUpgrade(GameData game_data)
     {
-        GameData game_data = SaveSystem.Load();
-        if (total_score >= cost)
+
+        if (game_data.total_score >= cost)
         {
             bool upgrade_applied = false;
 
-            switch (_upgrade_type)
+            switch (upgrade_type)
             {
                 case UPGRADES_TYPES.Healthpoints:
                     upgrade_applied = HealthpointsUpgrade(game_data);
