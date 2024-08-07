@@ -1,32 +1,39 @@
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
 public class CardDisplayWeapons : MonoBehaviour
 {
-    [SerializeField] WeaponCard weapon_card;
+    [SerializeField] public WeaponCard weapon_card;
     [SerializeField] TextMeshProUGUI weapon_name_text;
     [SerializeField] TextMeshProUGUI weapon_cost_text;
-    GameData _game_data;
+    [SerializeField] public Outline outline;
+    public bool is_eqiped;
 
-    //TODO: logic here
     void Start()
     {
-        _game_data = SaveSystem.Load();
-        weapon_card.LoadDataOnCard(_game_data);
-
+        outline.enabled = is_eqiped;
+        weapon_card.LoadDataOnCard(SwipeController.game_data);
         UpdateText();
     }
 
 
-    public void Unlock()
+    public void Unlock(GameData game_data)
     {
-        weapon_card.Unlock(_game_data.total_score);
+        weapon_card.Unlock(game_data);
         UpdateText();
     }
 
     public void Equip()
     {
-        weapon_card.Equip();
+        if (weapon_card.is_unlocked)
+        {
+            weapon_card.Equip();
+        }
+        else
+        {
+            Debug.LogWarning("not unlocked");
+        }
     }
 
     private void UpdateText()

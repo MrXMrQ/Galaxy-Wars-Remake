@@ -14,7 +14,12 @@ public class SwipeController : MonoBehaviour
     [SerializeField] TextMeshProUGUI level_text;
     [SerializeField] int current_card;
     Vector3 _target_position;
+    public static GameData game_data;
 
+    void Awake()
+    {
+        game_data = SaveSystem.Load();
+    }
     void Start()
     {
         UpdateText();
@@ -59,20 +64,49 @@ public class SwipeController : MonoBehaviour
 
     public void GetUpgradeCard()
     {
-        cardes[current_card - 1].GetComponentInChildren<CardDisplayUpgrades>().Upgrade();
+        cardes[current_card - 1].GetComponentInChildren<CardDisplayUpgrades>().Upgrade(game_data);
         UpdateText();
     }
 
     public void GetWeaponCard()
     {
-        cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Unlock();
+        cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Unlock(game_data);
+        UpdateText();
+    }
+
+    public void EquipWeapon()
+    {
+        cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Equip();
+
+        Temp();
+        /*for (int i = 0; i < cardes.Length; i++)
+        {
+            if (current_card - 1 != i)
+            {
+                cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().is_eqiped.enabled = false;
+            }
+        }*/
         UpdateText();
     }
 
     private void UpdateText()
     {
-        GameData gameData = SaveSystem.Load();
-        total_scroe_text.text = "Score Points: " + gameData.total_score.ToString();
-        level_text.text = "Level: " + gameData.level.ToString();
+        total_scroe_text.text = "Score Points: " + game_data.total_score.ToString();
+        level_text.text = "Level: " + game_data.level.ToString();
+    }
+
+    private void Temp()
+    {
+        if (cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().weapon_card.is_unlocked)
+        {
+            for (int i = 0; i < cardes.Length; i++)
+            {
+                cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().is_eqiped = false;
+                cardes[i].GetComponentInChildren<CardDisplayWeapons>().outline.enabled = false;
+
+            }
+            cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().is_eqiped = true;
+            cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().outline.enabled = true;
+        }
     }
 }

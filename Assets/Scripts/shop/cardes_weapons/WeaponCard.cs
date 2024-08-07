@@ -14,11 +14,14 @@ public class WeaponCard : ScriptableObject
     [SerializeField] string weapon_prefab_path;
     [SerializeField] public string card_name;
     [SerializeField] public int cost;
-    [SerializeField] public bool is_unlocked;
-
+    [HideInInspector] public bool is_unlocked;
 
     public void LoadDataOnCard(GameData game_data)
     {
+        if (game_data == null)
+        {
+            Debug.LogWarning("null");
+        }
         switch (_weapon_type)
         {
             case WEAPON_TYPES.Bomb:
@@ -39,12 +42,10 @@ public class WeaponCard : ScriptableObject
         }
     }
 
-    //TODO: diffrent weapons to unlock
-
-    public void Unlock(int total_score)
+    public void Unlock(GameData game_data)
     {
-        GameData game_data = SaveSystem.Load();
-        if (total_score >= cost)
+
+        if (game_data.total_score >= cost)
         {
             bool upgrade_applied = false;
 
@@ -84,8 +85,9 @@ public class WeaponCard : ScriptableObject
 
     public void Equip()
     {
-
-
+        GameData game_data = SaveSystem.Load();
+        game_data.weapon_prefab = weapon_prefab_path;
+        Save(game_data);
     }
 
     private void ApplyUnlock(GameData game_data)
