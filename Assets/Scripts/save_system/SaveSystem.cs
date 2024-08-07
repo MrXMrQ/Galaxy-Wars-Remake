@@ -6,7 +6,7 @@ public static class SaveSystem
 {
     //* player default stats
     static int MAX_HEALTHPOINTS = 10;
-    static int TOTAL_SCORE = 100000;
+    static int TOTAL_SCORE = 1000000;
     static int LEVEL = 0;
     static int DAMAGE = 1;
 
