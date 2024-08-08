@@ -14,6 +14,7 @@ public class MovesetRapidFireBoss : MonoBehaviour
     [SerializeField] float MISSILE_X_OFF_SET;
     [SerializeField] float ROTATION_SPEED;
     [SerializeField] float NEXT_PHASE_TIME;
+    [SerializeField] ParticleSystem next_phase_particles;
 
     enum _BOSS_PHASE { Phase1, Phase2, Phase3 }
     _BOSS_PHASE _current_phase;
@@ -22,6 +23,8 @@ public class MovesetRapidFireBoss : MonoBehaviour
     bool _is_shooting;
     bool _is_missile_spawned;
     bool _is_mine_spawned;
+    bool _is_changing_phase;
+    float _last_boss_phase;
 
     float _MIN_X, _MIN_Y, _MAX_X, _MAX_Y;
     float _last_phase_time;
@@ -31,14 +34,14 @@ public class MovesetRapidFireBoss : MonoBehaviour
     {
         _main_camera = Camera.main;
         CalculateCameraBounds();
-        ChangePhase();
+        _current_phase = (_BOSS_PHASE)Random.Range(0, 3);
     }
 
     void Update()
     {
-        if (Time.time - _last_phase_time >= NEXT_PHASE_TIME)
+        if (Time.time - _last_phase_time >= NEXT_PHASE_TIME && !_is_changing_phase)
         {
-            ChangePhase();
+            StartCoroutine(ChangePhase());
         }
 
         switch (_current_phase)
@@ -84,11 +87,27 @@ public class MovesetRapidFireBoss : MonoBehaviour
         _MAX_Y = topLeft.y;
     }
 
-    private void ChangePhase()
+    private IEnumerator ChangePhase()
     {
+        _is_changing_phase = true;
+
+        Instantiate(next_phase_particles, transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(next_phase_particles.main.duration);
+
+        int index;
+
+        do
+        {
+            index = Random.Range(0, 2);
+        } while (index == _last_boss_phase);
+
+        _last_boss_phase = index;
+        _current_phase = (_BOSS_PHASE)index;
+
         _is_missile_spawned = false;
-        _current_phase = (_BOSS_PHASE)Random.Range(0, 3);
         _last_phase_time = Time.time;
+        _is_changing_phase = false;
     }
 
     private void Phase1Behavior()
@@ -115,13 +134,13 @@ public class MovesetRapidFireBoss : MonoBehaviour
 
     private void Phase2Behavior()
     {
+        StartCoroutine(ChangePhase());
         _is_missile_spawned = true;
         _left_missile_position = new Vector2(transform.position.x - MISSILE_X_OFF_SET, transform.position.y);
         _right_missile_position = new Vector2(transform.position.x + MISSILE_X_OFF_SET, transform.position.y);
 
         Instantiate(boss_missile_prefab, _left_missile_position, Quaternion.identity);
         Instantiate(boss_missile_prefab, _right_missile_position, Quaternion.identity);
-        ChangePhase();
     }
 
     private void Phase3Behavior()

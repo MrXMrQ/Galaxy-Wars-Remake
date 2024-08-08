@@ -41,4 +41,9 @@ public class CardDisplayWeapons : MonoBehaviour
         weapon_name_text.text = weapon_card.card_name;
         weapon_cost_text.text = weapon_card.is_unlocked ? "UNLOCKED" : weapon_card.cost.ToString();
     }
+
+    public void SetEquip(bool equip)
+    {
+        is_eqiped = equip;
+    }
 }

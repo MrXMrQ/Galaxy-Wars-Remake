@@ -22,8 +22,9 @@ public class SwipeController : MonoBehaviour
     }
     void Start()
     {
-        UpdateText();
+
         _target_position = cards_container_rect.localPosition;
+        UpdateText();
         CardScaling();
     }
 
@@ -77,15 +78,6 @@ public class SwipeController : MonoBehaviour
     public void EquipWeapon()
     {
         cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Equip();
-
-        Temp();
-        /*for (int i = 0; i < cardes.Length; i++)
-        {
-            if (current_card - 1 != i)
-            {
-                cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().is_eqiped.enabled = false;
-            }
-        }*/
         UpdateText();
     }
 
@@ -93,20 +85,5 @@ public class SwipeController : MonoBehaviour
     {
         total_scroe_text.text = "Score Points: " + game_data.total_score.ToString();
         level_text.text = "Level: " + game_data.level.ToString();
-    }
-
-    private void Temp()
-    {
-        if (cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().weapon_card.is_unlocked)
-        {
-            for (int i = 0; i < cardes.Length; i++)
-            {
-                cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().is_eqiped = false;
-                cardes[i].GetComponentInChildren<CardDisplayWeapons>().outline.enabled = false;
-
-            }
-            cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().is_eqiped = true;
-            cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().outline.enabled = true;
-        }
     }
 }

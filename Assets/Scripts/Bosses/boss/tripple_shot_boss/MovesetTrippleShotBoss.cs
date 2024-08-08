@@ -14,6 +14,7 @@ public class MovesetTrippleShotBoss : MonoBehaviour
     [SerializeField] float CHANGE_DIRECTION_INTERVAL;
     [SerializeField] float SHOT_COOLDOWN;
     [SerializeField] float NEXT_PHASE_TIME;
+    [SerializeField] ParticleSystem next_phase_particles;
 
     enum _BOSS_PHASE { Phase1, Phase2 }
     _BOSS_PHASE _current_phase;
@@ -22,6 +23,8 @@ public class MovesetTrippleShotBoss : MonoBehaviour
     bool is_shooting;
     Vector2 _movement_direction;
     float _next_change_direction_time;
+    bool _is_changing_phase;
+    int _last_boss_phase;
 
     [Header("CAMERA")]
     Camera _main_camera;
@@ -36,15 +39,15 @@ public class MovesetTrippleShotBoss : MonoBehaviour
         _boss_width = GetComponent<SpriteRenderer>().bounds.extents.x;
         _next_change_direction_time = Time.time + CHANGE_DIRECTION_INTERVAL;
 
+        _current_phase = (_BOSS_PHASE)Random.Range(0, 2);
         ChangeDirection();
-        ChangePhase();
     }
 
     void Update()
     {
-        if (Time.time - _last_phase_time >= NEXT_PHASE_TIME)
+        if (Time.time - _last_phase_time >= NEXT_PHASE_TIME && !_is_changing_phase)
         {
-            ChangePhase();
+            StartCoroutine(ChangePhase());
         }
 
         if (Time.time >= _next_change_direction_time)
@@ -78,10 +81,26 @@ public class MovesetTrippleShotBoss : MonoBehaviour
         transform.position = clampedPosition;
     }
 
-    private void ChangePhase()
+    private IEnumerator ChangePhase()
     {
-        _current_phase = (_BOSS_PHASE)Random.Range(0, 2);
+        _is_changing_phase = true;
+
+        ParticleSystem particles = Instantiate(next_phase_particles, transform.position, Quaternion.identity);
+        particles.transform.SetParent(transform);
+        yield return new WaitForSeconds(particles.main.duration);
+
+        int index;
+
+        do
+        {
+            index = Random.Range(0, 2);
+        } while (index == _last_boss_phase);
+
+        _last_boss_phase = index;
+
+        _current_phase = (_BOSS_PHASE)index;
         _last_phase_time = Time.time;
+        _is_changing_phase = false;
     }
 
     private void ChangeDirection()
@@ -119,7 +138,7 @@ public class MovesetTrippleShotBoss : MonoBehaviour
     {
         is_shooting = true;
         float x = transform.position.x;
-        float y = transform.position.y - 2.5f; // The projectiles are spawned below the surface due to the configuration of the sprite.
+        float y = transform.position.y - 2.5f; //* The projectiles are spawned below the surface due to the configuration of the sprite.
         Vector2 pos = new Vector2(x, y);
 
         MakeInstanceProjectile(Instantiate(boss_projectile_prefab, new Vector2(x - 3, y), Quaternion.identity), pos, -3);
@@ -142,7 +161,7 @@ public class MovesetTrippleShotBoss : MonoBehaviour
     {
         is_shooting = true;
         float x = transform.position.x;
-        float y = transform.position.y - 2.5f; // The projectiles are spawned below the surface due to the configuration of the sprite.
+        float y = transform.position.y - 2.5f; //* The projectiles are spawned below the surface due to the configuration of the sprite.
         Vector2 pos = new Vector2(x, y);
 
         MakeInstanceGrenade(Instantiate(boss_grenade_prefab, new Vector2(x - 3, y), Quaternion.identity), pos, -3);

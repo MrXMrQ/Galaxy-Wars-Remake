@@ -170,6 +170,7 @@ MonoBehaviour:
   MISSILE_X_OFF_SET: 5
   ROTATION_SPEED: 50
   NEXT_PHASE_TIME: 5
+  next_phase_particles: {fileID: 1268580951457350375, guid: 60df5f1aabb5f604e9abd797e3b5fc86, type: 3}
 --- !u!114 &7624252159638179181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51456505e0346649a417444a8b68fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss_name: ads
+  boss_name: Rapid fire boss
   sprite: {fileID: 21300000, guid: 5f614c8b3c00a30419c872455953e9d8, type: 3}
   MAX_HEALTHPOINTS: 5
   COLLISION_DAMAGE: 1
