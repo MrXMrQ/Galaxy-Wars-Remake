@@ -3351,7 +3351,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2104854559}
   m_HandleRect: {fileID: 2104854558}
   m_Direction: 2
-  m_Value: 1.0000008
+  m_Value: 0.09714254
   m_Size: 0.57443583
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5862,7 +5862,6 @@ MonoBehaviour:
   weapon_name_text: {fileID: 1121905017}
   weapon_cost_text: {fileID: 548972305}
   outline: {fileID: 1228952739}
-  is_eqiped: 0
 --- !u!114 &1228952739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5973,7 +5972,6 @@ MonoBehaviour:
   weapon_name_text: {fileID: 1336305293}
   weapon_cost_text: {fileID: 378141537}
   outline: {fileID: 1229542813}
-  is_eqiped: 0
 --- !u!114 &1229542813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6024,7 +6022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0007324219}
+  m_AnchoredPosition: {x: 0, y: 632}
   m_SizeDelta: {x: 0, y: 699.9998}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1261611787
@@ -9107,7 +9105,6 @@ MonoBehaviour:
   weapon_name_text: {fileID: 1337101254}
   weapon_cost_text: {fileID: 718782800}
   outline: {fileID: 2048017945}
-  is_eqiped: 0
 --- !u!114 &2048017945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9456,7 +9453,6 @@ MonoBehaviour:
   weapon_name_text: {fileID: 628384678}
   weapon_cost_text: {fileID: 834472302}
   outline: {fileID: 2118328426}
-  is_eqiped: 0
 --- !u!114 &2118328426
 MonoBehaviour:
   m_ObjectHideFlags: 0

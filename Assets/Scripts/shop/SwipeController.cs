@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SwipeController : MonoBehaviour
 {
@@ -77,8 +78,14 @@ public class SwipeController : MonoBehaviour
 
     public void EquipWeapon()
     {
-        cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Equip();
-        UpdateText();
+        if (cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().weapon_card.is_unlocked)
+        {
+            cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Equip();
+        }
+        else
+        {
+            Debug.LogWarning("not unlocked");
+        }
     }
 
     private void UpdateText()

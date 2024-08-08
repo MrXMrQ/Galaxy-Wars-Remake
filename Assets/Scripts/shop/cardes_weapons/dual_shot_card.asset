@@ -16,4 +16,4 @@ MonoBehaviour:
   weapon_prefab_path: prefabs/player_projectiles/player_projectile_dual_shot
   card_name: DUAL SHOT
   cost: 10000
-  is_unlocked: 0
+  is_unlocked: 1
