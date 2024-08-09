@@ -1170,6 +1170,7 @@ MonoBehaviour:
   total_scroe_text: {fileID: 579318262}
   level_text: {fileID: 1933008301}
   current_card: 3
+  is_weapon_scroll_view: 0
 --- !u!1 &333599757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3351,8 +3352,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2104854559}
   m_HandleRect: {fileID: 2104854558}
   m_Direction: 2
-  m_Value: 0.09714254
-  m_Size: 0.57443583
+  m_Value: 0.09714246
+  m_Size: 0.5633921
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8935,6 +8936,7 @@ MonoBehaviour:
   total_scroe_text: {fileID: 579318262}
   level_text: {fileID: 1933008301}
   current_card: 2
+  is_weapon_scroll_view: 1
 --- !u!1 &2046105532
 GameObject:
   m_ObjectHideFlags: 0

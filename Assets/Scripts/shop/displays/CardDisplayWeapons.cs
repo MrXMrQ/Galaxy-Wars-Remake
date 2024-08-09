@@ -22,9 +22,9 @@ public class CardDisplayWeapons : MonoBehaviour
         UpdateText();
     }
 
-    public void Equip()
+    public void Equip(GameData game_data)
     {
-        weapon_card.Equip();
+        weapon_card.Equip(game_data);
     }
 
     private void UpdateText()

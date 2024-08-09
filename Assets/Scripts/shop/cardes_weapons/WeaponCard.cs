@@ -11,7 +11,7 @@ public class WeaponCard : ScriptableObject
     }
 
     [SerializeField] WEAPON_TYPES _weapon_type;
-    [SerializeField] string weapon_prefab_path;
+    [SerializeField] public string weapon_prefab_path;
     [SerializeField] public string card_name;
     [SerializeField] public int cost;
     [HideInInspector] public bool is_unlocked;
@@ -83,9 +83,8 @@ public class WeaponCard : ScriptableObject
         }
     }
 
-    public void Equip()
+    public void Equip(GameData game_data)
     {
-        GameData game_data = SaveSystem.Load();
         game_data.weapon_prefab = weapon_prefab_path;
         Save(game_data);
     }

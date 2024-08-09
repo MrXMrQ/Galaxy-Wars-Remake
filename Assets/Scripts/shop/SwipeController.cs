@@ -1,12 +1,13 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 public class SwipeController : MonoBehaviour
 {
     [SerializeField] Vector3 card_step;
     [SerializeField] RectTransform cards_container_rect;
-    [SerializeField] RectTransform[] cardes;
+    [SerializeField] RectTransform[] cards;
     [SerializeField] float TWEEN_TIME;
     [SerializeField] LeanTweenType tween_type;
     [SerializeField] float SCALE_UP;
@@ -14,6 +15,7 @@ public class SwipeController : MonoBehaviour
     [SerializeField] TextMeshProUGUI total_scroe_text;
     [SerializeField] TextMeshProUGUI level_text;
     [SerializeField] int current_card;
+    [SerializeField] bool is_weapon_scroll_view;
     Vector3 _target_position;
     public static GameData game_data;
 
@@ -23,15 +25,19 @@ public class SwipeController : MonoBehaviour
     }
     void Start()
     {
-
         _target_position = cards_container_rect.localPosition;
         UpdateText();
         CardScaling();
+
+        if (is_weapon_scroll_view)
+        {
+            UpdateOutline();
+        }
     }
 
     public void NextCard()
     {
-        if (current_card < cardes.Length)
+        if (current_card < cards.Length)
         {
             current_card++;
             _target_position += card_step;
@@ -57,30 +63,41 @@ public class SwipeController : MonoBehaviour
 
     private void CardScaling()
     {
-        for (int i = 0; i < cardes.Length; i++)
+        for (int i = 0; i < cards.Length; i++)
         {
             float target_scale = (i + 1 == current_card) ? SCALE_UP : SCALE_DOWN;
-            cardes[i].LeanScale(Vector3.one * target_scale, TWEEN_TIME).setEase(tween_type);
+            cards[i].LeanScale(Vector3.one * target_scale, TWEEN_TIME).setEase(tween_type);
         }
     }
 
     public void GetUpgradeCard()
     {
-        cardes[current_card - 1].GetComponentInChildren<CardDisplayUpgrades>().Upgrade(game_data);
+        cards[current_card - 1].GetComponentInChildren<CardDisplayUpgrades>().Upgrade(game_data);
         UpdateText();
     }
 
     public void GetWeaponCard()
     {
-        cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Unlock(game_data);
+        cards[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Unlock(game_data);
         UpdateText();
+        UpdateOutline();
     }
 
     public void EquipWeapon()
     {
-        if (cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().weapon_card.is_unlocked)
+        if (cards[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().weapon_card.is_unlocked)
         {
-            cardes[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Equip();
+            if (cards[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().weapon_card.weapon_prefab_path.Equals(game_data.weapon_prefab))
+            {
+                game_data.weapon_prefab = "prefabs/player_projectiles/player_projectile_default";
+                SaveSystem.Save(game_data);
+                game_data = SaveSystem.Load();
+            }
+            else
+            {
+                cards[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Equip(game_data);
+            }
+            UpdateOutline();
         }
         else
         {
@@ -92,5 +109,20 @@ public class SwipeController : MonoBehaviour
     {
         total_scroe_text.text = "Score Points: " + game_data.total_score.ToString();
         level_text.text = "Level: " + game_data.level.ToString();
+    }
+
+    private void UpdateOutline()
+    {
+        for (int i = 0; i < cards.Length; i++)
+        {
+            if (cards[i].GetComponent<CardDisplayWeapons>().weapon_card.weapon_prefab_path.Equals(game_data.weapon_prefab))
+            {
+                cards[i].GetComponent<CardDisplayWeapons>().outline.enabled = true;
+            }
+            else
+            {
+                cards[i].GetComponent<CardDisplayWeapons>().outline.enabled = false;
+            }
+        }
     }
 }
