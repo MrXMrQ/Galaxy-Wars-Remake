@@ -11,7 +11,7 @@ public class CardDisplayWeapons : MonoBehaviour
 
     void Start()
     {
-        weapon_card.LoadDataOnCard(SwipeController.game_data);
+        weapon_card.LoadDataOnCard(SwipeControllerCardes.game_data);
         UpdateText();
     }
 

@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   COLLECT_PARTICLES: {fileID: 5650276106416178771, guid: b5ab0ba64f8b75c43a4103eb72ebae37, type: 3}
-  SCORE_VALUE: 100
+  SCORE_VALUE: 300
 --- !u!95 &6199732078854648321
 Animator:
   serializedVersion: 5

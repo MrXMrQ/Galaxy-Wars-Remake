@@ -12,7 +12,7 @@ public class CardDisplayUpgrades : MonoBehaviour
 
     void Start()
     {
-        card.LoadDataOnCard(SwipeController.game_data);
+        card.LoadDataOnCard(SwipeControllerCardes.game_data);
         UpdateVisuals();
     }
 

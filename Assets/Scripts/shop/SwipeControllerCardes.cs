@@ -1,9 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UIElements;
 
-public class SwipeController : MonoBehaviour
+public class SwipeControllerCardes : MonoBehaviour
 {
     [SerializeField] Vector3 card_step;
     [SerializeField] RectTransform cards_container_rect;
