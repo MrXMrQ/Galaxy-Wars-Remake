@@ -102,7 +102,7 @@ MonoBehaviour:
   MOVEMENT_SPEED: 20
   DAMAGE: 2
   SCORE_VALUE: 10
-  EXPLOSION_EFFECT: {fileID: 739995767386574900, guid: 917f021215eb0ec4183bd33e2134db29, type: 3}
+  hit_particles: {fileID: 739995767386574900, guid: 917f021215eb0ec4183bd33e2134db29, type: 3}
 --- !u!58 &3251590948602804742
 CircleCollider2D:
   m_ObjectHideFlags: 0
