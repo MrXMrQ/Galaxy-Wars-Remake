@@ -1,16 +1,22 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Dash")]
-public class DashUpgrade : Upgrades
+public class DashUpgrade : Upgrades, IUpgradeable
 {
     private float dash_cooldown;
     private int dash_cost;
     private int total_score;
 
+    public void Load(GameData gameData)
+    {
+        dash_cooldown = gameData.dash_cooldown;
+        dash_cost = gameData.dash_cooldown_cost;
+        total_score = gameData.total_score;
+        SetValuesForVisuals(dash_cooldown, dash_cost);
+    }
+
     public void Upgrade(GameData gameData)
     {
-        Load(gameData);
-
         if (total_score >= dash_cost)
         {
             if (dash_cooldown - upgrade_value >= max_upgrade_stat)
@@ -33,19 +39,11 @@ public class DashUpgrade : Upgrades
         }
     }
 
-    private void Load(GameData gameData)
-    {
-        dash_cooldown = gameData.dash_cooldown;
-        dash_cost = gameData.dash_cooldown_cost;
-        total_score = gameData.total_score;
-    }
-
     private void Save(GameData gameData)
     {
         gameData.dash_cooldown = dash_cooldown;
         gameData.dash_cooldown_cost = dash_cost;
         gameData.total_score = total_score;
-
         SaveSystem.Save(gameData);
     }
 }

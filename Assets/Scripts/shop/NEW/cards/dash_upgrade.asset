@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: dash_upgrade
   m_EditorClassIdentifier: 
   upgrade_type: 2
-  card_name: DASH COOLDWON
+  card_name: DASH COOLDOWN
   cost_multiplier: 1.1
   upgrade_value: 0.1
   max_upgrade_stat: 0
-  current_stat: 0
-  cost: 972
+  current_stat: 0.8
+  cost: 500

@@ -1,16 +1,22 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Healthpoints")]
-public class HealthpointsUpgrade : Upgrades
+public class HealthpointsUpgrade : Upgrades, IUpgradeable
 {
     private int max_healthpoints;
     private int max_healthpoints_cost;
     private int total_score;
 
+    public void Load(GameData gameData)
+    {
+        max_healthpoints = gameData.max_healthpoints;
+        max_healthpoints_cost = gameData.max_healthpoints_cost;
+        total_score = gameData.total_score;
+        SetValuesForVisuals(max_healthpoints, max_healthpoints_cost);
+    }
+
     public void Upgrade(GameData gameData)
     {
-        Load(gameData);
-
         if (total_score >= max_healthpoints_cost)
         {
             if (max_healthpoints + upgrade_value <= max_upgrade_stat)
@@ -29,19 +35,11 @@ public class HealthpointsUpgrade : Upgrades
         }
     }
 
-    private void Load(GameData gameData)
-    {
-        max_healthpoints = gameData.max_healthpoints;
-        max_healthpoints_cost = gameData.max_healthpoints_cost;
-        total_score = gameData.total_score;
-    }
-
     private void Save(GameData gameData)
     {
         gameData.max_healthpoints = max_healthpoints;
         gameData.max_healthpoints_cost = max_healthpoints_cost;
         gameData.total_score = total_score;
-
         SaveSystem.Save(gameData);
     }
 }

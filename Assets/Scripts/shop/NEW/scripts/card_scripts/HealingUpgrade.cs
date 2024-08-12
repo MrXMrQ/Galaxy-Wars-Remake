@@ -1,16 +1,22 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Healing")]
-public class HealingUpgrade : Upgrades
+public class HealingUpgrade : Upgrades, IUpgradeable
 {
     private int healing;
     private int healing_cost;
     private int total_score;
 
+    public void Load(GameData gameData)
+    {
+        healing = gameData.healing;
+        healing_cost = gameData.healing_cost;
+        total_score = gameData.total_score;
+        SetValuesForVisuals(healing, healing_cost);
+    }
+
     public void Upgrade(GameData gameData)
     {
-        Load(gameData);
-
         if (total_score >= healing_cost)
         {
             if (healing + upgrade_value <= max_upgrade_stat)
@@ -28,19 +34,11 @@ public class HealingUpgrade : Upgrades
         }
     }
 
-    private void Load(GameData gameData)
-    {
-        healing = gameData.healing;
-        healing_cost = gameData.healing_cost;
-        total_score = gameData.total_score;
-    }
-
     private void Save(GameData gameData)
     {
         gameData.healing = healing;
         gameData.healing_cost = healing_cost;
         gameData.total_score = total_score;
-
         SaveSystem.Save(gameData);
     }
 }

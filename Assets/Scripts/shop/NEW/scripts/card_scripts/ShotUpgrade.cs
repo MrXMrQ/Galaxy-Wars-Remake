@@ -1,11 +1,19 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Shot")]
-public class ShotUpgrade : Upgrades
+public class ShotUpgrade : Upgrades, IUpgradeable
 {
     private float shot_cooldown;
     private int shot_cost;
     private int total_score;
+
+    public void Load(GameData gameData)
+    {
+        shot_cooldown = gameData.shot_cooldown;
+        shot_cost = gameData.shot_cooldown_cost;
+        total_score = gameData.total_score;
+        SetValuesForVisuals(shot_cooldown, shot_cost);
+    }
 
     public void Upgrade(GameData gameData)
     {
@@ -31,13 +39,6 @@ public class ShotUpgrade : Upgrades
         {
             Debug.LogWarning("not enought scroe points");
         }
-    }
-
-    private void Load(GameData gameData)
-    {
-        shot_cooldown = gameData.shot_cooldown;
-        shot_cost = gameData.shot_cooldown_cost;
-        total_score = gameData.total_score;
     }
 
     private void Save(GameData gameData)

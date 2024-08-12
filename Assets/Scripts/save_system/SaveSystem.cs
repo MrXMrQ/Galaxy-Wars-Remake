@@ -37,10 +37,9 @@ public static class SaveSystem
     public static void Save(GameData gameData)
     {
         Debug.Log("File save at: " + PATH);
+
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(PATH, FileMode.Create);
-
-        ////GameData data = new GameData(gameData.maxHealthpoints, gameData.totalScore, gameData.level, gameData.dashCooldown, gameData.healing, gameData.shootingCooldown, gameData.multiplier, gameData.maxHealthpointsCost, gameData.dashCooldownCost, gameData.healingCost, gameData.shootingCooldownCost, gameData.multiplierCost);
 
         GameData data = new GameData(gameData);
 
@@ -52,6 +51,8 @@ public static class SaveSystem
     {
         if (File.Exists(PATH))
         {
+            Debug.Log("File load at: " + PATH);
+
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(PATH, FileMode.Open);
 
@@ -62,6 +63,8 @@ public static class SaveSystem
         }
         else
         {
+            Debug.Log("File created at: " + PATH);
+
             GameData data = new GameData
             (MAX_HEALTHPOINTS,
             TOTAL_SCORE,
