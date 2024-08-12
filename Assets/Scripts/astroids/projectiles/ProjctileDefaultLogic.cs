@@ -10,8 +10,7 @@ public class ProjctileDefaultLogic : MonoBehaviour
 
     void Start()
     {
-        GameData gameData = SaveSystem.Load();
-        _DAMAGE = gameData.damge;
+        _DAMAGE = PlayerMovement.Instance.DAMAGE;
     }
 
     void Update()

@@ -502,6 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 164795560}
   - component: {fileID: 164795563}
+  - component: {fileID: 164795564}
   m_Layer: 5
   m_Name: upgrade-card-1
   m_TagString: Untagged
@@ -550,6 +551,22 @@ MonoBehaviour:
   cost_text: {fileID: 1330171863}
   slider_current_upgrade: {fileID: 1036784561}
   slider_next_upgrade: {fileID: 519130}
+  outline: {fileID: 164795564}
+--- !u!114 &164795564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164795559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &174383606
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +614,6 @@ MonoBehaviour:
   total_scroe_text: {fileID: 579318262}
   level_text: {fileID: 1933008301}
   current_card: 2
-  is_weapon_scroll_view: 1
 --- !u!114 &174383608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,7 +1469,6 @@ MonoBehaviour:
   total_scroe_text: {fileID: 579318262}
   level_text: {fileID: 1933008301}
   current_card: 3
-  is_weapon_scroll_view: 0
 --- !u!1 &333599757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,6 +2605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 448721626}
   - component: {fileID: 448721629}
+  - component: {fileID: 448721630}
   m_Layer: 5
   m_Name: upgrade-card-3
   m_TagString: Untagged
@@ -2638,6 +2654,22 @@ MonoBehaviour:
   cost_text: {fileID: 1041460341}
   slider_current_upgrade: {fileID: 1361945436}
   slider_next_upgrade: {fileID: 1396143311}
+  outline: {fileID: 448721630}
+--- !u!114 &448721630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448721625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &503139352
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,7 +2813,6 @@ GameObject:
   - component: {fileID: 519741420}
   - component: {fileID: 519741423}
   - component: {fileID: 519741422}
-  - component: {fileID: 519741421}
   m_Layer: 5
   m_Name: card 4
   m_TagString: Untagged
@@ -2810,22 +2841,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 225, y: 325}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &519741421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519741419}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3fe3599bcf2b749a4f06dfdc23adee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon_card: {fileID: 11400000, guid: 1e5b46d956098be4589e6af767eaf607, type: 2}
-  weapon_name_text: {fileID: 1421586000}
-  weapon_cost_text: {fileID: 527984637}
-  outline: {fileID: 0}
 --- !u!114 &519741422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3142,6 +3157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 563243754}
   - component: {fileID: 563243755}
+  - component: {fileID: 563243756}
   m_Layer: 5
   m_Name: upgrade-card-6
   m_TagString: Untagged
@@ -3190,6 +3206,22 @@ MonoBehaviour:
   cost_text: {fileID: 1687197809}
   slider_current_upgrade: {fileID: 364570966}
   slider_next_upgrade: {fileID: 367716748}
+  outline: {fileID: 563243756}
+--- !u!114 &563243756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563243753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &579318260
 GameObject:
   m_ObjectHideFlags: 0
@@ -5001,7 +5033,6 @@ GameObject:
   - component: {fileID: 867430641}
   - component: {fileID: 867430644}
   - component: {fileID: 867430643}
-  - component: {fileID: 867430642}
   m_Layer: 5
   m_Name: card 1
   m_TagString: Untagged
@@ -5030,22 +5061,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 225, y: 325}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &867430642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 867430640}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3fe3599bcf2b749a4f06dfdc23adee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon_card: {fileID: 11400000, guid: 0777db8c4b524be41aa63ee273e94b80, type: 2}
-  weapon_name_text: {fileID: 1123072390}
-  weapon_cost_text: {fileID: 422536396}
-  outline: {fileID: 0}
 --- !u!114 &867430643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6190,7 +6205,6 @@ GameObject:
   - component: {fileID: 1062864887}
   - component: {fileID: 1062864890}
   - component: {fileID: 1062864889}
-  - component: {fileID: 1062864888}
   m_Layer: 5
   m_Name: card 3
   m_TagString: Untagged
@@ -6219,22 +6233,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 225, y: 325}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1062864888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062864886}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3fe3599bcf2b749a4f06dfdc23adee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon_card: {fileID: 11400000, guid: 4711afe3612b79347a0e50865eb38b21, type: 2}
-  weapon_name_text: {fileID: 907679399}
-  weapon_cost_text: {fileID: 1778508707}
-  outline: {fileID: 0}
 --- !u!114 &1062864889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6358,6 +6356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1063806135}
   - component: {fileID: 1063806138}
+  - component: {fileID: 1063806139}
   m_Layer: 5
   m_Name: upgrade-card-2
   m_TagString: Untagged
@@ -6406,6 +6405,22 @@ MonoBehaviour:
   cost_text: {fileID: 299013422}
   slider_current_upgrade: {fileID: 1960436287}
   slider_next_upgrade: {fileID: 1620887289}
+  outline: {fileID: 1063806139}
+--- !u!114 &1063806139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063806134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1067652194
 GameObject:
   m_ObjectHideFlags: 0
@@ -6982,6 +6997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1151436203}
   - component: {fileID: 1151436206}
+  - component: {fileID: 1151436207}
   m_Layer: 5
   m_Name: upgrade-card-5
   m_TagString: Untagged
@@ -7030,6 +7046,22 @@ MonoBehaviour:
   cost_text: {fileID: 1749037274}
   slider_current_upgrade: {fileID: 1357532682}
   slider_next_upgrade: {fileID: 2103927859}
+  outline: {fileID: 1151436207}
+--- !u!114 &1151436207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151436202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1189635428
 GameObject:
   m_ObjectHideFlags: 0
@@ -7318,8 +7350,9 @@ GameObject:
   - component: {fileID: 1228952735}
   - component: {fileID: 1228952737}
   - component: {fileID: 1228952736}
-  - component: {fileID: 1228952738}
   - component: {fileID: 1228952739}
+  - component: {fileID: 1228952741}
+  - component: {fileID: 1228952740}
   m_Layer: 5
   m_Name: card 4
   m_TagString: Untagged
@@ -7386,22 +7419,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228952734}
   m_CullTransparentMesh: 1
---- !u!114 &1228952738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228952734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3fe3599bcf2b749a4f06dfdc23adee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon_card: {fileID: 11400000, guid: 1e5b46d956098be4589e6af767eaf607, type: 2}
-  weapon_name_text: {fileID: 1121905017}
-  weapon_cost_text: {fileID: 548972305}
-  outline: {fileID: 1228952739}
 --- !u!114 &1228952739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7417,6 +7434,75 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &1228952740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228952734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 1228952736}
+  m_FillRect: {fileID: 0}
+  m_HandleRect: {fileID: 0}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1228952741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228952734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc5333e499c0f745b8c5f97ca3b9439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: ea7049389c11716408eca07be1041a31, type: 2}
+  card_name: {fileID: 1121905017}
+  cost_text: {fileID: 548972305}
+  slider_current_upgrade: {fileID: 1228952740}
+  slider_next_upgrade: {fileID: 1228952740}
+  outline: {fileID: 1228952739}
 --- !u!1 &1229542808
 GameObject:
   m_ObjectHideFlags: 0
@@ -7428,8 +7514,9 @@ GameObject:
   - component: {fileID: 1229542809}
   - component: {fileID: 1229542811}
   - component: {fileID: 1229542810}
-  - component: {fileID: 1229542812}
+  - component: {fileID: 1229542814}
   - component: {fileID: 1229542813}
+  - component: {fileID: 1229542815}
   m_Layer: 5
   m_Name: card 1
   m_TagString: Untagged
@@ -7496,22 +7583,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229542808}
   m_CullTransparentMesh: 1
---- !u!114 &1229542812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229542808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3fe3599bcf2b749a4f06dfdc23adee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon_card: {fileID: 11400000, guid: 0777db8c4b524be41aa63ee273e94b80, type: 2}
-  weapon_name_text: {fileID: 1336305293}
-  weapon_cost_text: {fileID: 378141537}
-  outline: {fileID: 1229542813}
 --- !u!114 &1229542813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7527,6 +7598,75 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
+--- !u!114 &1229542814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229542808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc5333e499c0f745b8c5f97ca3b9439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 1b994899fa01ad549a2c5d8d85e60f16, type: 2}
+  card_name: {fileID: 1336305293}
+  cost_text: {fileID: 378141537}
+  slider_current_upgrade: {fileID: 1229542815}
+  slider_next_upgrade: {fileID: 1229542815}
+  outline: {fileID: 1229542813}
+--- !u!114 &1229542815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229542808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 1229542810}
+  m_FillRect: {fileID: 0}
+  m_HandleRect: {fileID: 0}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1261611785
 GameObject:
   m_ObjectHideFlags: 0
@@ -10335,6 +10475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1759807878}
   - component: {fileID: 1759807881}
+  - component: {fileID: 1759807882}
   m_Layer: 5
   m_Name: upgrade-card-4
   m_TagString: Untagged
@@ -10383,6 +10524,22 @@ MonoBehaviour:
   cost_text: {fileID: 1189635430}
   slider_current_upgrade: {fileID: 1031582543}
   slider_next_upgrade: {fileID: 795018302}
+  outline: {fileID: 1759807882}
+--- !u!114 &1759807882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759807877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1778461357
 GameObject:
   m_ObjectHideFlags: 0
@@ -11283,7 +11440,6 @@ GameObject:
   - component: {fileID: 1982183504}
   - component: {fileID: 1982183507}
   - component: {fileID: 1982183506}
-  - component: {fileID: 1982183505}
   m_Layer: 5
   m_Name: card 2
   m_TagString: Untagged
@@ -11312,22 +11468,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 225, y: 325}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1982183505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1982183503}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3fe3599bcf2b749a4f06dfdc23adee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon_card: {fileID: 11400000, guid: 7d44a5dd3b879264a864605cc4cf1bb1, type: 2}
-  weapon_name_text: {fileID: 275528667}
-  weapon_cost_text: {fileID: 1964364339}
-  outline: {fileID: 0}
 --- !u!114 &1982183506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11646,7 +11786,6 @@ MonoBehaviour:
   total_scroe_text: {fileID: 579318262}
   level_text: {fileID: 1933008301}
   current_card: 2
-  is_weapon_scroll_view: 1
 --- !u!1 &2046105532
 GameObject:
   m_ObjectHideFlags: 0
@@ -11733,8 +11872,9 @@ GameObject:
   - component: {fileID: 2048017941}
   - component: {fileID: 2048017943}
   - component: {fileID: 2048017942}
-  - component: {fileID: 2048017944}
   - component: {fileID: 2048017945}
+  - component: {fileID: 2048017947}
+  - component: {fileID: 2048017946}
   m_Layer: 5
   m_Name: card 3
   m_TagString: Untagged
@@ -11801,22 +11941,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048017940}
   m_CullTransparentMesh: 1
---- !u!114 &2048017944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048017940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3fe3599bcf2b749a4f06dfdc23adee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon_card: {fileID: 11400000, guid: 4711afe3612b79347a0e50865eb38b21, type: 2}
-  weapon_name_text: {fileID: 1337101254}
-  weapon_cost_text: {fileID: 718782800}
-  outline: {fileID: 2048017945}
 --- !u!114 &2048017945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11832,6 +11956,75 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &2048017946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048017940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 2048017942}
+  m_FillRect: {fileID: 0}
+  m_HandleRect: {fileID: 0}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2048017947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048017940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc5333e499c0f745b8c5f97ca3b9439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: d71604922c973644b8135e6f9cb95c38, type: 2}
+  card_name: {fileID: 1337101254}
+  cost_text: {fileID: 718782800}
+  slider_current_upgrade: {fileID: 2048017946}
+  slider_next_upgrade: {fileID: 2048017946}
+  outline: {fileID: 2048017945}
 --- !u!1 &2068159636
 GameObject:
   m_ObjectHideFlags: 0
@@ -12081,8 +12274,9 @@ GameObject:
   - component: {fileID: 2118328422}
   - component: {fileID: 2118328424}
   - component: {fileID: 2118328423}
-  - component: {fileID: 2118328425}
   - component: {fileID: 2118328426}
+  - component: {fileID: 2118328428}
+  - component: {fileID: 2118328427}
   m_Layer: 5
   m_Name: card 2
   m_TagString: Untagged
@@ -12149,22 +12343,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118328421}
   m_CullTransparentMesh: 1
---- !u!114 &2118328425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2118328421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3fe3599bcf2b749a4f06dfdc23adee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon_card: {fileID: 11400000, guid: 7d44a5dd3b879264a864605cc4cf1bb1, type: 2}
-  weapon_name_text: {fileID: 628384678}
-  weapon_cost_text: {fileID: 834472302}
-  outline: {fileID: 2118328426}
 --- !u!114 &2118328426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12180,6 +12358,75 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &2118328427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118328421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 0
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 2118328423}
+  m_FillRect: {fileID: 0}
+  m_HandleRect: {fileID: 0}
+  m_Direction: 0
+  m_MinValue: 0
+  m_MaxValue: 1
+  m_WholeNumbers: 0
+  m_Value: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2118328428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118328421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc5333e499c0f745b8c5f97ca3b9439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: d9d807dc0a1cb0247829e82fb9daccc7, type: 2}
+  card_name: {fileID: 628384678}
+  cost_text: {fileID: 834472302}
+  slider_current_upgrade: {fileID: 2118328427}
+  slider_next_upgrade: {fileID: 2118328427}
+  outline: {fileID: 2118328426}
 --- !u!1 &2120818912
 GameObject:
   m_ObjectHideFlags: 0

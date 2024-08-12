@@ -13,7 +13,7 @@ public class SwipeControllerCards : MonoBehaviour
     [SerializeField] TextMeshProUGUI total_scroe_text;
     [SerializeField] TextMeshProUGUI level_text;
     [SerializeField] int current_card;
-    [SerializeField] bool is_weapon_scroll_view;
+
     Vector3 _target_position;
     public static GameData game_data;
 
@@ -24,13 +24,10 @@ public class SwipeControllerCards : MonoBehaviour
     void Start()
     {
         _target_position = cards_container_rect.localPosition;
+
         UpdateText();
         CardScaling();
-
-        if (is_weapon_scroll_view)
-        {
-            UpdateOutline();
-        }
+        UpdateOutline();
     }
 
     public void NextCard()
@@ -70,22 +67,22 @@ public class SwipeControllerCards : MonoBehaviour
 
     public void GetUpgradeCard()
     {
-        cards[current_card - 1].GetComponentInChildren<CardDisplayUpgrades>().Upgrade(game_data);
+        cards[current_card - 1].GetComponentInChildren<CardDisplay>().Upgrade(game_data);
         UpdateText();
     }
 
     public void GetWeaponCard()
     {
-        cards[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Unlock(game_data);
+        cards[current_card - 1].GetComponentInChildren<CardDisplay>().Unlock(game_data);
         UpdateText();
         UpdateOutline();
     }
 
     public void EquipWeapon()
     {
-        if (cards[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().weapon_card.is_unlocked)
+        if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().item.is_unlocked)
         {
-            if (cards[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().weapon_card.weapon_prefab_path.Equals(game_data.weapon_prefab))
+            if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().item.weapon_prefab_path.Equals(game_data.weapon_prefab))
             {
                 game_data.weapon_prefab = "prefabs/player_projectiles/player_projectile_default";
                 SaveSystem.Save(game_data);
@@ -93,7 +90,7 @@ public class SwipeControllerCards : MonoBehaviour
             }
             else
             {
-                cards[current_card - 1].GetComponentInChildren<CardDisplayWeapons>().Equip(game_data);
+                cards[current_card - 1].GetComponentInChildren<CardDisplay>().Equip(game_data);
             }
             UpdateOutline();
         }
@@ -113,14 +110,20 @@ public class SwipeControllerCards : MonoBehaviour
     {
         for (int i = 0; i < cards.Length; i++)
         {
-            if (cards[i].GetComponent<CardDisplayWeapons>().weapon_card.weapon_prefab_path.Equals(game_data.weapon_prefab))
+            if (cards[i].GetComponent<CardDisplay>().item is IWeapon)
             {
-                cards[i].GetComponent<CardDisplayWeapons>().outline.enabled = true;
+                Debug.Log("jap");
+
+                if (cards[i].GetComponent<CardDisplay>().item.weapon_prefab_path.Equals(game_data.weapon_prefab))
+                {
+                    cards[i].GetComponent<CardDisplay>().outline.enabled = true;
+                }
+                else
+                {
+                    cards[i].GetComponent<CardDisplay>().outline.enabled = false;
+                }
             }
-            else
-            {
-                cards[i].GetComponent<CardDisplayWeapons>().outline.enabled = false;
-            }
+
         }
     }
 }

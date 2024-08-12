@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] ParticleSystem shot_particles;
     [SerializeField] public float SHOT_COOLDOWN_DEFAULT_VALUE;
     [HideInInspector] public float shot_cooldown;
+    public int DAMAGE;
     GameObject _player_projectile_prefab;
     bool _isShooting;
 
@@ -136,5 +137,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("Failed to load weapon prefab from path: " + path);
         }
+
+        DAMAGE = game_data.damge;
     }
 }
