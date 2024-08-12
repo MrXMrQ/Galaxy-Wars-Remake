@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc5333e499c0f745b8c5f97ca3b9439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: bcbec3c19520d6c4697959d8e9e3710b, type: 2}
+  item: {fileID: 11400000, guid: d4f0f54e81e3dd044a8d00b82f0f9600, type: 2}
   card_name: {fileID: 1828818308}
   cost_text: {fileID: 1330171863}
   slider_current_upgrade: {fileID: 1036784561}
@@ -2633,7 +2633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc5333e499c0f745b8c5f97ca3b9439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: d00ddc2be804f9c45957bba09ce9d6a8, type: 2}
+  item: {fileID: 11400000, guid: d4c624238ba55c844b1f3c7356b9aa96, type: 2}
   card_name: {fileID: 345244065}
   cost_text: {fileID: 1041460341}
   slider_current_upgrade: {fileID: 1361945436}
@@ -3185,7 +3185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc5333e499c0f745b8c5f97ca3b9439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: eca4174e9025dc249babdc507317783c, type: 2}
+  item: {fileID: 11400000, guid: 6c0d43cbca619684b9affd58009eb8d1, type: 2}
   card_name: {fileID: 1294789686}
   cost_text: {fileID: 1687197809}
   slider_current_upgrade: {fileID: 364570966}
@@ -6401,7 +6401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc5333e499c0f745b8c5f97ca3b9439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: bf33aeea573651d47a6070eb6ec19abb, type: 2}
+  item: {fileID: 11400000, guid: ee13eeb78a71c9045812638d74485f33, type: 2}
   card_name: {fileID: 610180748}
   cost_text: {fileID: 299013422}
   slider_current_upgrade: {fileID: 1960436287}
@@ -7025,7 +7025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc5333e499c0f745b8c5f97ca3b9439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 7ca2b36de4953be44a0fc966739e48dd, type: 2}
+  item: {fileID: 11400000, guid: 91afb95bd09210b4697661b655716489, type: 2}
   card_name: {fileID: 441847659}
   cost_text: {fileID: 1749037274}
   slider_current_upgrade: {fileID: 1357532682}
@@ -10378,7 +10378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc5333e499c0f745b8c5f97ca3b9439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 27ebf05177545ad43b2ae3afb0042b1a, type: 2}
+  item: {fileID: 11400000, guid: c8a5739faa63a1d4d9a2092054ec5926, type: 2}
   card_name: {fileID: 1471959214}
   cost_text: {fileID: 1189635430}
   slider_current_upgrade: {fileID: 1031582543}
