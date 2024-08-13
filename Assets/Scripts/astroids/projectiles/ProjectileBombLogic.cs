@@ -40,10 +40,11 @@ public class ProjectileBombLogic : MonoBehaviour
         if (projctile_default_logic_script != null)
         {
             Vector2 positon = new Vector2(transform.position.x, transform.position.y);
-            MakeInstance(projctile_default_logic_script, Vector2.up, positon);
+
             MakeInstance(projctile_default_logic_script, Vector2.down, positon);
             MakeInstance(projctile_default_logic_script, Vector2.right, positon);
             MakeInstance(projctile_default_logic_script, Vector2.left, positon);
+            MakeInstance(projctile_default_logic_script, Vector2.up, positon);
         }
     }
 

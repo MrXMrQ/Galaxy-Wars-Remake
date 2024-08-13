@@ -37,9 +37,10 @@ public class ProjectileMultiShotLogic : MonoBehaviour
     {
         Destroy(gameObject);
         Vector2 position = transform.position;
-        CreateProjectile(Vector2.up, position);
+
         CreateProjectile(new Vector2(-0.5f, 1), position);
         CreateProjectile(new Vector2(0.5f, 1), position);
+        CreateProjectile(Vector2.up, position);
     }
 
     private void DualShot()
