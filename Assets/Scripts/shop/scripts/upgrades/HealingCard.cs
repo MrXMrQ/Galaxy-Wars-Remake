@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Healing")]
-public class HealingUpgrade : Card, IUpgradeable
+public class HealingCard : Card, IUpgradeable
 {
     int healing;
     int healing_cost;

@@ -130,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
     private void Load()
     {
         GameData game_data = SaveSystem.Load();
-        string path = game_data.weapon_prefab;
+        string path = game_data.weapon_prefab_path;
         _player_projectile_prefab = Resources.Load(path) as GameObject;
 
         if (_player_projectile_prefab == null)

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour
 {
-    [SerializeField] public Card item;
+    [SerializeField] public Card card;
     [SerializeField] private TextMeshProUGUI card_name;
     [SerializeField] private TextMeshProUGUI cost_text;
     [SerializeField] private Slider slider_current_upgrade;
@@ -16,11 +16,11 @@ public class CardDisplay : MonoBehaviour
         LoadUpgradeData();
         LoadWeaponData();
 
-        if (item is IUpgradeable)
+        if (card is IUpgradeable)
         {
             UpgradesVisuals();
         }
-        else if (item is IWeapon)
+        else if (card is IWeapon)
         {
             WeaponVisuals();
         }
@@ -28,7 +28,7 @@ public class CardDisplay : MonoBehaviour
 
     public void Upgrade(GameData game_data)
     {
-        if (item is IUpgradeable upgradeableItem)
+        if (card is IUpgradeable upgradeableItem)
         {
             upgradeableItem.Upgrade(game_data);
             UpgradesVisuals();
@@ -41,7 +41,7 @@ public class CardDisplay : MonoBehaviour
 
     public void Unlock(GameData game_data)
     {
-        if (item is IWeapon weaponItem)
+        if (card is IWeapon weaponItem)
         {
             weaponItem.Unlock(game_data);
             WeaponVisuals();
@@ -54,7 +54,7 @@ public class CardDisplay : MonoBehaviour
 
     public void Equip(GameData game_data)
     {
-        if (item is IWeapon weaponItem)
+        if (card is IWeapon weaponItem)
         {
             weaponItem.Equip(game_data);
             WeaponVisuals();
@@ -67,24 +67,24 @@ public class CardDisplay : MonoBehaviour
 
     private void LoadUpgradeData()
     {
-        if (item is IUpgradeable upgradeableItem)
+        if (card is IUpgradeable upgradeableItem)
         {
-            upgradeableItem.Load(SwipeControllerCards.game_data);
+            upgradeableItem.Load(CardsController.game_data);
         }
     }
 
     private void LoadWeaponData()
     {
-        if (item is IWeapon weaponItem)
+        if (card is IWeapon weaponItem)
         {
-            weaponItem.Load(SwipeControllerCards.game_data);
+            weaponItem.Load(CardsController.game_data);
         }
     }
 
     private void UpgradesVisuals()
     {
-        card_name.text = item.card_name;
-        cost_text.text = item.current_stat == item.max_upgrade_stat ? "MAX" : $"Cost: {item.upgrade_cost}";
+        card_name.text = card.card_name;
+        cost_text.text = card.current_stat == card.max_upgrade_stat ? "MAX" : $"Cost: {card.upgrade_cost}";
 
         UpdateSliderValues(slider_next_upgrade, isCurrent: false);
         UpdateSliderValues(slider_current_upgrade, isCurrent: true);
@@ -92,32 +92,32 @@ public class CardDisplay : MonoBehaviour
 
     private void UpdateSliderValues(Slider slider, bool isCurrent)
     {
-        slider.maxValue = item.max_upgrade_stat - item.upgrade_value;
-        slider.value = isCurrent ? item.current_stat - item.upgrade_value : item.current_stat;
+        slider.maxValue = card.max_upgrade_stat - card.upgrade_value;
+        slider.value = isCurrent ? card.current_stat - card.upgrade_value : card.current_stat;
 
-        switch (item.upgrade_type)
+        switch (card.upgrade_type)
         {
             case Card.UPGRADES_TYPES.Shot:
                 slider.maxValue = SaveSystem.SHOT_COOLDOWN;
-                slider.value = SaveSystem.SHOT_COOLDOWN - item.current_stat + (isCurrent ? 0 : item.upgrade_value);
+                slider.value = SaveSystem.SHOT_COOLDOWN - card.current_stat + (isCurrent ? 0 : card.upgrade_value);
                 break;
 
             case Card.UPGRADES_TYPES.Dash:
                 slider.maxValue = SaveSystem.DASH_COOLDOWN;
-                slider.value = SaveSystem.DASH_COOLDOWN - item.current_stat + (isCurrent ? 0 : item.upgrade_value);
+                slider.value = SaveSystem.DASH_COOLDOWN - card.current_stat + (isCurrent ? 0 : card.upgrade_value);
                 break;
 
             case Card.UPGRADES_TYPES.Multiplier:
                 slider.minValue = 1;
-                slider.maxValue = item.max_upgrade_stat;
-                slider.value = isCurrent ? item.current_stat : item.current_stat * item.upgrade_value;
+                slider.maxValue = card.max_upgrade_stat;
+                slider.value = isCurrent ? card.current_stat : card.current_stat * card.upgrade_value;
                 break;
         }
     }
 
     private void WeaponVisuals()
     {
-        card_name.text = item.card_name;
-        cost_text.text = item.is_unlocked ? "UNLOCKED" : $"Cost: {item.weapon_cost}";
+        card_name.text = card.card_name;
+        cost_text.text = card.is_unlocked ? "UNLOCKED" : $"Cost: {card.weapon_cost}";
     }
 }

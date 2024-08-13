@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6aeb83f2609cff4584a42a80bec9c42, type: 3}
-  m_Name: multiplier_upgrade
+  m_Script: {fileID: 11500000, guid: 75a67fee139cc4544b406ec974a1d7bb, type: 3}
+  m_Name: 05_damage_upgrade
   m_EditorClassIdentifier: 
-  card_name: MULTIPLIER
-  upgrade_type: 5
+  card_name: DAMAGE
+  upgrade_type: 1
   cost_multiplier: 1.1
-  upgrade_value: 2
-  max_upgrade_stat: 8
+  upgrade_value: 1
+  max_upgrade_stat: 10
   current_stat: 0
   cost: 0
   weapon_type: 4

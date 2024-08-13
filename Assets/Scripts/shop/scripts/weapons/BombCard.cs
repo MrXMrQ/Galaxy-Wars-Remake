@@ -10,7 +10,7 @@ public class BombCard : Card, IWeapon
     {
         is_unlocked = game_data.bomb_unlocked;
         total_score = game_data.total_score;
-        current_path = game_data.weapon_prefab;
+        current_path = game_data.weapon_prefab_path;
     }
 
     public void Unlock(GameData game_data)
@@ -25,7 +25,7 @@ public class BombCard : Card, IWeapon
         }
         else
         {
-            Debug.LogWarning("not enought scroe points");
+            Debug.LogWarning("not enought scroe points or is unlocked");
         }
     }
 
@@ -39,7 +39,7 @@ public class BombCard : Card, IWeapon
     {
         game_data.bomb_unlocked = is_unlocked;
         game_data.total_score = total_score;
-        game_data.weapon_prefab = current_path;
+        game_data.weapon_prefab_path = current_path;
         SaveSystem.Save(game_data);
     }
 }

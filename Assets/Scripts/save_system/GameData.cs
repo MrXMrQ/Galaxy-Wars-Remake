@@ -10,7 +10,7 @@ public class GameData
     public int damge;
 
     //* weapon stats
-    public string weapon_prefab;
+    public string weapon_prefab_path;
     public bool bomb_unlocked;
     public bool dual_shot_unlocked;
     public bool trippl_shot_unlocked;
@@ -56,7 +56,7 @@ public class GameData
         this.level = level;
         this.damge = damge;
 
-        this.weapon_prefab = weapon_prefab;
+        this.weapon_prefab_path = weapon_prefab;
         this.bomb_unlocked = bomb_unlocked;
         this.dual_shot_unlocked = dual_shot_unlocked;
         this.trippl_shot_unlocked = trippl_shot_unlocked;
@@ -82,7 +82,7 @@ public class GameData
         level = game_data.level;
         damge = game_data.damge;
 
-        weapon_prefab = game_data.weapon_prefab;
+        weapon_prefab_path = game_data.weapon_prefab_path;
         bomb_unlocked = game_data.bomb_unlocked;
         dual_shot_unlocked = game_data.dual_shot_unlocked;
         trippl_shot_unlocked = game_data.trippl_shot_unlocked;

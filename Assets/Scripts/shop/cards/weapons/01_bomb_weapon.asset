@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d7938ffbd85561418c78c1f18493411, type: 3}
-  m_Name: bomb_weapon
+  m_Name: 01_bomb_weapon
   m_EditorClassIdentifier: 
   card_name: BOMB
   upgrade_type: 6
@@ -21,5 +21,5 @@ MonoBehaviour:
   upgrade_cost: 0
   weapon_type: 0
   weapon_prefab_path: prefabs/player_projectiles/player_projectile_bomb
-  weapon_cost: 1
-  is_unlocked: 1
+  weapon_cost: 10000
+  is_unlocked: 0

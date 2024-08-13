@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 362a3df8a960cc44584cd66e9fa3b517, type: 3}
-  m_Name: sniper_weapon
+  m_Script: {fileID: 11500000, guid: f4e8fa5a345c9e842b94d9a858e21f75, type: 3}
+  m_Name: 04_tripple_shot_weapon
   m_EditorClassIdentifier: 
-  card_name: SNIPER
-  upgrade_type: 0
+  card_name: TRIPPLE SHOT
+  upgrade_type: 6
   cost_multiplier: 0
   upgrade_value: 0
   max_upgrade_stat: 0
   current_stat: 0
   upgrade_cost: 0
-  weapon_type: 0
-  weapon_prefab_path: prefabs/player_projectiles/player_projectile_sniper
-  weapon_cost: 3
-  is_unlocked: 1
+  weapon_type: 2
+  weapon_prefab_path: prefabs/player_projectiles/player_projectile_tripple_shot
+  weapon_cost: 10000
+  is_unlocked: 0

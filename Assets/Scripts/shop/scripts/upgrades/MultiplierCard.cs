@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Multiplier")]
-public class MultiplierUpgrade : Card, IUpgradeable
+public class MultiplierCard : Card, IUpgradeable
 {
     int multiplier;
     int multiplier_cost;

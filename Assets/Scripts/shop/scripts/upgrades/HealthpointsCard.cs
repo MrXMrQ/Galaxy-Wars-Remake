@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Healthpoints")]
-public class HealthpointsUpgrade : Card, IUpgradeable
+public class HealthpointsCard : Card, IUpgradeable
 {
     int max_healthpoints;
     int max_healthpoints_cost;

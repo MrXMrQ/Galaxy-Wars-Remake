@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Shot")]
-public class ShotUpgrade : Card, IUpgradeable
+public class ShotCard : Card, IUpgradeable
 {
     float shot_cooldown;
     int shot_cost;
