@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,18 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody2D player;
     [SerializeField] float MOVEMENT_SPEED;
     [SerializeField] float SMOOTHING;
-    Vector2 _movement_direction;
+    [HideInInspector] public Vector2 movement_direction;
     [HideInInspector] public Vector2 current_position;
-
-    [Header("DASH")]
-    [SerializeField] float DASH_SPEED;
-    [SerializeField] float DASH_DISTANCE;
-    [SerializeField] float DASH_DURATION;
-    [SerializeField] public float DASH_COOLDOWN_DEFAULT_VALUE;
-    [HideInInspector] public float dash_cooldown;
-    [SerializeField] ParticleSystem dash_particles;
-    bool _is_dashing;
-    bool _can_dash = true;
 
     [Header("SHOOT")]
     [SerializeField] ParticleSystem shot_particles;
@@ -37,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public KnockBack knock_back;
     [SerializeField] public Score score;
     [SerializeField] public AbilityCooldownLogic ability_cooldown_logic;
+    [SerializeField] public AbilityHolder ability_holder;
 
     void Start()
     {
@@ -50,13 +40,13 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(Instance);
         }
-        dash_cooldown = DASH_COOLDOWN_DEFAULT_VALUE;
+        ability_holder.ability.COOLDOWN = ability_holder.ability.DEFAULT_COOLDOWN;
         shot_cooldown = SHOT_COOLDOWN_DEFAULT_VALUE;
     }
 
     void Update()
     {
-        if (_is_dashing || knock_back.is_being_knock_backed)
+        if (knock_back.is_being_knock_backed)
         {
             return;
         }
@@ -64,46 +54,24 @@ public class PlayerMovement : MonoBehaviour
         float movementX = Input.GetAxisRaw("Horizontal");
         float movementY = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetButton("Dash") && _can_dash)
-        {
-            StartCoroutine(Dash());
-        }
-
         if (Input.GetButton("Fire1") && !_isShooting)
         {
             StartCoroutine(Shoot());
         }
 
-        _movement_direction = new Vector2(movementX, movementY).normalized;
+        movement_direction = new Vector2(movementX, movementY).normalized;
         current_position = transform.position;
     }
 
     void FixedUpdate()
     {
-        if (_is_dashing || knock_back.is_being_knock_backed)
+        if (knock_back.is_being_knock_backed)
         {
             return;
         }
 
-        Vector2 targetVelocity = _movement_direction * MOVEMENT_SPEED;
+        Vector2 targetVelocity = movement_direction * MOVEMENT_SPEED;
         player.velocity = Vector2.Lerp(player.velocity, targetVelocity, SMOOTHING);
-    }
-
-    private IEnumerator Dash()
-    {
-        _can_dash = false;
-        _is_dashing = true;
-        ability_cooldown_logic.last_dash = Time.time;
-
-        SpawnParticles(dash_particles);
-
-        player.velocity = new Vector2(_movement_direction.x * DASH_SPEED, _movement_direction.y * DASH_SPEED) * DASH_DISTANCE;
-
-        yield return new WaitForSeconds(DASH_DURATION);
-        _is_dashing = false;
-
-        yield return new WaitForSeconds(dash_cooldown);
-        _can_dash = true;
     }
 
     private IEnumerator Shoot()

@@ -9,7 +9,7 @@ public class AbilityCooldownLogic : MonoBehaviour
 
     void Start()
     {
-        last_dash = -player_movement.DASH_COOLDOWN_DEFAULT_VALUE;
+        last_dash = -player_movement.ability_holder.ability.DEFAULT_COOLDOWN;
         last_shot = -player_movement.SHOT_COOLDOWN_DEFAULT_VALUE;
         last_teleport = -border.TELEPORT_COOLDOWN;
     }
@@ -23,10 +23,10 @@ public class AbilityCooldownLogic : MonoBehaviour
 
     private void Slot01()
     {
-        if (Time.time - last_dash <= player_movement.dash_cooldown)
+        if (Time.time - last_dash <= player_movement.ability_holder.ability.COOLDOWN)
         {
-            cooldown_slots[0].SetSliderMaxValue(player_movement.dash_cooldown);
-            cooldown_slots[0].SetSliderValue(player_movement.dash_cooldown - (Time.time - last_dash));
+            cooldown_slots[0].SetSliderMaxValue(player_movement.ability_holder.ability.COOLDOWN);
+            cooldown_slots[0].SetSliderValue(player_movement.ability_holder.ability.COOLDOWN - (Time.time - last_dash));
         }
         else
         {

@@ -3634,6 +3634,7 @@ GameObject:
   - component: {fileID: 756186917}
   - component: {fileID: 756186918}
   - component: {fileID: 756186919}
+  - component: {fileID: 756186920}
   m_Layer: 6
   m_Name: player
   m_TagString: Player
@@ -3921,22 +3922,19 @@ MonoBehaviour:
   player: {fileID: 756186910}
   MOVEMENT_SPEED: 30
   SMOOTHING: 0.25
+  movement_direction: {x: 0, y: 0}
   current_position: {x: 0, y: 0}
-  DASH_SPEED: 50
-  DASH_DISTANCE: 1.5
-  DASH_DURATION: 0.1
-  DASH_COOLDOWN_DEFAULT_VALUE: 1
-  dash_cooldown: 0
-  dash_particles: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
   shot_particles: {fileID: 3316150335570932208, guid: 69ae0e9ef21d2af42b0d12a54ae66b4d, type: 3}
   SHOT_COOLDOWN_DEFAULT_VALUE: 0.5
   shot_cooldown: 0
+  DAMAGE: 0
   ITEM_DROP_CHANCE: 100
   COIN_DROP_CHANCE: 100
   health: {fileID: 756186917}
   knock_back: {fileID: 756186918}
   score: {fileID: 756186919}
   ability_cooldown_logic: {fileID: 1810199181}
+  ability_holder: {fileID: 756186920}
 --- !u!114 &756186917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3982,6 +3980,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score_text: {fileID: 1753030709}
   score: 0
+--- !u!114 &756186920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756186907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87e062a0f8e6684ba15a71ecaeed2f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 77be87beece2efa47845051b90eeb077, type: 2}
+  ability_cooldown_logic: {fileID: 1810199181}
 --- !u!1 &761391652
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,7 +57,7 @@ public class ItemLogic : MonoBehaviour
 
         HandleItemActivation(KeyCode.Alpha1, 0, () =>
         {
-            PlayerMovement.Instance.dash_cooldown = _dash_cooldown;
+            PlayerMovement.Instance.ability_holder.ability.COOLDOWN = _dash_cooldown;
         });
 
         HandleItemActivation(KeyCode.Alpha2, 1, () =>
@@ -112,7 +112,7 @@ public class ItemLogic : MonoBehaviour
 
             _is_active = false;
             is_immortal = false;
-            PlayerMovement.Instance.dash_cooldown = PlayerMovement.Instance.DASH_COOLDOWN_DEFAULT_VALUE;
+            PlayerMovement.Instance.ability_holder.ability.COOLDOWN = PlayerMovement.Instance.ability_holder.ability.DEFAULT_COOLDOWN;
             PlayerMovement.Instance.shot_cooldown = PlayerMovement.Instance.SHOT_COOLDOWN_DEFAULT_VALUE;
         }
     }
