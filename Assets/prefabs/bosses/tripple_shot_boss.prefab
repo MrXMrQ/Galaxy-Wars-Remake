@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51456505e0346649a417444a8b68fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss_name: Tripple shot boss
+  boss_name: Outlaw sheriff
   sprite: {fileID: 21300000, guid: 7076a8e4b72e11a4aa5861231c51bc6d, type: 3}
   MAX_HEALTHPOINTS: 5
   COLLISION_DAMAGE: 1

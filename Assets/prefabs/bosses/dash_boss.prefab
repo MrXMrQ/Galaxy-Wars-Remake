@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51456505e0346649a417444a8b68fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss_name: Dash boss
+  boss_name: Cyclone Sentinel
   sprite: {fileID: 21300000, guid: 26c8eb4f4feedbb4bad8bc49a690a525, type: 3}
   MAX_HEALTHPOINTS: 5
   COLLISION_DAMAGE: 1
