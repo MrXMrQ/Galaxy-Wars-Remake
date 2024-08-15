@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public abstract class Card : ScriptableObject
@@ -14,15 +13,6 @@ public abstract class Card : ScriptableObject
         none
     }
 
-    public enum WEAPON_TYPES
-    {
-        Bomb,
-        Dual_Shot,
-        Tripple_Shot,
-        Sniper,
-        none,
-    }
-
     [Header("GENERAL")]
     [SerializeField] public string card_name;
 
@@ -35,10 +25,14 @@ public abstract class Card : ScriptableObject
     [HideInInspector] public int upgrade_cost;
 
     [Header("WEAPON")]
-    [SerializeField] public WEAPON_TYPES weapon_type;
     [SerializeField] public string weapon_prefab_path;
     [SerializeField] public int weapon_cost;
-    [SerializeField] public bool is_unlocked;
+    [SerializeField] public bool is_unlocked_weapon;
+
+    [Header("ABILITIES")]
+    [SerializeField] public string ability_scriptableobject_path;
+    [SerializeField] public int ability_cost;
+    [SerializeField] public bool is_unlocked_ability;
 
 
     protected void SetUpgradeValuesVisuals(float current_stat, int upgrade_cost)

@@ -9,19 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4e8fa5a345c9e842b94d9a858e21f75, type: 3}
-  m_Name: 05_tripple_shot_weapon
+  m_Script: {fileID: 11500000, guid: 8f01cd49763699349ad49d7658c6f5f2, type: 3}
+  m_Name: dash_ability
   m_EditorClassIdentifier: 
-  card_name: TRIPPLE SHOT
+  card_name: DASH
   upgrade_type: 6
   cost_multiplier: 0
   upgrade_value: 0
   max_upgrade_stat: 0
   current_stat: 0
   upgrade_cost: 0
-  weapon_prefab_path: Prefabs/Player Projectiles/player_projectile_tripple_shot
-  weapon_cost: 10000
+  weapon_prefab_path: 
+  weapon_cost: 0
   is_unlocked_weapon: 0
-  ability_scriptableobject_path: 
+  ability_scriptableobject_path: s
   ability_cost: 0
-  is_unblocked_ability: 0
+  is_unlocked_ability: 1

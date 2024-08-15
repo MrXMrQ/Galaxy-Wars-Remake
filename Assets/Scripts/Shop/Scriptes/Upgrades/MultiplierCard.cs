@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Multiplier")]
+[CreateAssetMenu(fileName = "_upgrade", menuName = "Card/Upgrade/Multiplier")]
 public class MultiplierCard : Card, IUpgradeable
 {
     int multiplier;

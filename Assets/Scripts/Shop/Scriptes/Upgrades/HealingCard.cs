@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Healing")]
+[CreateAssetMenu(fileName = "_upgrade", menuName = "Card/Upgrade/Healing")]
 public class HealingCard : Card, IUpgradeable
 {
     int healing;

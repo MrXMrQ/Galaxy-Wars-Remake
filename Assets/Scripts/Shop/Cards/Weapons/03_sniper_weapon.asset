@@ -19,7 +19,9 @@ MonoBehaviour:
   max_upgrade_stat: 0
   current_stat: 0
   upgrade_cost: 0
-  weapon_type: 3
-  weapon_prefab_path: prefabs/player_projectiles/player_projectile_sniper
+  weapon_prefab_path: Prefabs/Player Projectiles/player_projectile_sniper
   weapon_cost: 10000
-  is_unlocked: 0
+  is_unlocked_weapon: 0
+  ability_scriptableobject_path: 
+  ability_cost: 0
+  is_unblocked_ability: 0

@@ -93,13 +93,13 @@ public class CardsController : MonoBehaviour
 
     public void GetUpgradeCard()
     {
-        cards[current_card - 1].GetComponentInChildren<CardDisplay>().Upgrade(game_data);
+        cards[current_card - 1].GetComponentInChildren<CardDisplay>().UpgradeItem(game_data);
         UpdateText();
     }
 
     public void GetWeaponCard()
     {
-        cards[current_card - 1].GetComponentInChildren<CardDisplay>().Unlock(game_data);
+        cards[current_card - 1].GetComponentInChildren<CardDisplay>().UnlockWeapon(game_data);
         UpdateText();
         UpdateOutline();
     }
@@ -115,15 +115,15 @@ public class CardsController : MonoBehaviour
         string current_path = game_data.weapon_prefab_path;
         string equipped_path = cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.weapon_prefab_path;
 
-        if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.is_unlocked && !current_path.Equals(equipped_path))
+        if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.is_unlocked_weapon && !current_path.Equals(equipped_path))
         {
             Debug.Log("Equip");
-            cards[current_card - 1].GetComponentInChildren<CardDisplay>().Equip(game_data);
+            cards[current_card - 1].GetComponentInChildren<CardDisplay>().EquipWeapon(game_data);
             UpdateOutline();
         }
         else
         {
-            if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.is_unlocked && current_path.Equals(equipped_path))
+            if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.is_unlocked_weapon && current_path.Equals(equipped_path))
             {
                 StartCoroutine(EquippedBorder(0.25f, 0.05f, 0.025f, new Color(255, 255, 255), true));
             }
@@ -177,6 +177,40 @@ public class CardsController : MonoBehaviour
         if (!is_unlocked)
         {
             cards[current_card - 1].GetComponent<CardDisplay>().outline.enabled = false;
+        }
+    }
+
+    public void GetAbilityCard()
+    {
+        cards[current_card - 1].GetComponentInChildren<CardDisplay>().UnlockAbility(game_data);
+        UpdateText();
+        ////UpdateOutline();
+    }
+
+    public void EquipAbility()
+    {
+        Debug.Log("Equip ability");
+
+        string current_path = game_data.ability_scriptableobject_path;
+        string equipped_path = cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.ability_scriptableobject_path;
+
+        if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.is_unlocked_ability && !current_path.Equals(equipped_path))
+        {
+            Debug.Log("Equip");
+            cards[current_card - 1].GetComponentInChildren<CardDisplay>().EquipAbility(game_data);
+            ////UpdateOutline();
+        }
+        else
+        {
+            if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.is_unlocked_ability && current_path.Equals(equipped_path))
+            {
+                ////StartCoroutine(EquippedBorder(0.25f, 0.05f, 0.025f, new Color(255, 255, 255), true));
+            }
+            else
+            {
+                ////StartCoroutine(EquippedBorder(0.25f, 0.05f, 0.025f, new Color(255, 255, 255), false));
+                Debug.Log("Not unlocked");
+            }
         }
     }
 }

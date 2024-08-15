@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Damage")]
+[CreateAssetMenu(fileName = "_upgrade", menuName = "Card/Upgrade/Damage")]
 public class DamageCard : Card, IUpgradeable
 {
     int damage;

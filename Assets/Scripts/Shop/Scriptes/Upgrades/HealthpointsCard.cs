@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Healthpoints")]
+[CreateAssetMenu(fileName = "_upgrade", menuName = "Card/Upgrade/Healthpoints")]
 public class HealthpointsCard : Card, IUpgradeable
 {
     int max_healthpoints;

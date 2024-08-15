@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "_upgrade", menuName = "Upgrade/Dash")]
+[CreateAssetMenu(fileName = "_upgrade", menuName = "Card/Upgrade/Dash")]
 public class DashCard : Card, IUpgradeable
 {
     float dash_cooldown;

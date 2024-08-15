@@ -15,6 +15,7 @@ public class CardDisplay : MonoBehaviour
     {
         LoadUpgradeData();
         LoadWeaponData();
+        LoadAbilityData();
 
         if (card is IUpgradeable)
         {
@@ -24,9 +25,13 @@ public class CardDisplay : MonoBehaviour
         {
             WeaponVisuals();
         }
+        else if (card is IAbility)
+        {
+            AbilityVisuals();
+        }
     }
 
-    public void Upgrade(GameData game_data)
+    public void UpgradeItem(GameData game_data)
     {
         if (card is IUpgradeable upgradeableItem)
         {
@@ -39,7 +44,7 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
-    public void Unlock(GameData game_data)
+    public void UnlockWeapon(GameData game_data)
     {
         if (card is IWeapon weaponItem)
         {
@@ -52,7 +57,7 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
-    public void Equip(GameData game_data)
+    public void EquipWeapon(GameData game_data)
     {
         if (card is IWeapon weaponItem)
         {
@@ -61,8 +66,39 @@ public class CardDisplay : MonoBehaviour
         }
         else
         {
+            Debug.LogWarning("This item cannot be equipped.");
+        }
+    }
+
+    public void UnlockAbility(GameData gameData)
+    {
+        if (card is IAbility abilityItem)
+        {
+            abilityItem.Unlock(gameData);
+            AbilityVisuals();
+        }
+        else
+        {
             Debug.LogWarning("This item cannot be unlocked.");
         }
+    }
+
+    public void EquipAbility(GameData gameData)
+    {
+        if (card is IAbility abilityItem)
+        {
+            abilityItem.Equip(gameData);
+            AbilityVisuals();
+        }
+        else
+        {
+            Debug.LogWarning("This item cannot be equipped.");
+        }
+    }
+
+    public void EquipAbility()
+    {
+
     }
 
     private void LoadUpgradeData()
@@ -78,6 +114,14 @@ public class CardDisplay : MonoBehaviour
         if (card is IWeapon weaponItem)
         {
             weaponItem.Load(CardsController.game_data);
+        }
+    }
+
+    private void LoadAbilityData()
+    {
+        if (card is IAbility abilityItem)
+        {
+            abilityItem.Load(CardsController.game_data);
         }
     }
 
@@ -118,6 +162,12 @@ public class CardDisplay : MonoBehaviour
     private void WeaponVisuals()
     {
         card_name.text = card.card_name;
-        cost_text.text = card.is_unlocked ? "UNLOCKED" : $"Cost: {card.weapon_cost}";
+        cost_text.text = card.is_unlocked_weapon ? "UNLOCKED" : $"Cost: {card.weapon_cost}";
+    }
+
+    private void AbilityVisuals()
+    {
+        card_name.text = card.card_name;
+        cost_text.text = card.is_unlocked_ability ? "UNLOCKED" : $"Cost: {card.weapon_cost}";
     }
 }
