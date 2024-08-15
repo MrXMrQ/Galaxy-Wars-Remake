@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -111,23 +112,26 @@ public class CardsController : MonoBehaviour
 
     public void EquipWeapon()
     {
-        if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.is_unlocked)
+        string current_path = game_data.weapon_prefab_path;
+        string equipped_path = cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.weapon_prefab_path;
+
+        if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.is_unlocked && !current_path.Equals(equipped_path))
         {
-            if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.weapon_prefab_path.Equals(game_data.weapon_prefab_path))
-            {
-                game_data.weapon_prefab_path = "prefabs/player_projectiles/player_projectile_default";
-                SaveSystem.Save(game_data);
-                game_data = SaveSystem.Load();
-            }
-            else
-            {
-                cards[current_card - 1].GetComponentInChildren<CardDisplay>().Equip(game_data);
-            }
+            Debug.Log("Equip");
+            cards[current_card - 1].GetComponentInChildren<CardDisplay>().Equip(game_data);
             UpdateOutline();
         }
         else
         {
-            Debug.LogWarning("not unlocked");
+            if (cards[current_card - 1].GetComponentInChildren<CardDisplay>().card.is_unlocked && current_path.Equals(equipped_path))
+            {
+                StartCoroutine(EquippedBorder(0.25f, 0.05f, 0.025f, new Color(255, 255, 255), true));
+            }
+            else
+            {
+                StartCoroutine(EquippedBorder(0.25f, 0.05f, 0.025f, new Color(255, 255, 255), false));
+                Debug.Log("Not unlocked");
+            }
         }
     }
 
@@ -146,6 +150,33 @@ public class CardsController : MonoBehaviour
                     cards[i].GetComponent<CardDisplay>().outline.enabled = false;
                 }
             }
+        }
+    }
+
+    private IEnumerator EquippedBorder(float totalDuration, float duration_red_border, float duration_white_border, Color default_color, bool is_unlocked)
+    {
+        cards[current_card - 1].GetComponent<CardDisplay>().outline.enabled = true;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < totalDuration)
+        {
+            cards[current_card - 1].GetComponent<CardDisplay>().outline.effectColor = new Color(255, 0, 0);
+            yield return new WaitForSeconds(duration_red_border);
+            elapsedTime += duration_red_border;
+
+            if (elapsedTime >= totalDuration) break;
+
+            cards[current_card - 1].GetComponent<CardDisplay>().outline.effectColor = default_color;
+            yield return new WaitForSeconds(duration_white_border);
+            elapsedTime += duration_white_border;
+        }
+
+        // Optional: Reset to the original color after the loop
+        cards[current_card - 1].GetComponent<CardDisplay>().outline.effectColor = default_color;
+
+        if (!is_unlocked)
+        {
+            cards[current_card - 1].GetComponent<CardDisplay>().outline.enabled = false;
         }
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08dd5a6ddfdd25a4f95d18e9f7d48570, type: 3}
-  m_Name: 03_dual_weapon
+  m_Name: 04_dual_weapon
   m_EditorClassIdentifier: 
   card_name: DUAL SHOT
   upgrade_type: 6
