@@ -96,7 +96,7 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
-    private void LoadUpgradeData()
+    public void LoadUpgradeData()
     {
         if (card is IUpgradeable upgradeableItem)
         {
@@ -104,7 +104,7 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
-    private void LoadWeaponData()
+    public void LoadWeaponData()
     {
         if (card is IWeapon weaponItem)
         {
@@ -112,7 +112,7 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
-    private void LoadAbilityData()
+    public void LoadAbilityData()
     {
         if (card is IAbility abilityItem)
         {

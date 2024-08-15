@@ -93,12 +93,14 @@ public class CardsController : MonoBehaviour
 
     public void GetUpgradeCard()
     {
+        cards[current_card - 1].GetComponentInChildren<CardDisplay>().LoadUpgradeData();
         cards[current_card - 1].GetComponentInChildren<CardDisplay>().UpgradeItem(game_data);
         UpdateText();
     }
 
     public void GetWeaponCard()
     {
+        cards[current_card - 1].GetComponentInChildren<CardDisplay>().LoadWeaponData();
         cards[current_card - 1].GetComponentInChildren<CardDisplay>().UnlockWeapon(game_data);
         UpdateText();
         UpdateOutline();
@@ -137,6 +139,7 @@ public class CardsController : MonoBehaviour
 
     public void GetAbilityCard()
     {
+        cards[current_card - 1].GetComponentInChildren<CardDisplay>().LoadAbilityData();
         cards[current_card - 1].GetComponentInChildren<CardDisplay>().UnlockAbility(game_data);
         UpdateText();
         UpdateOutline();
