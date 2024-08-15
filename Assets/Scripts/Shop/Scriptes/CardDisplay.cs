@@ -96,11 +96,6 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
-    public void EquipAbility()
-    {
-
-    }
-
     private void LoadUpgradeData()
     {
         if (card is IUpgradeable upgradeableItem)
@@ -168,6 +163,6 @@ public class CardDisplay : MonoBehaviour
     private void AbilityVisuals()
     {
         card_name.text = card.card_name;
-        cost_text.text = card.is_unlocked_ability ? "UNLOCKED" : $"Cost: {card.weapon_cost}";
+        cost_text.text = card.is_unlocked_ability ? "UNLOCKED" : $"Cost: {card.ability_cost}";
     }
 }

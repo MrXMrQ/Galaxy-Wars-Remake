@@ -18,6 +18,7 @@ public class GameData
 
     //* ability stats
     public string ability_scriptableobject_path;
+    public bool boss_dash_unlocked;
 
     //* item stats
     public float dash_cooldown;
@@ -38,16 +39,21 @@ public class GameData
         int total_score,
         int level,
         int damge,
-        string weapon_prefab,
+
+        string weapon_prefab_path,
         bool bomb_unlocked,
         bool dual_shot_unlocked,
         bool trippl_shot_unlocked,
         bool sniper_unlocked,
+
         string ability_scriptableobject_path,
+        bool boss_dash_unlocked,
+
         float dash_cooldown,
         int healing,
         float shot_cooldown,
         int multiplier,
+
         int max_healthpoints_cost,
         int damge_cost,
         int dash_cooldown_cost,
@@ -60,13 +66,14 @@ public class GameData
         this.level = level;
         this.damge = damge;
 
-        this.weapon_prefab_path = weapon_prefab;
+        this.weapon_prefab_path = weapon_prefab_path;
         this.bomb_unlocked = bomb_unlocked;
         this.dual_shot_unlocked = dual_shot_unlocked;
         this.trippl_shot_unlocked = trippl_shot_unlocked;
         this.sniper_unlocked = sniper_unlocked;
 
         this.ability_scriptableobject_path = ability_scriptableobject_path;
+        this.boss_dash_unlocked = boss_dash_unlocked;
 
         this.dash_cooldown = dash_cooldown;
         this.healing = healing;
@@ -95,6 +102,7 @@ public class GameData
         sniper_unlocked = game_data.sniper_unlocked;
 
         ability_scriptableobject_path = game_data.ability_scriptableobject_path;
+        boss_dash_unlocked = game_data.boss_dash_unlocked;
 
         dash_cooldown = game_data.dash_cooldown;
         healing = game_data.healing;

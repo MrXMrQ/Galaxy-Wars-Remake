@@ -22,6 +22,6 @@ MonoBehaviour:
   weapon_prefab_path: 
   weapon_cost: 0
   is_unlocked_weapon: 0
-  ability_scriptableobject_path: s
+  ability_scriptableobject_path: Scriptableobjects/Abilities/boss_dash_ability
   ability_cost: 10000
   is_unlocked_ability: 1

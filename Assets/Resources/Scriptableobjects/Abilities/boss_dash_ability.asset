@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 928376bb03eef5349af2a09300ecbb4d, type: 3}
-  m_Name: dash_ability
+  m_Script: {fileID: 11500000, guid: 4129af77343475e41a5ca49dec6fa10b, type: 3}
+  m_Name: boss_dash_ability
   m_EditorClassIdentifier: 
-  name: DASH
+  name: BOSS DASH
   DEFAULT_COOLDOWN: 1
-  COOLDOWN: 1
+  COOLDOWN: 0
   DURATION: 0.1
   dash_particles: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
   DASH_SPEED: 50

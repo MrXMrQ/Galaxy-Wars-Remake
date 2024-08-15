@@ -15,7 +15,7 @@ public class DashAbility : Card, IAbility
 
     public void Unlock(GameData game_data)
     {
-        if (total_score >= ability_cost)
+        if (total_score >= ability_cost && !is_unlocked_ability)
         {
             total_score -= ability_cost;
             current_path = ability_scriptableobject_path;
@@ -27,7 +27,7 @@ public class DashAbility : Card, IAbility
 
     public void Equip(GameData game_data)
     {
-        current_path = weapon_prefab_path;
+        current_path = ability_scriptableobject_path;
         Save(game_data);
     }
 

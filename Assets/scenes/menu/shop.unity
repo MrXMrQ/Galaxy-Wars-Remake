@@ -2498,8 +2498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
 --- !u!114 &500027432
 MonoBehaviour:
@@ -3586,7 +3586,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2104854559}
   m_HandleRect: {fileID: 2104854558}
   m_Direction: 2
-  m_Value: 0.9980095
+  m_Value: 1.0048903
   m_Size: 0.394399
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7133,7 +7133,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 942.5, y: -1197}
+  m_AnchoredPosition: {x: 942.5, y: -1207}
   m_SizeDelta: {x: 1885, y: 2399.7856}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1261611787
@@ -9399,8 +9399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 3, y: 3}
   m_UseGraphicAlpha: 1
 --- !u!114 &1690593038
 MonoBehaviour:

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
@@ -70,5 +71,8 @@ public class AbilityHolder : MonoBehaviour
         {
             Debug.LogError("Failed to load weapon prefab from path: " + path);
         }
+
+        ability.COOLDOWN = ability.DEFAULT_COOLDOWN;
+        Debug.Log(ability.name);
     }
 }

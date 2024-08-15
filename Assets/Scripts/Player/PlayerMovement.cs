@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(Instance);
         }
-        ability_holder.ability.COOLDOWN = ability_holder.ability.DEFAULT_COOLDOWN;
+
         shot_cooldown = SHOT_COOLDOWN_DEFAULT_VALUE;
     }
 

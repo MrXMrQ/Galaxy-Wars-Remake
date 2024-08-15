@@ -19,6 +19,7 @@ public static class SaveSystem
 
     //* ability stats
     static string ABILITY_PREFAB_PATH = "Scriptableobjects/Abilities/dash_ability";
+    static bool BOSS_DASH_UNLOCKED;
 
     //* item default stats
     public static float DASH_COOLDOWN = 0.8f;
@@ -73,16 +74,21 @@ public static class SaveSystem
             TOTAL_SCORE,
             LEVEL,
             DAMAGE,
+
             WEAPON_PREFAB_PATH,
             BOMB_UNLOCKED,
             DUAL_SHOT_UNLOCKED,
             TRIPPLE_SHOT_UNLOCKED,
             SNIPER_UNLOCKED,
+
             ABILITY_PREFAB_PATH,
+            BOSS_DASH_UNLOCKED,
+
             DASH_COOLDOWN,
             HEALING,
             SHOT_COOLDOWN,
             MULTIPLIER,
+
             HEALTHPOINTS_COST,
             DAMAGE_COST,
             DASH_COOLDOWN_COST,
