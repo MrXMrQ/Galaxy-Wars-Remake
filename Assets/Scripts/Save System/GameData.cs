@@ -16,6 +16,9 @@ public class GameData
     public bool trippl_shot_unlocked;
     public bool sniper_unlocked;
 
+    //* ability stats
+    public string ability_scriptableobject_path;
+
     //* item stats
     public float dash_cooldown;
     public int healing;
@@ -40,6 +43,7 @@ public class GameData
         bool dual_shot_unlocked,
         bool trippl_shot_unlocked,
         bool sniper_unlocked,
+        string ability_scriptableobject_path,
         float dash_cooldown,
         int healing,
         float shot_cooldown,
@@ -61,6 +65,8 @@ public class GameData
         this.dual_shot_unlocked = dual_shot_unlocked;
         this.trippl_shot_unlocked = trippl_shot_unlocked;
         this.sniper_unlocked = sniper_unlocked;
+
+        this.ability_scriptableobject_path = ability_scriptableobject_path;
 
         this.dash_cooldown = dash_cooldown;
         this.healing = healing;
@@ -87,6 +93,8 @@ public class GameData
         dual_shot_unlocked = game_data.dual_shot_unlocked;
         trippl_shot_unlocked = game_data.trippl_shot_unlocked;
         sniper_unlocked = game_data.sniper_unlocked;
+
+        ability_scriptableobject_path = game_data.ability_scriptableobject_path;
 
         dash_cooldown = game_data.dash_cooldown;
         healing = game_data.healing;

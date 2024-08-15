@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
 {
-    [SerializeField] public Ability ability;
+    [HideInInspector] public Ability ability;
     [SerializeField] AbilityCooldownLogic ability_cooldown_logic;
     float cooldown;
     float duration;
@@ -15,6 +15,11 @@ public class AbilityHolder : MonoBehaviour
     }
 
     AbilityState state = AbilityState.Ready;
+
+    void Start()
+    {
+        Load();
+    }
 
     void Update()
     {
@@ -52,6 +57,18 @@ public class AbilityHolder : MonoBehaviour
                     state = AbilityState.Ready;
                 }
                 break;
+        }
+    }
+
+    private void Load()
+    {
+        GameData game_data = SaveSystem.Load();
+        string path = game_data.ability_scriptableobject_path;
+        ability = Resources.Load(path) as Ability;
+
+        if (ability == null)
+        {
+            Debug.LogError("Failed to load weapon prefab from path: " + path);
         }
     }
 }

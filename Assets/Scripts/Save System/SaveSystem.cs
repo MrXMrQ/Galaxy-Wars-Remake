@@ -11,11 +11,14 @@ public static class SaveSystem
     static int DAMAGE = 1;
 
     //* weapon default stats
-    static string WEAPON_PREFAB_PATH = "prefabs/player_projectiles/player_projectile_default";
+    static string WEAPON_PREFAB_PATH = "Prefabs/Player Projectiles/player_projectile_default";
     static bool BOMB_UNLOCKED;
     static bool DUAL_SHOT_UNLOCKED;
     static bool TRIPPLE_SHOT_UNLOCKED;
     static bool SNIPER_UNLOCKED;
+
+    //* ability stats
+    static string ABILITY_PREFAB_PATH = "Scriptableobjects/Abilities/dash_ability";
 
     //* item default stats
     public static float DASH_COOLDOWN = 0.8f;
@@ -75,6 +78,7 @@ public static class SaveSystem
             DUAL_SHOT_UNLOCKED,
             TRIPPLE_SHOT_UNLOCKED,
             SNIPER_UNLOCKED,
+            ABILITY_PREFAB_PATH,
             DASH_COOLDOWN,
             HEALING,
             SHOT_COOLDOWN,
