@@ -1,56 +1,33 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class CloneController : MonoBehaviour
 {
-    public static PlayerMovement Instance;
     [Header("MOVEMENT")]
     [SerializeField] Rigidbody2D player;
-    [SerializeField] public float MOVEMENT_SPEED;
-    [SerializeField] public float SMOOTHING;
+    float MOVEMENT_SPEED;
+    float SMOOTHING;
     [HideInInspector] public Vector2 movement_direction;
     [HideInInspector] public Vector2 current_position;
 
     [Header("SHOOT")]
-    [SerializeField] public ParticleSystem shot_particles;
-    [SerializeField] public float SHOT_COOLDOWN_DEFAULT_VALUE;
+    [SerializeField] ParticleSystem shot_particles;
     [HideInInspector] public float shot_cooldown;
-    [HideInInspector] public int DAMAGE;
     GameObject _player_projectile_prefab;
     bool _isShooting;
 
-    [Header("OTHER")]
-    [SerializeField] public int ITEM_DROP_CHANCE;
-    [SerializeField] public int COIN_DROP_CHANCE;
-    [SerializeField] public PlayerHealth health;
-    [SerializeField] public KnockBack knock_back;
-    [SerializeField] public Score score;
-    [SerializeField] public AbilityCooldownLogic ability_cooldown_logic;
-    [SerializeField] public AbilityHolder ability_holder;
-
     void Start()
     {
+        MOVEMENT_SPEED = PlayerMovement.Instance.MOVEMENT_SPEED;
+        SMOOTHING = PlayerMovement.Instance.SMOOTHING;
+        shot_particles = PlayerMovement.Instance.shot_particles;
         Load();
 
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(Instance);
-        }
-
-        shot_cooldown = SHOT_COOLDOWN_DEFAULT_VALUE;
+        shot_cooldown = PlayerMovement.Instance.SHOT_COOLDOWN_DEFAULT_VALUE;
     }
 
     void Update()
     {
-        if (knock_back.is_being_knock_backed)
-        {
-            return;
-        }
-
         float movementX = Input.GetAxisRaw("Horizontal");
         float movementY = Input.GetAxisRaw("Vertical");
 
@@ -65,11 +42,6 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (knock_back.is_being_knock_backed)
-        {
-            return;
-        }
-
         Vector2 targetVelocity = movement_direction * MOVEMENT_SPEED;
         player.velocity = Vector2.Lerp(player.velocity, targetVelocity, SMOOTHING);
     }
@@ -77,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Shoot()
     {
         _isShooting = true;
-        ability_cooldown_logic.last_shot = Time.time;
 
         float x = transform.position.x;
         float y = transform.position.y + 0.5f; //! The shot is spawned a little higher so that it is not immediately deleted if the player sits on the lower border
@@ -105,7 +76,5 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("Failed to load weapon prefab from path: " + path);
         }
-
-        DAMAGE = game_data.damge;
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - Asteroid
   - BossProjectile2
+  - Clone
   layers:
   - Default
   - TransparentFX

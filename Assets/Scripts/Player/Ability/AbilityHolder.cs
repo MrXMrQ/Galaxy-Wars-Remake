@@ -59,7 +59,7 @@ public class AbilityHolder : MonoBehaviour
                 break;
         }
     }
-
+    //TODO: remove when finished with testing abilities
     private void Load()
     {
         /*GameData game_data = SaveSystem.Load();
