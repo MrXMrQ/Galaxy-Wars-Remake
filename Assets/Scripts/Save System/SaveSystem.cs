@@ -16,6 +16,7 @@ public static class SaveSystem
     static bool DUAL_SHOT_UNLOCKED;
     static bool TRIPPLE_SHOT_UNLOCKED;
     static bool SNIPER_UNLOCKED;
+    static bool ROUND_SHOT_UNLOCKED;
 
     //* ability stats
     static string ABILITY_PREFAB_PATH = "Scriptableobjects/Abilities/dash_ability";
@@ -80,6 +81,7 @@ public static class SaveSystem
             DUAL_SHOT_UNLOCKED,
             TRIPPLE_SHOT_UNLOCKED,
             SNIPER_UNLOCKED,
+            ROUND_SHOT_UNLOCKED,
 
             ABILITY_PREFAB_PATH,
             BOSS_DASH_UNLOCKED,

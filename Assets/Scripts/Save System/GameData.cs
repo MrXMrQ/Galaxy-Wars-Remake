@@ -15,6 +15,7 @@ public class GameData
     public bool dual_shot_unlocked;
     public bool trippl_shot_unlocked;
     public bool sniper_unlocked;
+    public bool round_shot_unlocked;
 
     //* ability stats
     public string ability_scriptableobject_path;
@@ -45,6 +46,7 @@ public class GameData
         bool dual_shot_unlocked,
         bool trippl_shot_unlocked,
         bool sniper_unlocked,
+        bool round_shot_unlocked,
 
         string ability_scriptableobject_path,
         bool boss_dash_unlocked,
@@ -71,6 +73,7 @@ public class GameData
         this.dual_shot_unlocked = dual_shot_unlocked;
         this.trippl_shot_unlocked = trippl_shot_unlocked;
         this.sniper_unlocked = sniper_unlocked;
+        this.round_shot_unlocked = round_shot_unlocked;
 
         this.ability_scriptableobject_path = ability_scriptableobject_path;
         this.boss_dash_unlocked = boss_dash_unlocked;
@@ -100,6 +103,7 @@ public class GameData
         dual_shot_unlocked = game_data.dual_shot_unlocked;
         trippl_shot_unlocked = game_data.trippl_shot_unlocked;
         sniper_unlocked = game_data.sniper_unlocked;
+        round_shot_unlocked = game_data.round_shot_unlocked;
 
         ability_scriptableobject_path = game_data.ability_scriptableobject_path;
         boss_dash_unlocked = game_data.boss_dash_unlocked;
