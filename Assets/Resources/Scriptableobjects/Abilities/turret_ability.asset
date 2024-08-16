@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 928376bb03eef5349af2a09300ecbb4d, type: 3}
-  m_Name: dash_ability
+  m_Script: {fileID: 11500000, guid: d866ef94dc9c8e6459bce552fa60644c, type: 3}
+  m_Name: turret_ability
   m_EditorClassIdentifier: 
-  name: DASH
+  name: TURRET
   DEFAULT_COOLDOWN: 1
-  COOLDOWN: 0
+  COOLDOWN: 1
   DURATION: 0.1
-  dash_particles: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
-  DASH_SPEED: 50
-  DASH_DISTANCE: 3
+  particles: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
+  turret: {fileID: 2727780360183139143, guid: f6b6d48d35da2ac4f971760c2eb37725, type: 3}
