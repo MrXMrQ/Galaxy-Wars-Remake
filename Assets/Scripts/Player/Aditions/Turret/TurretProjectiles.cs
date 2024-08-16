@@ -1,17 +1,10 @@
 using UnityEngine;
 
-public class ProjctileDefaultLogic : MonoBehaviour
+public class TurretProjectile : MonoBehaviour
 {
-    [SerializeField] float PROJECTILE_SPEED;
+    [SerializeField] public float PROJECTILE_SPEED;
     [SerializeField] Vector2 move_direction;
-    [SerializeField] bool is_destructible;
     [SerializeField] ParticleSystem hit_particles;
-    int _DAMAGE;
-
-    void Start()
-    {
-        _DAMAGE = PlayerMovement.Instance.DAMAGE;
-    }
 
     void Update()
     {
@@ -22,11 +15,7 @@ public class ProjctileDefaultLogic : MonoBehaviour
     {
         if (other.CompareTag("Asteroid"))
         {
-            if (is_destructible)
-            {
-                Destroy(gameObject);
-            }
-
+            Destroy(gameObject);
             Destroy(other.gameObject);
 
             if (Random.Range(0, 100) >= 100 - PlayerMovement.Instance.ITEM_DROP_CHANCE)
@@ -49,7 +38,7 @@ public class ProjctileDefaultLogic : MonoBehaviour
         {
             Destroy(gameObject);
             BossLogic bossLogic = other.GetComponent<BossLogic>();
-            bossLogic.current_healthpoints -= _DAMAGE;
+            bossLogic.current_healthpoints--;
             SpawnParticles(transform.position);
         }
 

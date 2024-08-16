@@ -11,6 +11,7 @@ public class ProjectileRoundShot : MonoBehaviour
 
     private void RoundShot()
     {
+        Destroy(gameObject);
         InstanceProjectile(default_projectile, new Vector2(1, 1));
         InstanceProjectile(default_projectile, new Vector2(1, -1));
         InstanceProjectile(default_projectile, new Vector2(-1, 1));
