@@ -276,6 +276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PROJECTILE_SPEED: 30
-  MOVE_DIRECTION: {x: 0, y: 1}
+  move_direction: {x: 0, y: 1}
   is_destructible: 1
   hit_particles: {fileID: 739995767386574900, guid: 917f021215eb0ec4183bd33e2134db29, type: 3}
