@@ -3,6 +3,7 @@ using UnityEngine;
 public class Borders : MonoBehaviour
 {
     [SerializeField] Rigidbody2D player;
+    [HideInInspector] public Rigidbody2D clone;
     [SerializeField] AbilityCooldownLogic ability_cooldown_logic;
     [SerializeField] public float TELEPORT_COOLDOWN;
     [SerializeField] ParticleSystem teleport_particle;
@@ -32,6 +33,23 @@ public class Borders : MonoBehaviour
                 Instantiate(teleport_particle, player.position, Quaternion.identity);
 
                 player.position = new_position;
+                _last_teleport_time = Time.time;
+                _can_teleport = false;
+            }
+        }
+
+        if (_can_teleport && other.gameObject.tag == "Clone")
+        {
+            Vector2 new_position = clone.transform.position;
+
+            if (other.contacts[0].normal == Vector2.left || other.contacts[0].normal == Vector2.right)
+            {
+                ability_cooldown_logic.last_teleport = Time.time;
+
+                new_position.x = -clone.transform.position.x;
+                Instantiate(teleport_particle, clone.transform.position, Quaternion.identity);
+
+                clone.transform.position = new_position;
                 _last_teleport_time = Time.time;
                 _can_teleport = false;
             }

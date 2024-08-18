@@ -4,30 +4,50 @@ using UnityEngine;
 public class CloneController : MonoBehaviour
 {
     [Header("MOVEMENT")]
-    [SerializeField] Rigidbody2D player;
-    float MOVEMENT_SPEED;
-    float SMOOTHING;
-    [HideInInspector] public Vector2 movement_direction;
-    [HideInInspector] public Vector2 current_position;
+    [SerializeField] SpriteRenderer sprite_renderer;
+    [HideInInspector] public float _max_distance;
+    Rigidbody2D _clone;
+    float _MOVEMENT_SPEED;
+    float _SMOOTHING;
+    Vector2 _movement_direction;
 
     [Header("SHOOT")]
-    [SerializeField] ParticleSystem shot_particles;
-    [HideInInspector] public float shot_cooldown;
+    ParticleSystem _shot_particles;
+    [HideInInspector] public float _shot_cooldown;
     GameObject _player_projectile_prefab;
     bool _isShooting;
 
+    [Header("LIFE TIME")]
+    [SerializeField] float MAX_LIFE_TIME;
+    [SerializeField] float MIN_LIFE_TIME;
+    float _life_time;
+    float _instance_time;
+
     void Start()
     {
-        MOVEMENT_SPEED = PlayerMovement.Instance.MOVEMENT_SPEED;
-        SMOOTHING = PlayerMovement.Instance.SMOOTHING;
-        shot_particles = PlayerMovement.Instance.shot_particles;
+        sprite_renderer.sprite = PlayerMovement.Instance.GetComponent<SpriteRenderer>().sprite;
+
+        _life_time = Random.Range(MAX_LIFE_TIME, MIN_LIFE_TIME);
+
+        _clone = GetComponent<Rigidbody2D>();
+        _MOVEMENT_SPEED = PlayerMovement.Instance.MOVEMENT_SPEED;
+        _SMOOTHING = PlayerMovement.Instance.SMOOTHING;
+        _shot_particles = PlayerMovement.Instance.shot_particles;
+        _shot_cooldown = PlayerMovement.Instance.SHOT_COOLDOWN_DEFAULT_VALUE;
+
         Load();
 
-        shot_cooldown = PlayerMovement.Instance.SHOT_COOLDOWN_DEFAULT_VALUE;
+        _instance_time = Time.time;
     }
 
     void Update()
     {
+        if (Time.time - _instance_time >= _life_time)
+        {
+            PlayerMovement.Instance.ability_holder.ability._clone_is_alive = false;
+            Destroy(gameObject);
+        }
+
         float movementX = Input.GetAxisRaw("Horizontal");
         float movementY = Input.GetAxisRaw("Vertical");
 
@@ -36,14 +56,14 @@ public class CloneController : MonoBehaviour
             StartCoroutine(Shoot());
         }
 
-        movement_direction = new Vector2(movementX, movementY).normalized;
-        current_position = transform.position;
+        _movement_direction = new Vector2(movementX, movementY).normalized;
+        _shot_cooldown = PlayerMovement.Instance.shot_cooldown;
     }
 
     void FixedUpdate()
     {
-        Vector2 targetVelocity = movement_direction * MOVEMENT_SPEED;
-        player.velocity = Vector2.Lerp(player.velocity, targetVelocity, SMOOTHING);
+        Vector2 targetVelocity = _movement_direction * _MOVEMENT_SPEED;
+        _clone.velocity = Vector2.Lerp(_clone.velocity, targetVelocity, _SMOOTHING);
     }
 
     private IEnumerator Shoot()
@@ -55,9 +75,9 @@ public class CloneController : MonoBehaviour
         Vector2 pos = new Vector2(x, y);
 
         Instantiate(_player_projectile_prefab, pos, Quaternion.identity);
-        SpawnParticles(shot_particles);
+        SpawnParticles(_shot_particles);
 
-        yield return new WaitForSeconds(shot_cooldown);
+        yield return new WaitForSeconds(_shot_cooldown);
         _isShooting = false;
     }
 

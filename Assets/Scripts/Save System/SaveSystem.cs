@@ -21,6 +21,8 @@ public static class SaveSystem
     //* ability stats
     static string ABILITY_PREFAB_PATH = "Scriptableobjects/Abilities/dash_ability";
     static bool BOSS_DASH_UNLOCKED;
+    static bool TURRET_UNLOCKED;
+    static bool CLONE_UNLOCKED;
 
     //* item default stats
     public static float DASH_COOLDOWN = 0.8f;
@@ -85,6 +87,8 @@ public static class SaveSystem
 
             ABILITY_PREFAB_PATH,
             BOSS_DASH_UNLOCKED,
+            TURRET_UNLOCKED,
+            CLONE_UNLOCKED,
 
             DASH_COOLDOWN,
             HEALING,

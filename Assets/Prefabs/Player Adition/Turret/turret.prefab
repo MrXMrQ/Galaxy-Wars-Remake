@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0e6b82feaef824f83351ea96bf47d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hit_particle: {fileID: 739995767386574900, guid: 917f021215eb0ec4183bd33e2134db29, type: 3}
   max_life_time: 4
   min_life_time: 5
   tag_to_detect: Asteroid

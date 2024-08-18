@@ -20,6 +20,8 @@ public class GameData
     //* ability stats
     public string ability_scriptableobject_path;
     public bool boss_dash_unlocked;
+    public bool turret_unlocked;
+    public bool clone_unlocked;
 
     //* item stats
     public float dash_cooldown;
@@ -50,6 +52,8 @@ public class GameData
 
         string ability_scriptableobject_path,
         bool boss_dash_unlocked,
+        bool turret_unlocked,
+        bool clone_unlocked,
 
         float dash_cooldown,
         int healing,
@@ -77,6 +81,8 @@ public class GameData
 
         this.ability_scriptableobject_path = ability_scriptableobject_path;
         this.boss_dash_unlocked = boss_dash_unlocked;
+        this.turret_unlocked = turret_unlocked;
+        this.clone_unlocked = clone_unlocked;
 
         this.dash_cooldown = dash_cooldown;
         this.healing = healing;
@@ -107,6 +113,8 @@ public class GameData
 
         ability_scriptableobject_path = game_data.ability_scriptableobject_path;
         boss_dash_unlocked = game_data.boss_dash_unlocked;
+        turret_unlocked = game_data.turret_unlocked;
+        clone_unlocked = game_data.clone_unlocked;
 
         dash_cooldown = game_data.dash_cooldown;
         healing = game_data.healing;

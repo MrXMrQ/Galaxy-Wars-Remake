@@ -7,6 +7,7 @@ public class BossProjectile2 : MonoBehaviour
     [SerializeField] float MOVEMENT_SPEED;
     [SerializeField] float MAX_LIFE_TIME;
     [SerializeField] float MIN_LIFE_TIME;
+    [SerializeField] ParticleSystem hit_particles;
 
     Vector2 _movement_direction;
     float _life_time;
@@ -64,6 +65,20 @@ public class BossProjectile2 : MonoBehaviour
             Detonate();
             PlayerMovement.Instance.knock_back.CallKnockBack(_movement_direction, Vector2.zero, new Vector2(Input.GetAxis("Horizontal"), Input.GetAxisRaw("Vertical")));
             PlayerMovement.Instance.health.current_healthpoints -= DAMAGE;
+            SpawnParticles(hit_particles, other.transform.position);
         }
+
+        if (other.CompareTag("Clone"))
+        {
+            Destroy(other.gameObject);
+            Detonate();
+            PlayerMovement.Instance.ability_holder.ability._clone_is_alive = false;
+            SpawnParticles(hit_particles, other.transform.position);
+        }
+    }
+
+    public void SpawnParticles(ParticleSystem particle, Vector2 pos)
+    {
+        Instantiate(particle, pos, Quaternion.identity);
     }
 }

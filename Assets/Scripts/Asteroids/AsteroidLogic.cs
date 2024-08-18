@@ -42,6 +42,15 @@ public class AsteroidLogic : MonoBehaviour
             Instantiate(hit_particles, transform.position, Quaternion.identity);
             PlayerMovement.Instance.health.current_healthpoints -= DAMAGE;
         }
+
+        if (other.CompareTag("Clone"))
+        {
+            PlayerMovement.Instance.ability_holder.ability._clone_is_alive = false;
+
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+            Instantiate(hit_particles, other.gameObject.transform.position, Quaternion.identity);
+        }
     }
     private void CalculateCameraBounds()
     {

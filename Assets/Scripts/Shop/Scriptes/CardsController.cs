@@ -136,7 +136,7 @@ public class CardsController : MonoBehaviour
             }
         }
     }
-    //TODO: adding new card for turret ability
+
     public void GetAbilityCard()
     {
         cards[current_card - 1].GetComponentInChildren<CardDisplay>().LoadAbilityData();

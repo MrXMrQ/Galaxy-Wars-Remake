@@ -2909,6 +2909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 756186910}
+  clone: {fileID: 3474101802904519079, guid: 15941104a927a2b45b342f3abdcc8ef9, type: 3}
   ability_cooldown_logic: {fileID: 1810199181}
   TELEPORT_COOLDOWN: 10
   teleport_particle: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
@@ -3755,7 +3756,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6908243f5aa587e48b9e13214cd08537, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3935,6 +3936,7 @@ MonoBehaviour:
   score: {fileID: 756186919}
   ability_cooldown_logic: {fileID: 1810199181}
   ability_holder: {fileID: 756186920}
+  border: {fileID: 561031696}
 --- !u!114 &756186917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3992,7 +3994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87e062a0f8e6684ba15a71ecaeed2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 11400000, guid: 0db5dd8a884ee374b93ccce2878f8439, type: 2}
+  ability: {fileID: 11400000, guid: 68ceb1490e65e3c44a78cc7faeae6039, type: 2}
   ability_cooldown_logic: {fileID: 1810199181}
 --- !u!1 &761391652
 GameObject:
@@ -4803,8 +4805,8 @@ Transform:
   m_GameObject: {fileID: 887944382}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 18.917, y: 2.41, z: 0.26874286}
-  m_LocalScale: {x: 34.540638, y: 0.6962213, z: 1}
+  m_LocalPosition: {x: 31.9169, y: 2.41, z: 0.26874286}
+  m_LocalScale: {x: 34.540638, y: 26.69598, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 561031695}
@@ -5669,8 +5671,8 @@ Transform:
   m_GameObject: {fileID: 1223203630}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -17.33, y: 1.78, z: 0.26874286}
-  m_LocalScale: {x: 34.540638, y: 0.6962213, z: 1}
+  m_LocalPosition: {x: -29.3495, y: 1.78, z: 0.26874286}
+  m_LocalScale: {x: 34.540638, y: 24.73535, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 561031695}
@@ -6929,8 +6931,8 @@ Transform:
   m_GameObject: {fileID: 1534807752}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.74, y: 10.633, z: 0.26874286}
-  m_LocalScale: {x: 53.75214, y: 0.69622135, z: 1}
+  m_LocalPosition: {x: 3.74, y: 18.056, z: 0.26874286}
+  m_LocalScale: {x: 53.75214, y: 15.542081, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 561031695}
@@ -8471,7 +8473,7 @@ MonoBehaviour:
   - {fileID: 231715019}
   - {fileID: 1916418445}
   - {fileID: 201224135}
-  last_dash: 0
+  last_ability: 0
   last_shot: 0
   last_teleport: 0
 --- !u!1 &1825735731
@@ -8678,8 +8680,8 @@ Transform:
   m_GameObject: {fileID: 1836408559}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3, y: -10.064, z: 0.26874286}
-  m_LocalScale: {x: 51.70388, y: 0.69622135, z: 1}
+  m_LocalPosition: {x: 2.3, y: -19.0573, z: 0.26874286}
+  m_LocalScale: {x: 51.70388, y: 18.68289, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 561031695}
@@ -9153,9 +9155,9 @@ MonoBehaviour:
   - {fileID: 8936925031074530390, guid: 64c25b5e7781bd14086c48cb231adcd9, type: 3}
   - {fileID: 4804703964749269725, guid: e2da52918e1743a4bbd0a3a76535e7d5, type: 3}
   boss_prefabs:
-  - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
-  - {fileID: 2659891126375243337, guid: c8f08c08be19ab84dae3878d2600ff4b, type: 3}
   - {fileID: 2659891126375243337, guid: 067cc3cd33e837946b4e8fa1d3674f16, type: 3}
+  - {fileID: 2659891126375243337, guid: c8f08c08be19ab84dae3878d2600ff4b, type: 3}
+  - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
   spawn_rate: 0.5
   score_to_spawn_boss: 10000
   increse_score_to_spawn_boss: 200
