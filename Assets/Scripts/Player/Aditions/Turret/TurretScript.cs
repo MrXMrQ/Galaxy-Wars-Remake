@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TurretScript : MonoBehaviour
 {
+    [SerializeField] ParticleSystem hit_particle;
     [SerializeField] float max_life_time;
     [SerializeField] float min_life_time;
     [SerializeField] string tag_to_detect;
@@ -40,7 +41,7 @@ public class TurretScript : MonoBehaviour
         if (other.CompareTag("Asteroid"))
         {
             Destroy(other.gameObject);
-
+            Instantiate(hit_particle, other.transform.position, Quaternion.identity);
             AsteroidLogic asteroid_script = other.gameObject.GetComponent<AsteroidLogic>();
 
             if (asteroid_script != null)
