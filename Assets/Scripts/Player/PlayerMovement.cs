@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public Score score;
     [SerializeField] public AbilityCooldownLogic ability_cooldown_logic;
     [SerializeField] public AbilityHolder ability_holder;
+    [SerializeField] public Borders border;
 
     void Start()
     {

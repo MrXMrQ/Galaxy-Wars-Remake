@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: clone_ability
   m_EditorClassIdentifier: 
   name: CLONE
-  DEFAULT_COOLDOWN: 1
-  COOLDOWN: 1
+  DEFAULT_COOLDOWN: 10
+  COOLDOWN: 10
   DURATION: 0.1
+  _clone_is_alive: 0
   particles: {fileID: 1680149101079458943, guid: 4fc65d1314c914f4398fdd4b0338d383, type: 3}
   clone: {fileID: 6625813557290402506, guid: 15941104a927a2b45b342f3abdcc8ef9, type: 3}
+  clone_offset: 2.5
+  duration: 0.25
+  clone_controller: {fileID: 0}

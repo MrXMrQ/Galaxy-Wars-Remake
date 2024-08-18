@@ -12,7 +12,7 @@ public class SpawnCoin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Clone"))
         {
             Instantiate(COLLECT_PARTICLES, other.transform.position, Quaternion.identity);
             PlayerMovement.Instance.score.UpdateScorePoints(SCORE_VALUE);

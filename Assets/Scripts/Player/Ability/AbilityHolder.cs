@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
 {
-    [SerializeField] public Ability ability;
+    public Ability ability;
     [SerializeField] AbilityCooldownLogic ability_cooldown_logic;
     float cooldown;
     float duration;
@@ -18,6 +18,7 @@ public class AbilityHolder : MonoBehaviour
 
     void Start()
     {
+        ability._clone_is_alive = false;
         Load();
     }
 
@@ -28,7 +29,7 @@ public class AbilityHolder : MonoBehaviour
             case AbilityState.Ready:
                 if (Input.GetButton("Dash"))
                 {
-                    ability_cooldown_logic.last_dash = Time.time;
+                    ability_cooldown_logic.last_ability = Time.time;
                     ability.Activate(gameObject);
                     state = AbilityState.Duration;
                     duration = ability.DURATION;
@@ -59,17 +60,17 @@ public class AbilityHolder : MonoBehaviour
                 break;
         }
     }
-    //TODO: remove when finished with testing abilities
+
     private void Load()
     {
-        /*GameData game_data = SaveSystem.Load();
+        GameData game_data = SaveSystem.Load();
         string path = game_data.ability_scriptableobject_path;
         ability = Resources.Load(path) as Ability;
 
         if (ability == null)
         {
             Debug.LogError("Failed to load weapon prefab from path: " + path);
-        }*/
+        }
 
         ability.COOLDOWN = ability.DEFAULT_COOLDOWN;
         Debug.Log(ability.name);

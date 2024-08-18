@@ -6,6 +6,7 @@ public class Ability : ScriptableObject
     [SerializeField] public float DEFAULT_COOLDOWN;
     [HideInInspector] public float COOLDOWN;
     [SerializeField] public float DURATION;
+    [HideInInspector] public bool _clone_is_alive;
 
     public virtual void Activate(GameObject parent)
     {

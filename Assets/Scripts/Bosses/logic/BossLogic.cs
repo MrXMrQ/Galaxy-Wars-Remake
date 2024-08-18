@@ -7,6 +7,7 @@ public class BossLogic : MonoBehaviour
     [SerializeField] public int MAX_HEALTHPOINTS;
     [SerializeField] int COLLISION_DAMAGE;
     [SerializeField] int SCORE;
+    [SerializeField] ParticleSystem hit_particles;
     [SerializeField] public ParticleSystem spawn_particles;
     static int _currentHealthpoints { get; set; }
     Vector2 _attack_direction;
@@ -48,6 +49,14 @@ public class BossLogic : MonoBehaviour
         {
             PlayerMovement.Instance.health.current_healthpoints -= COLLISION_DAMAGE;
             PlayerMovement.Instance.knock_back.CallKnockBack(_attack_direction, Vector2.zero, new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+            Instantiate(hit_particles, other.transform.position, Quaternion.identity);
+        }
+
+        if (other.CompareTag("Clone"))
+        {
+            Destroy(other.gameObject);
+            PlayerMovement.Instance.ability_holder.ability._clone_is_alive = false;
+            Instantiate(hit_particles, other.transform.position, Quaternion.identity);
         }
     }
 

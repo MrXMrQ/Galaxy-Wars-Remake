@@ -14,7 +14,7 @@ public class SpawnItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Clone"))
         {
             Instantiate(COLLECT_PARTICLES, transform.position, Quaternion.identity);
             ItemLogic.Instance.UpdateSprite(_sprite, index);
