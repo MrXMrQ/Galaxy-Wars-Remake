@@ -276,4 +276,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PROJECTILE_SPEED: 30
+  hit_particles: {fileID: 739995767386574900, guid: 917f021215eb0ec4183bd33e2134db29, type: 3}
   DAMAGE: 1

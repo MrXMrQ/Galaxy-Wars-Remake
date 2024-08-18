@@ -280,3 +280,4 @@ MonoBehaviour:
   MOVEMENT_SPEED: 10
   MAX_LIFE_TIME: 2
   MIN_LIFE_TIME: 1
+  hit_particles: {fileID: 739995767386574900, guid: 917f021215eb0ec4183bd33e2134db29, type: 3}

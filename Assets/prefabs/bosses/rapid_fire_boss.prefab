@@ -188,5 +188,6 @@ MonoBehaviour:
   MAX_HEALTHPOINTS: 5
   COLLISION_DAMAGE: 1
   SCORE: 50
+  hit_particles: {fileID: 739995767386574900, guid: 917f021215eb0ec4183bd33e2134db29, type: 3}
   spawn_particles: {fileID: 1268580951457350375, guid: 0e6dc7cd0d24336418baced56039de09, type: 3}
   spawn_point: {x: 0, y: 0}
