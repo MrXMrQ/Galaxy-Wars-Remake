@@ -65,6 +65,7 @@ public class Clone : Ability
         {
             cloneTransform.position = targetClonePosition;
             clone_controller._max_distance = (playerTransform.position - cloneTransform.position).magnitude;
+            Debug.Log(clone_controller._max_distance);
         }
     }
 }

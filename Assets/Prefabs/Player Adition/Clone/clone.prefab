@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6111668740038467412}
   - component: {fileID: 8181934081239502409}
   - component: {fileID: 3474101802904519079}
-  - component: {fileID: 5954124179205527272}
+  - component: {fileID: -8413929271804821928}
   - component: {fileID: -2376178413195141671}
   m_Layer: 0
   m_Name: clone
@@ -228,8 +228,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5954124179205527272
-BoxCollider2D:
+--- !u!60 &-8413929271804821928
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -270,9 +270,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.5}
+  m_UseDelaunayMesh: 0
 --- !u!114 &-2376178413195141671
 MonoBehaviour:
   m_ObjectHideFlags: 0

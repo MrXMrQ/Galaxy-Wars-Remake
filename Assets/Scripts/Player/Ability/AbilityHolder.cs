@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AbilityHolder : MonoBehaviour
 {
-    public Ability ability;
+    [HideInInspector] public Ability ability;
     [SerializeField] AbilityCooldownLogic ability_cooldown_logic;
     float cooldown;
     float duration;
@@ -70,6 +70,11 @@ public class AbilityHolder : MonoBehaviour
         if (ability == null)
         {
             Debug.LogError("Failed to load weapon prefab from path: " + path);
+        }
+
+        if (ability is Clone clone)
+        {
+            clone._clone_is_alive = false;
         }
 
         ability.COOLDOWN = ability.DEFAULT_COOLDOWN;

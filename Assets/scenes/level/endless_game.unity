@@ -3680,7 +3680,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 7.04, y: 7.04}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -3756,12 +3756,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 6908243f5aa587e48b9e13214cd08537, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e793bceebe390d04591a4148bcdf816a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 7.04, y: 7.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3994,7 +3994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87e062a0f8e6684ba15a71ecaeed2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 11400000, guid: 68ceb1490e65e3c44a78cc7faeae6039, type: 2}
+  ability: {fileID: 11400000, guid: 0db5dd8a884ee374b93ccce2878f8439, type: 2}
   ability_cooldown_logic: {fileID: 1810199181}
 --- !u!1 &761391652
 GameObject:
@@ -9158,7 +9158,7 @@ MonoBehaviour:
   - {fileID: 2659891126375243337, guid: 067cc3cd33e837946b4e8fa1d3674f16, type: 3}
   - {fileID: 2659891126375243337, guid: c8f08c08be19ab84dae3878d2600ff4b, type: 3}
   - {fileID: 2659891126375243337, guid: 30048925a3833824282fbf6273c30173, type: 3}
-  spawn_rate: 0.5
+  spawn_rate: 100000000
   score_to_spawn_boss: 10000
   increse_score_to_spawn_boss: 200
   boss_healthbar: {fileID: 1810199179}
