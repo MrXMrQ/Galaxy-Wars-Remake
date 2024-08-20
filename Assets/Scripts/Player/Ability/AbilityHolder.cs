@@ -64,7 +64,7 @@ public class AbilityHolder : MonoBehaviour
     private void Load()
     {
         GameData game_data = SaveSystem.Load();
-        string path = game_data.ability_scriptableobject_path;
+        string path = game_data.ability_path;
         ability = Resources.Load(path) as Ability;
 
         if (ability == null)

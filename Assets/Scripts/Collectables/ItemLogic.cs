@@ -142,10 +142,10 @@ public class ItemLogic : MonoBehaviour
     {
         GameData gameData = SaveSystem.Load();
 
-        _MAX_HEALTHPOINTS = gameData.max_healthpoints;
-        _dash_cooldown = gameData.dash_cooldown;
-        _healing = gameData.healing;
-        _shooting_cooldown = gameData.shot_cooldown;
+        _MAX_HEALTHPOINTS = (int)gameData.item_stats["healthpoints"];
+        _dash_cooldown = gameData.item_stats["dash_cooldown"];
+        _healing = (int)gameData.item_stats["healing"];
+        _shooting_cooldown = gameData.item_stats["shot_cooldown"];
     }
 
     public void SpawnItem(Vector2 position)

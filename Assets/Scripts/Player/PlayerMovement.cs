@@ -99,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
     private void Load()
     {
         GameData game_data = SaveSystem.Load();
-        string path = game_data.weapon_prefab_path;
+        string path = game_data.weapon_path;
         _player_projectile_prefab = Resources.Load(path) as GameObject;
 
         if (_player_projectile_prefab == null)
@@ -107,6 +107,6 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogError("Failed to load weapon prefab from path: " + path);
         }
 
-        DAMAGE = game_data.damge;
+        DAMAGE = (int)game_data.item_stats["damage"];
     }
 }

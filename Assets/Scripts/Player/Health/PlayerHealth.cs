@@ -42,6 +42,6 @@ public class PlayerHealth : MonoBehaviour
     {
         GameData gameData = SaveSystem.Load();
 
-        MAXHEALTHPOINTS = gameData.max_healthpoints;
+        MAXHEALTHPOINTS = (int)gameData.item_stats["healthpoints"];
     }
 }

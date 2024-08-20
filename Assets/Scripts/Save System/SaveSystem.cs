@@ -1,54 +1,39 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 
 public static class SaveSystem
 {
-    //* player default stats
-    static int MAX_HEALTHPOINTS = 10;
+    // PLAYER DEFAULTS
     static int TOTAL_SCORE = 1000000;
     static int LEVEL = 0;
-    static int DAMAGE = 1;
 
-    //* weapon default stats
-    static string WEAPON_PREFAB_PATH = "Prefabs/Player Projectiles/player_projectile_default";
-    static bool BOMB_UNLOCKED;
-    static bool DUAL_SHOT_UNLOCKED;
-    static bool TRIPPLE_SHOT_UNLOCKED;
-    static bool SNIPER_UNLOCKED;
-    static bool ROUND_SHOT_UNLOCKED;
-
-    //* ability stats
-    static string ABILITY_PREFAB_PATH = "Scriptableobjects/Abilities/dash_ability";
-    static bool BOSS_DASH_UNLOCKED;
-    static bool TURRET_UNLOCKED;
-    static bool CLONE_UNLOCKED;
-
-    //* item default stats
+    // ITEM DEFAULTS
+    static Dictionary<string, float> item_stats = new Dictionary<string, float>();
+    static Dictionary<string, int> item_cost = new Dictionary<string, int>();
     public static float DASH_COOLDOWN = 0.8f;
-    static int HEALING = 1;
     public static float SHOT_COOLDOWN = 0.25f;
-    static int MULTIPLIER = 1;
 
-    //* item default costs 
-    static int HEALTHPOINTS_COST = 3000;
-    static int DAMAGE_COST = 1000;
-    static int DASH_COOLDOWN_COST = 500;
-    static int HEALING_COST = 750;
-    static int SHOT_COOLDOWN_COST = 2000;
-    static int MULTIPLIER_COST = 10000;
+    // WEAPON DEFAULTS
+    static string WEAPON_PREFAB_PATH = "Player/Projectiles/default";
+    static Dictionary<string, bool> unlocked_weapons = new Dictionary<string, bool>();
 
-    //! C:/Users/username/AppData/LocalLow/Galaxy-Wars-Remake/Galaxy-Wars-Remake/saveFile.sv on Windows
-    static string PATH = Application.persistentDataPath + "/saveFile.sv";
+    // ABILITY DEFAULTS
+    static string ABILITY_PREFAB_PATH = "Player/Abilities/default";
+    static Dictionary<string, bool> unlocked_abilities = new Dictionary<string, bool>();
 
-    public static void Save(GameData gameData)
+    // PATH
+    static string PATH = Application.persistentDataPath + "/saveFile.sv"; //ALERT: C:/Users/username/AppData/LocalLow/Galaxy-Wars-Remake/Galaxy-Wars-Remake/saveFile.sv on Windows
+
+    public static void Save(GameData game_data)
     {
         Debug.Log("File save at: " + PATH);
 
         BinaryFormatter formatter = new BinaryFormatter();
         FileStream stream = new FileStream(PATH, FileMode.Create);
 
-        GameData data = new GameData(gameData);
+        GameData data = new GameData(game_data);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -72,38 +57,51 @@ public static class SaveSystem
         {
             Debug.Log("File created at: " + PATH);
 
+            Add(); // Add items, weapons and abilities to the dictionarys
+
             GameData data = new GameData
-            (MAX_HEALTHPOINTS,
+            (
             TOTAL_SCORE,
             LEVEL,
-            DAMAGE,
-
+            item_stats,
+            item_cost,
             WEAPON_PREFAB_PATH,
-            BOMB_UNLOCKED,
-            DUAL_SHOT_UNLOCKED,
-            TRIPPLE_SHOT_UNLOCKED,
-            SNIPER_UNLOCKED,
-            ROUND_SHOT_UNLOCKED,
-
+            unlocked_weapons,
             ABILITY_PREFAB_PATH,
-            BOSS_DASH_UNLOCKED,
-            TURRET_UNLOCKED,
-            CLONE_UNLOCKED,
-
-            DASH_COOLDOWN,
-            HEALING,
-            SHOT_COOLDOWN,
-            MULTIPLIER,
-
-            HEALTHPOINTS_COST,
-            DAMAGE_COST,
-            DASH_COOLDOWN_COST,
-            HEALING_COST,
-            SHOT_COOLDOWN_COST,
-            MULTIPLIER_COST);
+            unlocked_abilities
+            );
 
             Save(data);
             return Load();
         }
+    }
+
+    public static void Add()
+    {
+        item_stats.Add("healthpoints", 10);
+        item_stats.Add("healing", 1);
+        item_stats.Add("dash_cooldown", 0.8f);
+        item_stats.Add("shot_cooldown", 0.25f);
+        item_stats.Add("damage", 1);
+        item_stats.Add("multiplier", 1);
+
+        item_cost.Add("healthpoints", 1000);
+        item_cost.Add("healing", 2000);
+        item_cost.Add("dash_cooldown", 3000);
+        item_cost.Add("shot_cooldown", 4000);
+        item_cost.Add("damage", 5000);
+        item_cost.Add("multiplier", 6000);
+
+        unlocked_weapons.Add("Default", true);
+        unlocked_weapons.Add("bomb", false);
+        unlocked_weapons.Add("sniper", false);
+        unlocked_weapons.Add("round_shot", false);
+        unlocked_weapons.Add("dual_shot", false);
+        unlocked_weapons.Add("tripple_shot", false);
+
+        unlocked_abilities.Add("Default", true);
+        unlocked_abilities.Add("boss_dash", false);
+        unlocked_abilities.Add("turret", false);
+        unlocked_abilities.Add("clone", false);
     }
 }

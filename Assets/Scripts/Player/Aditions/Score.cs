@@ -37,7 +37,7 @@ public class Score : MonoBehaviour
     public void Load()
     {
         GameData gameData = SaveSystem.Load();
-        _multiplier = gameData.multiplier;
+        _multiplier = (int)gameData.item_stats["multiplier"];
         _total_score = gameData.total_score;
     }
 }
