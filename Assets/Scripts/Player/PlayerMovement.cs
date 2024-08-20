@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
     [Header("MOVEMENT")]
-    [SerializeField] Rigidbody2D player;
+    [SerializeField] public Rigidbody2D player;
     [SerializeField] public float MOVEMENT_SPEED;
     [SerializeField] public float SMOOTHING;
     [HideInInspector] public Vector2 movement_direction;

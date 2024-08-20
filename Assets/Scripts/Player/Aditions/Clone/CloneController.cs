@@ -48,15 +48,12 @@ public class CloneController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        float movementX = Input.GetAxisRaw("Horizontal");
-        float movementY = Input.GetAxisRaw("Vertical");
-
         if (Input.GetButton("Fire1") && !_isShooting)
         {
             StartCoroutine(Shoot());
         }
 
-        _movement_direction = new Vector2(movementX, movementY).normalized;
+        _movement_direction = PlayerMovement.Instance.movement_direction;
         _shot_cooldown = PlayerMovement.Instance.shot_cooldown;
     }
 
