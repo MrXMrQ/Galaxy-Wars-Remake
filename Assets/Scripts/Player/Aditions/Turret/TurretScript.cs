@@ -82,6 +82,14 @@ public class TurretScript : MonoBehaviour
 
                 Debug.Log("Erkanntes Objekt: " + hitCollider.gameObject.name + " mit Tag: " + hitCollider.tag);
             }
+
+            if (hitCollider.CompareTag("Boss"))
+            {
+                if (!_is_shooting)
+                {
+                    StartCoroutine(InstanceProjectile(projectile, (hitCollider.transform.position - transform.position).normalized));
+                }
+            }
         }
     }
 
@@ -102,8 +110,6 @@ public class TurretScript : MonoBehaviour
 
         if (turret_projectile_script != null)
         {
-
-
             turret_projectile_script.SetMoveDirection(move_direction);
             Instantiate(projectile, transform.position, Quaternion.identity);
         }
